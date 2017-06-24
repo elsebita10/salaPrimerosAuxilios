@@ -79,7 +79,7 @@ public class AppController {
 //	    model.addAttribute("users", users);
 	    model.addAttribute("loggedinuser", getPrincipal());
 //	    return "userslist";
-	    return "form";
+	    return "home";
 	}
 	
 	
