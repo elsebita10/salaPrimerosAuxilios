@@ -6,56 +6,66 @@
 <html>
  
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Lista de usuarios</title>
-    <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
-    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+	<title>Lista de usuarios</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
  
 <body>
-    <div class="generic-container">
-        <%@include file="authheader.jsp" %>   
-        <div class="panel panel-default">
-              <!-- Default panel contents -->
-            <div class="panel-heading"><span class="lead">Lista de usuarios </span></div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Direccion</th>
-                        <th>E-mail</th>
-                        <th>ID de usuario</th>
-                        <sec:authorize access="hasRole('ADMIN')">
-                            <th width="100"></th>
-                        </sec:authorize>
-                        <sec:authorize access="hasRole('ADMIN')">
-                            <th width="100"></th>
-                        </sec:authorize>
-                         
-                    </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${users}" var="user">
-                    <tr>
-                        <td>${user.username}</td>
-                        <td>${user.address}</td>
-                        <td>${user.email}</td>
-                        <sec:authorize access="hasRole('ADMIN')">
-                            <td><a href="<c:url value='/edit-user-${user.username}' />" class="btn btn-success custom-width">editar</a></td>
-                        </sec:authorize>
-                        <sec:authorize access="hasRole('ADMIN')">
-                            <td><a href="<c:url value='/delete-user-${user.username}' />" class="btn btn-danger custom-width">eliminar</a></td>
-                        </sec:authorize>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
-        <sec:authorize access="hasRole('ADMIN')">
-            <div class="well">
-                <a href="<c:url value='/create-user' />">Crear usuario nuevo</a>
-            </div>
-        </sec:authorize>
+	<div id="wrapper">
+		<div id="sidebar-wrapper">
+			<div class="sidebar">
+				<%@ include file="/WEB-INF/views/commons/menu.jsp" %>
+			</div>
+		</div>
+		<div id="main-wrapper" class="col-md-10 pull-right">
+		    <div class="container-fluid">
+		        <div class="panel panel-default">
+		              <!-- Default panel contents -->
+		            <div class="panel-heading"><span class="lead">Lista de usuarios </span></div>
+		            <table class="table table-hover">
+		                <thead>
+		                    <tr>
+		                        <th>Username</th>
+		                        <th>Direccion</th>
+		                        <th>E-mail</th>
+		                        <th>ID de usuario</th>
+		                        <sec:authorize access="hasRole('ADMIN')">
+		                            <th width="100"></th>
+		                        </sec:authorize>
+		                        <sec:authorize access="hasRole('ADMIN')">
+		                            <th width="100"></th>
+		                        </sec:authorize>
+		                         
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                <c:forEach items="${users}" var="user">
+		                    <tr>
+		                        <td>${user.username}</td>
+		                        <td>${user.address}</td>
+		                        <td>${user.email}</td>
+		                        <sec:authorize access="hasRole('ADMIN')">
+		                            <td><a href="<c:url value='/edit-user-${user.username}' />" class="btn btn-success custom-width">editar</a></td>
+		                        </sec:authorize>
+		                        <sec:authorize access="hasRole('ADMIN')">
+		                            <td><a href="<c:url value='/delete-user-${user.username}' />" class="btn btn-danger custom-width">eliminar</a></td>
+		                        </sec:authorize>
+		                    </tr>
+		                </c:forEach>
+		                </tbody>
+		            </table>
+		        </div>
+		        <sec:authorize access="hasRole('ADMIN')">
+		            <div class="well">
+		                <a href="<c:url value='/create-user' />">Crear usuario nuevo</a>
+		            </div>
+		        </sec:authorize>
+		    </div>
+		</div>
     </div>
 </body>
 </html>
