@@ -129,7 +129,7 @@ public class AppController {
 	    userService.saveUser(user);
 	    model.addAttribute("success", "El usuario " + user.getUsername() + " fue registrado con éxito.");
 	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "registrationsuccess";
+	    return "users/userFormSuccess";
 	}
 	 
 	/**
