@@ -39,7 +39,7 @@
 	</div>
 	<br>
 	<div class="container">
-		<form class="form-horizontal" data-toggle="validator" role="form">
+		<form:form methodclass="form-horizontal" data-toggle="validator" role="form">
 			<div class="form-group">
 				<label class="control-label col-xs-3">&#42; Apellido:</label>
 				<div class="col-xs-9">

@@ -55,7 +55,7 @@ public class AppController {
 	@RequestMapping(value = { "/save-consultation" }, method = RequestMethod.POST)
 	public String saveConsultation(@Valid Consultation consultation, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			return "registration";
+			return "consultations/consultationForm";
 		}
 //        if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
 //        	FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
@@ -65,7 +65,7 @@ public class AppController {
 	    consultationService.saveConsultation(consultation);
 	    model.addAttribute("success", "El paciente " + consultation.getPacient().getFirstName() + " "+ consultation.getPacient().getLastName() + " fue registrado con éxito.");
 	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "registrationsuccess";
+	    return "consultations/consultationFormSuccess";
 	}
 	
 	
@@ -75,7 +75,7 @@ public class AppController {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String returnHome(ModelMap model) {
 	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "home";
+	    return "commons/home";
 	}
 	
 	/**
