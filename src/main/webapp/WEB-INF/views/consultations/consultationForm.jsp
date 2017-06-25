@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="sidebar">
-		<%@include file="menu.jsp" %>
+		<%@include file="/WEB-INF/views/commons/menu.jsp" %>
 	</div>
 	<div class="container">
 		<div class="jumbotron" align="center">
@@ -39,78 +39,110 @@
 	</div>
 	<br>
 	<div class="container">
-		<form:form methodclass="form-horizontal" data-toggle="validator" role="form">
+		<form:form methodclass="form-horizontal" method="POST" modelAttribute="consultation" data-toggle="validator" role="form">
+			<form:input type="hidden" path="id" id="id"/>
+			
 			<div class="form-group">
 				<label class="control-label col-xs-3">&#42; Apellido:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su apellido" required>
+					<form:input type="text" path="patient.lastname" id="patient.lastname" class="form-control input-sm" placeholder="Ingrese su apellido" required>
+					<div class="has-error">
+                    	<form:errors path="patient.lastname" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-3">&#42; Nombre:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su nombre" required>
+					<form:input type="text" path="patient.firstname" id="patient.firstname" class="form-control input-sm" placeholder="Ingrese su nombre" required>
+					<div class="has-error">
+                    	<form:errors path="patient.firstname" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-3">&#42; D.N.I.:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su D.N.I." required>
+					<form:input type="text" path="patient.dni" id="patient.dni" class="form-control input-sm" placeholder="Ingrese su D.N.I." required>
+					<div class="has-error">
+                    	<form:errors path="patient.dni" class="help-inline"/>
+                    </div>				
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-3">&#42; Sexo:</label>
 				<div class="col-xs-2">
 					<label class="radio-inline">
-						<input type="radio" name="genderRadios" value="male" required> Maculino
+						<form:input type="radio" id="patient.sex" path="patient.sex" name="genderRadios" value="Masculino" required> Maculino
 					</label>
 				</div>
 				<div class="col-xs-2">
 					<label class="radio-inline">
-						<input type="radio" name="genderRadios" value="female" required> Femenino
+						<form:input type="radio" id="patient.sex" path="patient.sex" name="genderRadios" value="Femenino" required> Femenino
 					</label>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-3">&#42; Domicilio:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su domicilio" required>
+					<form:input type="text" id="patient.address" path="patient.address" class="form-control input-sm" placeholder="Ingrese su domicilio" required>
+					<div class="has-error">
+                    	<form:errors path="patient.address" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-3">&#42; Edad:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su edad" required>
+					<form:input type="text" id="patient.age" path="patient.age" class="form-control input-sm" placeholder="Ingrese su edad" required>
+					<div class="has-error">
+                    	<form:errors path="patient.age" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-3" >&#42; Tel&eacute;fono de contacto:</label>
 				<div class="col-xs-9">
-					<input type="tel" class="form-control" placeholder="Ingrese su teléfono" required>
+					<form:input type="tel" id="patient.phone" path="patient.phone" class="form-control input-sm" placeholder="Ingrese su teléfono" required>
+					<div class="has-error">
+                    	<form:errors path="patient.phone" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-3" >&#42; T&#47;A:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su T&#47;A" required>
+					<form:input type="text" class="form-control input-sm" id="ta" path="ta" placeholder="Ingrese su T&#47;A" required>
+					<div class="has-error">
+                    	<form:errors path="ta" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-3" >&#42; T&deg;:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su T&deg;" required>
+					<form:input type="text" id="t" path="t" class="form-control input-sm" placeholder="Ingrese su T&deg;" required>
+					<div class="has-error">
+                    	<form:errors path="t" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-3" >&#42; FC:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su FC" required>
+					<form:input type="text" id="fc" path="fc" class="form-control input-sm" placeholder="Ingrese su FC" required>
+					<div class="has-error">
+                    	<form:errors path="fc" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-3" >&#42; Spo2%:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su Spo2%" required>
+					<form:input type="text" id="spo2" path="spo2" class="form-control input-sm" placeholder="Ingrese su Spo2%" required>
+					<div class="has-error">
+                    	<form:errors path="spo2" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="container">
@@ -238,9 +270,11 @@
 			<br>
 			<div class="form-group">
 				<div class="col-xs-offset-3 col-xs-9">
-					<input type="submit" class="btn btn-primary" value="Enviar">
-					<input type="reset" class="btn btn-default" value="Limpiar">
-				</div>
+<%-- 					<input type="submit" value="Actualizar" class="btn btn-primary btn-sm"/><a href="<c:url value='/list' />">Cancelar</a>
+ --%>					<input type="submit" class="btn btn-success custom-width" ><a href="<c:url value='/save-consultation' />">Guardar</a></input>
+						<input type="reset" class="btn btn-default" value="Limpiar">
+<%-- 					<td><a href="<c:url value='/edit-user-${user.ssoId}' />" class="btn btn-success custom-width">editar</a></td>
+ --%>				</div>
 			</div>
 		</form>
 	</div>
