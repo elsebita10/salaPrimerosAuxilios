@@ -16,110 +16,132 @@
 	</script>
 </head>
 <body>
-	<div class="sidebar">
-		<%@include file="menu.jsp" %>
+	<div id="sidebar-wrapper">
+		<div class="sidebar">
+			<%@ include file="/WEB-INF/views/commons/menu.jsp" %>
+		</div>
 	</div>
-	<div class="container">
-		<div class="jumbotron" align="center">
-			<h1>Sala de Primeros Auxilios</h1> 
+	<div id="main-wrapper" class="col-sm-10 pull-right">
+		<form:form methodclass="form-horizontal" method="POST" modelAttribute="consultation" data-toggle="validator" role="form">
+		<form:input type="hidden" path="id" id="id"/>
+		<div class="container-fluid">
+			<div class="page-header">
+				<h1>Datos del paciente</h1>      
+			</div>
+			<div class="container-fluid">
+				<h4>Los campos con &#42; son obligatorios</h4>      
+			</div>
 			<br>
-			<h1>Terminal de &Oacute;mnibus de La Plata</h1> 
-		</div>
-		<div align="center"><img class="img-responsive" src="home_municipalidad.jpg" alt="La Plata"></div>
-	</div>
-	<div class="container">
-		<div class="page-header">
-			<h1>Datos del paciente</h1>      
-		</div>
-	</div>
-	<div class="container">
-		<div class="container">
-			<h4>Los campos con &#42; son obligatorios</h4>      
-		</div>
-	</div>
-	<br>
-	<div class="container">
-		<form:form methodclass="form-horizontal" data-toggle="validator" role="form">
 			<div class="form-group">
-				<label class="control-label col-xs-3">&#42; Apellido:</label>
+				<label class="control-label col-xs-2">&#42; Apellido:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su apellido" required>
+					<form:input type="text" path="patient.lastname" id="patient.lastname" class="form-control input-sm" placeholder="Ingrese su apellido" required>
+					<div class="has-error">
+                    	<form:errors path="patient.lastname" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3">&#42; Nombre:</label>
+				<label class="control-label col-xs-2">&#42; Nombre:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su nombre" required>
+					<form:input type="text" path="patient.firstname" id="patient.firstname" class="form-control input-sm" placeholder="Ingrese su nombre" required>
+					<div class="has-error">
+                    	<form:errors path="patient.firstname" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3">&#42; D.N.I.:</label>
+				<label class="control-label col-xs-2">&#42; D.N.I.:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su D.N.I." required>
+					<form:input type="text" path="patient.dni" id="patient.dni" class="form-control input-sm" placeholder="Ingrese su D.N.I." required>
+					<div class="has-error">
+                    	<form:errors path="patient.dni" class="help-inline"/>
+                    </div>				
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3">&#42; Sexo:</label>
-				<div class="col-xs-2">
+				<label class="control-label col-xs-2">&#42; Sexo:</label>
+				<div class="col-xs-5">
 					<label class="radio-inline">
-						<input type="radio" name="genderRadios" value="male" required> Maculino
+						<form:input type="radio" id="patient.sex" path="patient.sex" name="genderRadios" value="Masculino" required> Maculino
 					</label>
 				</div>
-				<div class="col-xs-2">
+				<div class="col-xs-10">
 					<label class="radio-inline">
-						<input type="radio" name="genderRadios" value="female" required> Femenino
+						<form:input type="radio" id="patient.sex" path="patient.sex" name="genderRadios" value="Femenino" required> Femenino
 					</label>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3">&#42; Domicilio:</label>
+				<label class="control-label col-xs-2">&#42; Domicilio:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su domicilio" required>
+					<form:input type="text" id="patient.address" path="patient.address" class="form-control input-sm" placeholder="Ingrese su domicilio" required>
+					<div class="has-error">
+                    	<form:errors path="patient.address" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3">&#42; Edad:</label>
+				<label class="control-label col-xs-2">&#42; Edad:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su edad" required>
+					<form:input type="text" id="patient.age" path="patient.age" class="form-control input-sm" placeholder="Ingrese su edad" required>
+					<div class="has-error">
+                    	<form:errors path="patient.age" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3" >&#42; Tel&eacute;fono de contacto:</label>
+				<label class="control-label col-xs-2" >&#42; Tel&eacute;fono:</label>
 				<div class="col-xs-9">
-					<input type="tel" class="form-control" placeholder="Ingrese su teléfono" required>
+					<form:input type="tel" id="patient.phone" path="patient.phone" class="form-control input-sm" placeholder="Ingrese su teléfono" required>
+					<div class="has-error">
+                    	<form:errors path="patient.phone" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3" >&#42; T&#47;A:</label>
+				<label class="control-label col-xs-2" >&#42; T&#47;A:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su T&#47;A" required>
+					<form:input type="text" class="form-control input-sm" id="ta" path="ta" placeholder="Ingrese su T&#47;A" required>
+					<div class="has-error">
+                    	<form:errors path="ta" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3" >&#42; T&deg;:</label>
+				<label class="control-label col-xs-2" >&#42; T&deg;:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su T&deg;" required>
+					<form:input type="text" id="t" path="t" class="form-control input-sm" placeholder="Ingrese su T&deg;" required>
+					<div class="has-error">
+                    	<form:errors path="t" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3" >&#42; FC:</label>
+				<label class="control-label col-xs-2" >&#42; FC:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su FC" required>
+					<form:input type="text" id="fc" path="fc" class="form-control input-sm" placeholder="Ingrese su FC" required>
+					<div class="has-error">
+                    	<form:errors path="fc" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3" >&#42; Spo2%:</label>
+				<label class="control-label col-xs-2" >&#42; Spo2%:</label>
 				<div class="col-xs-9">
-					<input type="text" class="form-control" placeholder="Ingrese su Spo2%" required>
+					<form:input type="text" id="spo2" path="spo2" class="form-control input-sm" placeholder="Ingrese su Spo2%" required>
+					<div class="has-error">
+                    	<form:errors path="spo2" class="help-inline"/>
+                    </div>
 				</div>
 			</div>
-			<div class="container">
-				<div class="page-header">
-					<h1>Motivo de la consulta</h1>      
-				</div>
+		</div>
+		<div class="container-fluid">
+			<div class="page-header">
+				<h1>Motivo de la consulta</h1>      
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3" >&#42; Motivo:</label>
+				<label class="control-label col-xs-2" >&#42; Motivo:</label>
 				<div class="col-xs-9">
 					<select class="form-control" required>
 						<option selected>Seleccione una opci&oacute;n</option>
@@ -137,18 +159,18 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3" >&#42;</label>
+				<label class="control-label col-xs-2" >&#42;</label>
 				<div class="col-xs-9">
 					<input type="text" class="form-control" placeholder="Tu respuesta">
 				</div>
 			</div>
-			<div class="container">
-				<div class="page-header">
-					<h1>Antecedentes de enfermedad actual</h1>      
-				</div>
+		</div>
+		<div class="container-fluid">
+			<div class="page-header">
+				<h1>Antecedentes de enfermedad actual</h1>      
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-3" >&#42;</label>
+				<label class="control-label col-xs-2" >&#42;</label>
 				<div class="col-xs-9">
 					<select class="form-control" required>
 						<option selected>Seleccione una opci&oacute;n</option>
@@ -167,82 +189,86 @@
 					</select>
 				</div>
 			</div>
-			<div class="container">
-				<div class="page-header">
-					<h1>Fin de la atenci&oacute;n</h1>      
-				</div>
+		</div>
+		<div class="container-fluid">
+			<div class="page-header">
+				<h1>Fin de la atenci&oacute;n</h1>      
 			</div>
-			
-			
 			<div class="form-group">
-				<label class="control-label col-xs-3">&#42; &iquest;Se llam&oacute; a SAME?</label>
-				<div class="col-xs-2">
+				<label class="control-label col-xs-2">&#42; &iquest;Se llam&oacute; a SAME?</label>
+				<div class="col-xs-5">
 					<label class="radio-inline">
 						<input type="radio" name="sameRadios" id="sameSi" required> S&iacute;
 					</label>
 				</div>
-				<div class="col-xs-2">
+				<div class="col-xs-10">
 					<label class="radio-inline">
 						<input type="radio" name="sameRadios" id="sameNo" required> No
 					</label>
 				</div>
-			</div>
-						
+			</div>		
+		</div>
+		<div class="container-fluid">				
 			<fieldset id="same-fieldset">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="page-header">
 						<h1>SAME</h1>      
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-xs-3" >&#42; Profesional que atendi&oacute; al paciente: </label>
-					<div class="col-xs-9">
+					<label class="control-label col-xs-4" >&#42; Profesional que atendi&oacute; al paciente: </label>
+					<div class="col-xs-7">
 						<input type="text" class="form-control" placeholder="Ingrese el nombre del profesional" required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-xs-3" >&#42; N&uacute;mero de m&oacute;vil: </label>
-					<div class="col-xs-9">
+					<label class="control-label col-xs-4" >&#42; N&uacute;mero de m&oacute;vil: </label>
+					<div class="col-xs-7">
 						<input type="text" class="form-control" placeholder="Ingrese el n&uacute;mero de m&oacute;vil" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-xs-3">&#42; &iquest;Se traslad&oacute; al paciente?</label>
-					<div class="col-xs-2">
+					<div class="col-xs-6">
 						<label class="radio-inline">
 							<input type="radio" name="trasladoRadios" id="trasladoSi" required> S&iacute;
 						</label>
 					</div>
-					<div class="col-xs-2">
+					<div class="col-xs-9">
 						<label class="radio-inline">
 							<input type="radio" name="trasladoRadios" id="trasladoNo" required> No
 						</label>
 					</div>
 				</div>
 			</fieldset>
-						
 			<fieldset id="traslado-fieldset">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="page-header">
 						<h1>&iquest;D&oacute;nde se traslad&oacute; al paciente?</h1>      
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-xs-3" >&#42; Lugar: </label>
+					<label class="control-label col-xs-2" >&#42; Lugar: </label>
 					<div class="col-xs-9">
 						<input type="text" class="form-control" placeholder="Ingrese el lugar del traslado" required>
 					</div>
 				</div>
 			</fieldset>	
-				
-			<br>
+		</div>					
+		<br>
+		<div class="container-fluid">
 			<div class="form-group">
 				<div class="col-xs-offset-3 col-xs-9">
-					<input type="submit" class="btn btn-primary" value="Enviar">
-					<input type="reset" class="btn btn-default" value="Limpiar">
-				</div>
+<%-- 					<input type="submit" value="Actualizar" class="btn btn-primary btn-sm"/><a href="<c:url value='/list' />">Cancelar</a>
+ --%>					<input type="submit" class="btn btn-success custom-width" ><a href="<c:url value='/save-consultation' />">Guardar</a></input>
+						<input type="reset" class="btn btn-default" value="Limpiar">
+<%-- 					<td><a href="<c:url value='/edit-user-${user.ssoId}' />" class="btn btn-success custom-width">editar</a></td>
+ --%>				</div>
 			</div>
+		</div>
+		<br>
 		</form>
+		</div>
 	</div>
 </body>
 </html>
