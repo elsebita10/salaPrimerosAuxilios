@@ -84,7 +84,7 @@ public class AppController {
 	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.GET)
 	public String createConsultation(ModelMap model) {
 	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "form";
+	    return "consultations/consultationForm";
 	}
 	
 	
@@ -96,7 +96,7 @@ public class AppController {
 		List<User> users = userService.findAllUsers();
 	    model.addAttribute("users", users);
 	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "userslist";
+	    return "users/usersList";
 	}
 	
 	 
@@ -109,7 +109,7 @@ public class AppController {
 	    model.addAttribute("user", user);
 	    model.addAttribute("edit", false);
 	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "registration";
+	    return "users/userForm";
 	}
 	 
 	/**
@@ -119,12 +119,12 @@ public class AppController {
 	@RequestMapping(value = { "/create-user" }, method = RequestMethod.POST)
 	public String saveUser(@Valid User user, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			return "registration";
+			return "users/userForm";
 		}
         if(!userService.isUsernameUnique(user.getId(), user.getUsername())){
         	FieldError usernameError =new FieldError("user","username",messageSource.getMessage("non.unique.username", new String[]{user.getUsername()}, Locale.getDefault()));
 	        result.addError(usernameError);
-	        return "registration";
+	        return "users/userForm";
 	    }
 	    userService.saveUser(user);
 	    model.addAttribute("success", "El usuario " + user.getUsername() + " fue registrado con éxito.");
@@ -141,7 +141,7 @@ public class AppController {
 	    model.addAttribute("user", user);
 	    model.addAttribute("edit", true);
 	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "registration";
+	    return "users/userForm";
 	}
 	     
 	/**
@@ -151,19 +151,19 @@ public class AppController {
 	@RequestMapping(value = { "/edit-user-{username}" }, method = RequestMethod.POST)
 	public String updateUser(@Valid User user, BindingResult result, ModelMap model, @PathVariable String username) {
 		if (result.hasErrors()) {
-			return "registration";
+			return "users/userForm";
 	    }
 	 
 	    if(!userService.isUsernameUnique(user.getId(), user.getUsername())){
 	    	FieldError usernameError =new FieldError("user","username",messageSource.getMessage("non.unique.username", new String[]{user.getUsername()}, Locale.getDefault()));
 	       	result.addError(usernameError);
-	        return "registration";
+	        return "users/userForm";
 	    }
 	 
 	    userService.updateUser(user);
 	    model.addAttribute("success", "El usuario " + user.getUsername() + " fue actualizado con éxito.");
 	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "registrationsuccess";
+	    return "users/userFormSuccess";
 	}
 	 
 	/**
@@ -172,7 +172,7 @@ public class AppController {
 	@RequestMapping(value = { "/delete-user-{username}" }, method = RequestMethod.GET)
 	public String deleteUser(@PathVariable String username) {
 		userService.deleteUserByUsername(username);
-	    return "redirect:/list";
+	    return "redirect:/users/usersList";
 	}
 	     
 	/**
@@ -189,7 +189,7 @@ public class AppController {
 	@RequestMapping(value = "/Acceso_Denegado", method = RequestMethod.GET)
 	public String accessDeniedPage(ModelMap model) {
 		model.addAttribute("loggedinuser", getPrincipal());
-	    return "accessDenied";
+	    return "commons/accessDenied";
 	}
 	 
     /**
@@ -201,7 +201,7 @@ public class AppController {
 		if (isCurrentAuthenticationAnonymous()) {
 			return "login";
 	    } else {
-	        return "redirect:/list";  
+	        return "redirect:/commons/home";  
 	    }
 	}
 	 
