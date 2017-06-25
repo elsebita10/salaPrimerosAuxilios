@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="PACIENTS")
-public class Pacient {
+public class Patient {
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
