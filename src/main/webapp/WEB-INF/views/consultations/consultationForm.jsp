@@ -16,32 +16,22 @@
 	</script>
 </head>
 <body>
-	<div class="sidebar">
-		<%@include file="/WEB-INF/views/commons/menu.jsp" %>
-	</div>
-	<div class="container">
-		<div class="jumbotron" align="center">
-			<h1>Sala de Primeros Auxilios</h1> 
-			<br>
-			<h1>Terminal de &Oacute;mnibus de La Plata</h1> 
-		</div>
-		<div align="center"><img class="img-responsive" src="home_municipalidad.jpg" alt="La Plata"></div>
-	</div>
-	<div class="container">
-		<div class="page-header">
-			<h1>Datos del paciente</h1>      
+	<div id="sidebar-wrapper">
+		<div class="sidebar">
+			<%@ include file="/WEB-INF/views/commons/menu.jsp" %>
 		</div>
 	</div>
-	<div class="container">
-		<div class="container">
-			<h4>Los campos con &#42; son obligatorios</h4>      
-		</div>
-	</div>
-	<br>
-	<div class="container">
+	<div id="main-wrapper" class="col-sm-10 pull-right">
 		<form:form methodclass="form-horizontal" method="POST" modelAttribute="consultation" data-toggle="validator" role="form">
-			<form:input type="hidden" path="id" id="id"/>
-			
+		<form:input type="hidden" path="id" id="id"/>
+		<div class="container-fluid">
+			<div class="page-header">
+				<h1>Datos del paciente</h1>      
+			</div>
+			<div class="container-fluid">
+				<h4>Los campos con &#42; son obligatorios</h4>      
+			</div>
+			<br>
 			<div class="form-group">
 				<label class="control-label col-xs-2">&#42; Apellido:</label>
 				<div class="col-xs-9">
@@ -73,12 +63,12 @@
 				<label class="control-label col-xs-2">&#42; Sexo:</label>
 				<div class="col-xs-5">
 					<label class="radio-inline">
-						<form:input type="radio" id="patient.sex" path="patient.sex" name="genderRadios" value="Masculino" required> Maculino
+						<input type="radio" id="patient.sex" path="patient.sex" name="genderRadios" value="Masculino" required> Maculino
 					</label>
 				</div>
 				<div class="col-xs-10">
 					<label class="radio-inline">
-						<form:input type="radio" id="patient.sex" path="patient.sex" name="genderRadios" value="Femenino" required> Femenino
+						<input type="radio" id="patient.sex" path="patient.sex" name="genderRadios" value="Femenino" required> Femenino
 					</label>
 				</div>
 			</div>
