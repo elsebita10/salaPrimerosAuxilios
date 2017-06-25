@@ -17,7 +17,7 @@
 		<h1>Terminal de &Oacute;mnibus de La Plata</h1> 
 	</div>
 	<div class="container">
-		<div align="center"><img class="img-responsive" src="img/home_municipalidad.jpg" alt="La Plata"></div>
+		<div align="center"><img class="img-responsive" src="img/home_municipalidad.jpg" /></div>
 	</div>
 </body>
 </html>
