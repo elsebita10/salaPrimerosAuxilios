@@ -50,10 +50,9 @@ public class AppController {
 	ConsultationService consultationService;
 	
 	/**
-	 * This method will be called on form submission, handling POST request for
-	 * saving row in database. It also validates all fields input
+	 * This method stores the new consultation in DB
 	 */
-	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/save-consultation" }, method = RequestMethod.POST)
 	public String saveConsultation(@Valid Consultation consultation, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "registration";
@@ -71,22 +70,28 @@ public class AppController {
 	
 	
 	/**
-	 * This method will list all existing users.
+	 * This method returns to home page.
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public String form(ModelMap model) {
-//		List<User> users = userService.findAllUsers();
-//	    model.addAttribute("users", users);
+	public String returnHome(ModelMap model) {
 	    model.addAttribute("loggedinuser", getPrincipal());
-//	    return "userslist";
 	    return "home";
+	}
+	
+	/**
+	 * This method returns to home page.
+	 */
+	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.GET)
+	public String createConsultation(ModelMap model) {
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "form";
 	}
 	
 	
 	/**
 	 * This method will list all existing users.
 	 */
-	@RequestMapping(value = { "/list" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/list-users" }, method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
 		List<User> users = userService.findAllUsers();
 	    model.addAttribute("users", users);

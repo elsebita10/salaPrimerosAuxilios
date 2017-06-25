@@ -135,13 +135,13 @@ body, html {
     </div>
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
     	<ul class="nav navbar-nav">
-        	<li class="active"><a href="/home">INICIO</a></li>
+        	<li class="active"><a href="/">INICIO</a></li>
         	<li><a href="<c:url value='/list-users' />">USUARIOS</a></li>
 			<li><a href="<c:url value='/list-metricas' />">M&Eacute;TRICAS</a></li>
         	<li class="dropdown">
         		<a href="#" class="dropdown-toggle" data-toggle="dropdown">CONSULTAS <span class="caret"></span></a>
         		<ul class="dropdown-menu forAnimate" role="menu">
-        			<li><a href="<c:url value="/form" />">Nueva consulta</a></li>
+        			<li><a href="<c:url value="/create-consultation" />">Nueva consulta</a></li>
 <!--          			<li class="divider"></li> -->
 <!-- 					<li><a href="#">Opc 2</a></li> -->
 <!--         			<li><a href="#">Opc 3</a></li> -->

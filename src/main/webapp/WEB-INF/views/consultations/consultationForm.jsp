@@ -16,7 +16,7 @@
 	</script>
 </head>
 <body>
-	<div class="container">
+	<div class="sidebar">
 		<%@include file="menu.jsp" %>
 	</div>
 	<div class="container">
