@@ -39,7 +39,7 @@ public class Consultation {
 	@NotEmpty
 	@ManyToOne(optional = false)
     @JoinColumn(name = "ID")
-	private Pacient pacient;
+	private Patient pacient;
  
    
 	public Integer getId() {
@@ -83,11 +83,11 @@ public class Consultation {
 		this.spot2 = spot2;
 	}
 
-	public Pacient getPacient() {
+	public Patient getPacient() {
 		return pacient;
 	}
 
-	public void setPacient(Pacient pacient) {
+	public void setPacient(Patient pacient) {
 		this.pacient = pacient;
 	}
 	
