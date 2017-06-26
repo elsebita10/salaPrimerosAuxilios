@@ -1,11 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Formulario de consultas</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
+    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 	<script>
 		$(document).ready(function(){
 			$("#sameSi").click(function() {$("#same-fieldset").prop("disabled", false);});
@@ -22,7 +25,7 @@
 		</div>
 	</div>
 	<div id="main-wrapper" class="col-sm-10 pull-right">
-		<form:form methodclass="form-horizontal" method="POST" modelAttribute="consultation" data-toggle="validator" role="form">
+		<form:form class="form-horizontal" method="POST" modelAttribute="consultation">
 		<form:input type="hidden" path="id" id="id"/>
 		<div class="container-fluid">
 			<div class="page-header">
@@ -35,18 +38,18 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2">&#42; Apellido:</label>
 				<div class="col-xs-9">
-					<form:input type="text" path="patient.lastname" id="patient.lastname" class="form-control input-sm"/>
+					<form:input type="text" path="patient.lastName" id="patient.lastName" class="form-control input-sm"/>
 					<div class="has-error">
-                    	<form:errors path="patient.lastname" class="help-inline"/>
+                    	<form:errors path="patient.lastName" class="help-inline"/>
                     </div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-xs-2">&#42; Nombre:</label>
 				<div class="col-xs-9">
-					<form:input type="text" path="patient.firstname" id="patient.firstname" class="form-control input-sm" placeholder="Ingrese su nombre"/>
+					<form:input type="text" path="patient.firstName" id="patient.firstName" class="form-control input-sm" placeholder="Ingrese su nombre"/>
 					<div class="has-error">
-                    	<form:errors path="patient.firstname" class="help-inline"/>
+                    	<form:errors path="patient.firstName" class="help-inline"/>
                     </div>
 				</div>
 			</div>
@@ -102,9 +105,9 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2" >&#42; T&#47;A:</label>
 				<div class="col-xs-9">
-					<form:input type="text" class="form-control input-sm" id="ta" path="ta" placeholder="Ingrese su T&#47;A"/>
+					<form:input type="text" class="form-control input-sm" id="t_a" path="t_a" placeholder="Ingrese su T&#47;A"/>
 					<div class="has-error">
-                    	<form:errors path="ta" class="help-inline"/>
+                    	<form:errors path="t_a" class="help-inline"/>
                     </div>
 				</div>
 			</div>

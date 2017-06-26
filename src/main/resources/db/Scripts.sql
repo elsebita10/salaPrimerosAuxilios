@@ -16,12 +16,14 @@ create table CONSULTATIONS (
    t VARCHAR(100) NOT NULL,
    fc VARCHAR(100) NOT NULL,
    spo2 VARCHAR(100) NOT NULL,
+   patient_id BIGINT NOT NULL,
    PRIMARY KEY (id),
    UNIQUE (id)
+   CONSTRAINT consultation_patient FOREIGN KEY (patient_id) REFERENCES PATIENTS (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-/*All Pacients gets stored in PACIENTS table*/
-create table PACIENTS (
+/*All Pacients gets stored in PATIENTS table*/
+create table PATIENTS (
    id BIGINT NOT NULL AUTO_INCREMENT,
    firstname VARCHAR(100) NOT NULL,
    lastname VARCHAR(100) NOT NULL,

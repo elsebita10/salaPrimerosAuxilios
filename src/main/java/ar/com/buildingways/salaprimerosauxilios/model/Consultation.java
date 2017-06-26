@@ -33,13 +33,13 @@ public class Consultation {
 	private String fc;
 	
 	@NotEmpty
-	@Column(name="SPOT2", nullable=false)
-	private String spot2;
+	@Column(name="SPO2", nullable=false)
+	private String spo2;
 	
 	@NotEmpty
 	@ManyToOne(optional = false)
     @JoinColumn(name = "ID")
-	private Patient pacient;
+	private Patient patient;
  
    
 	public Integer getId() {
@@ -75,20 +75,20 @@ public class Consultation {
 		this.fc = fc;
 	}
 
-	public String getSpot2() {
-		return spot2;
+	public String getSpo2() {
+		return spo2;
 	}
 
-	public void setSpot2(String spot2) {
-		this.spot2 = spot2;
+	public void setSpo2(String spo2) {
+		this.spo2 = spo2;
 	}
 
-	public Patient getPacient() {
-		return pacient;
+	public Patient getPatient() {
+		return patient;
 	}
 
-	public void setPacient(Patient pacient) {
-		this.pacient = pacient;
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 	
 	

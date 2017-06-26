@@ -63,7 +63,7 @@ public class AppController {
 //	        return "registration";
 //	    }
 	    consultationService.saveConsultation(consultation);
-	    model.addAttribute("success", "El paciente " + consultation.getPacient().getFirstName() + " "+ consultation.getPacient().getLastName() + " fue registrado con éxito.");
+	    model.addAttribute("success", "El paciente " + consultation.getPatient().getFirstName() + " "+ consultation.getPatient().getLastName() + " fue registrado con éxito.");
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "consultations/consultationFormSuccess";
 	}
@@ -83,10 +83,21 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.GET)
 	public String createConsultation(ModelMap model) {
-	    model.addAttribute("loggedinuser", getPrincipal());
+	    Consultation consultation = new Consultation();
+		model.addAttribute("loggedinuser", getPrincipal());
+	    model.addAttribute("consultation", consultation);
+	    model.addAttribute("edit", false);
 	    return "consultations/consultationForm";
 	}
 	
+	/**
+	 * This method open the metrics page.
+	 */
+	@RequestMapping(value = { "/get-metrics" }, method = RequestMethod.GET)
+	public String getMetrics(ModelMap model) {
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "metrics/metrics";
+	}
 	
 	/**
 	 * This method will list all existing users.
