@@ -116,7 +116,7 @@ public class AppController {
 	 * This method will be called on form submission, handling POST request for
 	 * saving user in database. It also validates the user input
 	 */
-	@RequestMapping(value = { "/create-user" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/save-user" }, method = RequestMethod.POST)
 	public String saveUser(@Valid User user, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "users/userForm";
@@ -129,7 +129,7 @@ public class AppController {
 	    userService.saveUser(user);
 	    model.addAttribute("success", "El usuario " + user.getUsername() + " fue registrado con éxito.");
 	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "registrationsuccess";
+	    return "users/userFormSuccess";
 	}
 	 
 	/**
