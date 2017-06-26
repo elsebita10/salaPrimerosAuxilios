@@ -53,7 +53,7 @@ public class Patient {
 	@Column(name="PHONE")
 	private String phone;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="pacient") 
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="patient") 
 	private Set<Consultation> consultations;
 	
 	
