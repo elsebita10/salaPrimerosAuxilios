@@ -4,16 +4,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-body, html {
-    height: 100%;
-  }
-
-  nav.sidebar, .main{
-    -webkit-transition: margin 200ms ease-out;
-      -moz-transition: margin 200ms ease-out;
-      -o-transition: margin 200ms ease-out;
-      transition: margin 200ms ease-out;
-  }
+nav.sidebar, .main{
+	-webkit-transition: margin 200ms ease-out;
+    -moz-transition: margin 200ms ease-out;
+    -o-transition: margin 200ms ease-out;
+    transition: margin 200ms ease-out;
+}
 
   .main{
     padding: 10px 10px 0 10px;
@@ -137,11 +133,11 @@ body, html {
     	<ul class="nav navbar-nav">
         	<li class="active"><a href="<c:url value="/" />">INICIO</a></li>
         	<li><a href="<c:url value='/list-users' />">USUARIOS</a></li>
-			<li><a href="<c:url value='/list-metricas' />">M&Eacute;TRICAS</a></li>
+			<li><a href="<c:url value='/get-metrics' />">M&Eacute;TRICAS</a></li>
         	<li class="dropdown">
         		<a href="#" class="dropdown-toggle" data-toggle="dropdown">CONSULTAS <span class="caret"></span></a>
         		<ul class="dropdown-menu forAnimate" role="menu">
-        			<li><a href="<c:url value="/create-consultation" />">Nueva consulta</a></li>
+        			<li><a href="<c:url value="/create-consultation" />">Crear consulta</a></li>
 <!--          			<li class="divider"></li> -->
 <!-- 					<li><a href="#">Opc 2</a></li> -->
 <!--         			<li><a href="#">Opc 3</a></li> -->

@@ -63,7 +63,7 @@ public class AppController {
 //	        return "registration";
 //	    }
 	    consultationService.saveConsultation(consultation);
-	    model.addAttribute("success", "El paciente " + consultation.getPacient().getFirstName() + " "+ consultation.getPacient().getLastName() + " fue registrado con éxito.");
+	    model.addAttribute("success", "El paciente " + consultation.getPatient().getFirstName() + " "+ consultation.getPatient().getLastName() + " fue registrado con éxito.");
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "consultations/consultationFormSuccess";
 	}
@@ -79,14 +79,25 @@ public class AppController {
 	}
 	
 	/**
-	 * This method returns to home page.
+	 * This method returns to the consultation form.
 	 */
 	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.GET)
 	public String createConsultation(ModelMap model) {
-	    model.addAttribute("loggedinuser", getPrincipal());
+	    Consultation consultation = new Consultation();
+		model.addAttribute("loggedinuser", getPrincipal());
+	    model.addAttribute("consultation", consultation);
+	    model.addAttribute("edit", false);
 	    return "consultations/consultationForm";
 	}
 	
+	/**
+	 * This method open the metrics page.
+	 */
+	@RequestMapping(value = { "/get-metrics" }, method = RequestMethod.GET)
+	public String getMetrics(ModelMap model) {
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "metrics/metrics";
+	}
 	
 	/**
 	 * This method will list all existing users.
@@ -98,7 +109,6 @@ public class AppController {
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "users/usersList";
 	}
-	
 	 
 	/**
 	 * This method will provide the medium to add a new user.
@@ -116,7 +126,7 @@ public class AppController {
 	 * This method will be called on form submission, handling POST request for
 	 * saving user in database. It also validates the user input
 	 */
-	@RequestMapping(value = { "/save-user" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/create-user" }, method = RequestMethod.POST)
 	public String saveUser(@Valid User user, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "users/userForm";
@@ -127,7 +137,7 @@ public class AppController {
 	        return "users/userForm";
 	    }
 	    userService.saveUser(user);
-	    model.addAttribute("success", "El usuario " + user.getUsername() + " fue registrado con éxito.");
+	    model.addAttribute("success", "El usuario '" + user.getUsername() + "' fue registrado con éxito.");
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "users/userFormSuccess";
 	}
@@ -161,7 +171,7 @@ public class AppController {
 	    }
 	 
 	    userService.updateUser(user);
-	    model.addAttribute("success", "El usuario " + user.getUsername() + " fue actualizado con éxito.");
+	    model.addAttribute("success", "El usuario '" + user.getUsername() + "' fue actualizado con éxito.");
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "users/userFormSuccess";
 	}
@@ -170,9 +180,16 @@ public class AppController {
 	 * This method will delete an user by it's Username value.
 	 */
 	@RequestMapping(value = { "/delete-user-{username}" }, method = RequestMethod.GET)
-	public String deleteUser(@PathVariable String username) {
-		userService.deleteUserByUsername(username);
-	    return "redirect:/users/usersList";
+	public String deleteUser(@PathVariable String username, ModelMap model) {
+		if(username.equals(getPrincipal())){
+			model.addAttribute("error", "El usuario '" + username + "' se encuentra logueado en el sistema y no puede eliminarse. " + System.getProperty("line.separator") + "Ingrese con otro usuario con rol de ADMIN para eliminarlo.");
+			return "accessDenied";
+		} else {
+			userService.deleteUserByUsername(username);
+			model.addAttribute("success", "El usuario '" + username + "' fue eliminado con éxito.");
+		    model.addAttribute("loggedinuser", getPrincipal());
+		    return "users/userFormSuccess";
+		}
 	}
 	     
 	/**
