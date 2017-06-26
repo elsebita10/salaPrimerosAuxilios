@@ -35,7 +35,7 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2">&#42; Apellido:</label>
 				<div class="col-xs-9">
-					<form:input type="text" path="patient.lastname" id="patient.lastname" class="form-control input-sm" placeholder="Ingrese su apellido" required>
+					<form:input type="text" path="patient.lastname" id="patient.lastname" class="form-control input-sm"/>
 					<div class="has-error">
                     	<form:errors path="patient.lastname" class="help-inline"/>
                     </div>
@@ -44,7 +44,7 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2">&#42; Nombre:</label>
 				<div class="col-xs-9">
-					<form:input type="text" path="patient.firstname" id="patient.firstname" class="form-control input-sm" placeholder="Ingrese su nombre" required>
+					<form:input type="text" path="patient.firstname" id="patient.firstname" class="form-control input-sm" placeholder="Ingrese su nombre"/>
 					<div class="has-error">
                     	<form:errors path="patient.firstname" class="help-inline"/>
                     </div>
@@ -53,7 +53,7 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2">&#42; D.N.I.:</label>
 				<div class="col-xs-9">
-					<form:input type="text" path="patient.dni" id="patient.dni" class="form-control input-sm" placeholder="Ingrese su D.N.I." required>
+					<form:input type="text" path="patient.dni" id="patient.dni" class="form-control input-sm" placeholder="Ingrese su D.N.I."/>
 					<div class="has-error">
                     	<form:errors path="patient.dni" class="help-inline"/>
                     </div>				
@@ -75,7 +75,7 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2">&#42; Domicilio:</label>
 				<div class="col-xs-9">
-					<form:input type="text" id="patient.address" path="patient.address" class="form-control input-sm" placeholder="Ingrese su domicilio" required>
+					<form:input type="text" id="patient.address" path="patient.address" class="form-control input-sm" placeholder="Ingrese su domicilio"/>
 					<div class="has-error">
                     	<form:errors path="patient.address" class="help-inline"/>
                     </div>
@@ -84,7 +84,7 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2">&#42; Edad:</label>
 				<div class="col-xs-9">
-					<form:input type="text" id="patient.age" path="patient.age" class="form-control input-sm" placeholder="Ingrese su edad" required>
+					<form:input type="text" id="patient.age" path="patient.age" class="form-control input-sm" placeholder="Ingrese su edad"/>
 					<div class="has-error">
                     	<form:errors path="patient.age" class="help-inline"/>
                     </div>
@@ -93,7 +93,7 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2" >&#42; Tel&eacute;fono:</label>
 				<div class="col-xs-9">
-					<form:input type="tel" id="patient.phone" path="patient.phone" class="form-control input-sm" placeholder="Ingrese su teléfono" required>
+					<form:input type="tel" id="patient.phone" path="patient.phone" class="form-control input-sm" placeholder="Ingrese su teléfono"/>
 					<div class="has-error">
                     	<form:errors path="patient.phone" class="help-inline"/>
                     </div>
@@ -102,7 +102,7 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2" >&#42; T&#47;A:</label>
 				<div class="col-xs-9">
-					<form:input type="text" class="form-control input-sm" id="ta" path="ta" placeholder="Ingrese su T&#47;A" required>
+					<form:input type="text" class="form-control input-sm" id="ta" path="ta" placeholder="Ingrese su T&#47;A"/>
 					<div class="has-error">
                     	<form:errors path="ta" class="help-inline"/>
                     </div>
@@ -111,7 +111,7 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2" >&#42; T&deg;:</label>
 				<div class="col-xs-9">
-					<form:input type="text" id="t" path="t" class="form-control input-sm" placeholder="Ingrese su T&deg;" required>
+					<form:input type="text" id="t" path="t" class="form-control input-sm" placeholder="Ingrese su T&deg;"/>
 					<div class="has-error">
                     	<form:errors path="t" class="help-inline"/>
                     </div>
@@ -120,7 +120,7 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2" >&#42; FC:</label>
 				<div class="col-xs-9">
-					<form:input type="text" id="fc" path="fc" class="form-control input-sm" placeholder="Ingrese su FC" required>
+					<form:input type="text" id="fc" path="fc" class="form-control input-sm" placeholder="Ingrese su FC"/>
 					<div class="has-error">
                     	<form:errors path="fc" class="help-inline"/>
                     </div>
@@ -129,7 +129,7 @@
 			<div class="form-group">
 				<label class="control-label col-xs-2" >&#42; Spo2%:</label>
 				<div class="col-xs-9">
-					<form:input type="text" id="spo2" path="spo2" class="form-control input-sm" placeholder="Ingrese su Spo2%" required>
+					<form:input type="text" id="spo2" path="spo2" class="form-control input-sm" placeholder="Ingrese su Spo2%"/>
 					<div class="has-error">
                     	<form:errors path="spo2" class="help-inline"/>
                     </div>
@@ -267,7 +267,7 @@
 			</div>
 		</div>
 		<br>
-		</form>
+		</form:form>
 		</div>
 	</div>
 </body>
