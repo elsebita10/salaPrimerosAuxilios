@@ -267,7 +267,13 @@
 			</div>
 		</div>
 		<br>
+		</div>
+		<br>
+		</div>
+		<br>
 		</form:form>
+		</div>
+		</div>
 		</div>
 	</div>
 </body>
