@@ -100,6 +100,15 @@ public class AppController {
 	}
 	
 	/**
+	 * This method generates the metrics file and shows it on screen.
+	 */
+	@RequestMapping(value = { "/generate-metrics" }, method = RequestMethod.GET)
+	public String generateMetrics(ModelMap model) {
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "metrics/metrics";
+	}
+	
+	/**
 	 * This method will list all existing users.
 	 */
 	@RequestMapping(value = { "/list-users" }, method = RequestMethod.GET)

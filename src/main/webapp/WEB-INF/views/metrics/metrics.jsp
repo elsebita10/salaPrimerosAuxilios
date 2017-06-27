@@ -9,7 +9,8 @@
 	<title>Métricas</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
+    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
@@ -27,6 +28,11 @@
 		              <!-- Default panel contents -->
 		            <div class="panel-heading"><span class="lead">Metricas</span></div>
 		        </div>
+		        <sec:authorize access="hasRole('ADMIN')">
+		            <div class="well">
+		                <a href="<c:url value='/generate-metrics' />">Generar archivo de métricas</a>
+		            </div>
+		        </sec:authorize>
 		    </div>
 		</div>
     </div>
