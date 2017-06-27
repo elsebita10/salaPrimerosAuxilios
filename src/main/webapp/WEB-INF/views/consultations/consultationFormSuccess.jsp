@@ -11,16 +11,16 @@
     <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body>
-    <div class="generic-container">
-        <%@include file="authheader.jsp" %>
-         
+	<div id="wrapper">
+		<div id="sidebar-wrapper">
+			<div class="sidebar">
+				<%@ include file="/WEB-INF/views/commons/menu.jsp" %>
+			</div>
+		</div>
+    <div id="main-wrapper" class="col-md-10 pull-right">        
         <div class="alert alert-success lead">
             ${success}
         </div>
-         
-        <span class="well floatRight">
-            Ir a <a href="<c:url value='/' />">HOME</a>
-        </span>
     </div>
 </body>
  
