@@ -52,7 +52,7 @@ public class AppController {
 	/**
 	 * This method stores the new consultation in DB
 	 */
-	@RequestMapping(value = { "/save-consultation" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.POST)
 	public String saveConsultation(@Valid Consultation consultation, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			return "consultations/consultationForm";
@@ -95,6 +95,15 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/get-metrics" }, method = RequestMethod.GET)
 	public String getMetrics(ModelMap model) {
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "metrics/metrics";
+	}
+	
+	/**
+	 * This method generates the metrics file and shows it on screen.
+	 */
+	@RequestMapping(value = { "/generate-metrics" }, method = RequestMethod.GET)
+	public String generateMetrics(ModelMap model) {
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "metrics/metrics";
 	}
