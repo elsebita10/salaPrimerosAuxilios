@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="PACIENTS")
+@Table(name="PATIENTS")
 public class Patient {
 	
 	@Id 
@@ -22,11 +22,11 @@ public class Patient {
     private Integer id;
 	
 	@NotEmpty
-	@Column(name="FIRST_NAME", nullable=false)
+	@Column(name="FIRSTNAME", nullable=false)
 	private String firstName;
 	
 	@NotEmpty
-	@Column(name="LAST_NAME", nullable=false)
+	@Column(name="LASTNAME", nullable=false)
 	private String lastName;
 	
 	@NotEmpty
@@ -41,7 +41,6 @@ public class Patient {
 	@Column(name="DNI", nullable=false)
 	private String dni;
 	
-	@NotEmpty
 	@Column(name="EMAIL")
 	private String email;
 	

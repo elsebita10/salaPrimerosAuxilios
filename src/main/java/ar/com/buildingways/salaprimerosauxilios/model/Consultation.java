@@ -1,13 +1,14 @@
 package ar.com.buildingways.salaprimerosauxilios.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -36,9 +37,8 @@ public class Consultation {
 	@Column(name="SPO2", nullable=false)
 	private String spo2;
 	
-	@NotEmpty
-	@ManyToOne(optional = false)
-    @JoinColumn(name = "ID")
+	@NotNull
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Patient patient;
  
    
