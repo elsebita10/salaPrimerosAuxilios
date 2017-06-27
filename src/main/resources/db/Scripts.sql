@@ -9,19 +9,6 @@ create table USERS (
    UNIQUE (username)
 );
 
-/*All Consultations gets stored in CONSULTATIONS table*/
-create table CONSULTATIONS (
-   id BIGINT NOT NULL AUTO_INCREMENT,
-   t_a VARCHAR(100) NOT NULL,
-   t VARCHAR(100) NOT NULL,
-   fc VARCHAR(100) NOT NULL,
-   spo2 VARCHAR(100) NOT NULL,
-   patient_id BIGINT NOT NULL,
-   PRIMARY KEY (id),
-   UNIQUE (id)
-   CONSTRAINT consultation_patient FOREIGN KEY (patient_id) REFERENCES PATIENTS (id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
 /*All Pacients gets stored in PATIENTS table*/
 create table PATIENTS (
    id BIGINT NOT NULL AUTO_INCREMENT,
@@ -36,7 +23,20 @@ create table PATIENTS (
    PRIMARY KEY (id),
    UNIQUE (id)
 );
-   
+
+/*All Consultations gets stored in CONSULTATIONS table*/
+create table CONSULTATIONS (
+   id BIGINT NOT NULL AUTO_INCREMENT,
+   t_a VARCHAR(100) NOT NULL,
+   t VARCHAR(100) NOT NULL,
+   fc VARCHAR(100) NOT NULL,
+   spo2 VARCHAR(100) NOT NULL,
+   patient_id BIGINT NOT NULL,
+   PRIMARY KEY (id),
+   UNIQUE (id),
+   CONSTRAINT consultation_patient FOREIGN KEY (patient_id) REFERENCES PATIENTS (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+ 
 /* USER_PROFILE table contains all possible roles */ 
 create table USER_PROFILES(
    id BIGINT NOT NULL AUTO_INCREMENT,
