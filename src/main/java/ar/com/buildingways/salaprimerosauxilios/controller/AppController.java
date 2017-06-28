@@ -104,6 +104,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/generate-metrics" }, method = RequestMethod.GET)
 	public String generateMetrics(ModelMap model) {
+		consultationService.getMetrics();
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "metrics/metrics";
 	}
