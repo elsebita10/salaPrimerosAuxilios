@@ -19,5 +19,11 @@ public class ConsultationServiceImpl implements ConsultationService{
 		consultationDao.save(consultation);
 	}
 
+	@Override
+	public void getMetrics() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
