@@ -1,7 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page isELIgnored="false" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -73,7 +73,7 @@
                         </h1>
                     </div>
                 </div>
-                <form:form class="form-horizontal" method="POST" modelAttribute="consultation">
+                <form:form class="form-horizontal" method="POST" modelAttribute="consultation" name="form">
 				<form:input type="hidden" path="id" id="id"/>
                 	<div class="col-lg-12">
                 		<h2>Formulario de consultas</h2>
@@ -85,7 +85,7 @@
 			               		<div class="form-group">
 									<label class="control-label col-xs-3">&#42; Apellido:</label>
 									<div class="col-xs-8">
-										<form:input type="text" path="patient.lastName" id="patient.lastName" class="form-control input-sm" placeholder="Ingrese su apellido"/>
+										<form:input type="text" path="patient.lastName" id="patient.lastName" class="form-control input-sm" placeholder="Ingrese su apellido" required="required"/>
 		 								<div class="has-error">
 		                    				<form:errors path="patient.lastName" class="help-inline"/>
 		                   	 			</div>
@@ -94,7 +94,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3">&#42; Nombre:</label>
 									<div class="col-xs-8">
-										<form:input type="text" path="patient.firstName" id="patient.firstName" class="form-control input-sm" placeholder="Ingrese su nombre"/>
+										<form:input type="text" path="patient.firstName" id="patient.firstName" class="form-control input-sm" placeholder="Ingrese su nombre" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="patient.firstName" class="help-inline"/>
 					                    </div>
@@ -103,7 +103,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3">&#42; D.N.I.:</label>
 									<div class="col-xs-8">
-										<form:input type="text" path="patient.dni" id="patient.dni" class="form-control input-sm" placeholder="Ingrese su D.N.I."/>
+										<form:input type="text" path="patient.dni" id="patient.dni" class="form-control input-sm" placeholder="Ingrese su D.N.I." required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="patient.dni" class="help-inline"/>
 					                    </div>			
@@ -113,11 +113,11 @@
 									<label class="control-label col-xs-3">&#42; Sexo:</label>
 				 					<div class="col-xs-8">
 					 					<label class="radio-inline">
-											<form:radiobutton id="patient.sex" path="patient.sex" name="genderRadios" value="Masculino"/> Masculino
+											<form:radiobutton id="patient.sex" path="patient.sex" name="genderRadios" value="Masculino" required="required" /> Masculino
 										</label>
 										<br/>
 					 					<label class="radio-inline">
-											<form:radiobutton id="patient.sex" path="patient.sex" name="genderRadios" value="Femenino"/> Femenino
+											<form:radiobutton id="patient.sex" path="patient.sex" name="genderRadios" value="Femenino" required="required"/> Femenino
 										</label>
 										<br/>
 									</div>
@@ -125,7 +125,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3">&#42; Domicilio:</label>
 									<div class="col-xs-8">
-										<form:input type="text" id="patient.address" path="patient.address" class="form-control input-sm" placeholder="Ingrese su domicilio"/>
+										<form:input type="text" id="patient.address" path="patient.address" class="form-control input-sm" placeholder="Ingrese su domicilio" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="patient.address" class="help-inline"/>
 					                    </div>
@@ -143,7 +143,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3">&#42; Edad:</label>
 									<div class="col-xs-4">
-										<form:input type="text" id="patient.age" path="patient.age" class="form-control input-sm" placeholder="Ingrese su edad"/>
+										<form:input type="text" id="patient.age" path="patient.age" class="form-control input-sm" placeholder="Ingrese su edad" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="patient.age" class="help-inline"/>
 					                    </div>
@@ -152,7 +152,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3" >&#42; Tel&eacute;fono:</label>
 									<div class="col-xs-6">
-										<form:input type="tel" id="patient.phone" path="patient.phone" class="form-control input-sm" placeholder="Ingrese su teléfono"/>
+										<form:input type="tel" id="patient.phone" path="patient.phone" class="form-control input-sm" placeholder="Ingrese su teléfono" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="patient.phone" class="help-inline"/>
 					                    </div>
@@ -165,7 +165,7 @@
 						        <div class="form-group">
 									<label class="control-label col-xs-3" >&#42; T&#47;A:</label>
 									<div class="col-xs-8">
-										<form:input type="text" class="form-control input-sm" id="t_a" path="t_a" placeholder="Ingrese su T/A"/>
+										<form:input type="text" class="form-control input-sm" id="t_a" path="t_a" placeholder="Ingrese su T/A" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="t_a" class="help-inline"/>
 					                    </div>
@@ -174,7 +174,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3" >&#42; T&deg;:</label>
 									<div class="col-xs-8">
-										<form:input type="text" id="t" path="t" class="form-control input-sm" placeholder="Ingrese su T°"/>
+										<form:input type="text" id="t" path="t" class="form-control input-sm" placeholder="Ingrese su T°" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="t" class="help-inline"/>
 					                    </div>
@@ -183,7 +183,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3" >&#42; FC:</label>
 									<div class="col-xs-8">
-										<form:input type="text" id="fc" path="fc" class="form-control input-sm" placeholder="Ingrese su FC"/>
+										<form:input type="text" id="fc" path="fc" class="form-control input-sm" placeholder="Ingrese su FC" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="fc" class="help-inline"/>
 					                    </div>
@@ -192,7 +192,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3" >&#42; Spo2%:</label>
 									<div class="col-xs-8">
-										<form:input type="text" id="spo2" path="spo2" class="form-control input-sm" placeholder="Ingrese su Spo2%"/>
+										<form:input type="text" id="spo2" path="spo2" class="form-control input-sm" placeholder="Ingrese su Spo2%" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="spo2" class="help-inline"/>
 					                    </div>
@@ -205,40 +205,40 @@
 				               	<div class="form-group">
 									<label class="control-label col-xs-3" >&#42; Motivo:</label>
 									<div class="col-xs-8">
-										<select class="form-control" required>
-											<option selected>Seleccione una opci&oacute;n</option>
-											<option value="1">Contenci&oacute;n emocional</option>
-											<option value="2">Cefalea, n&aacute;useas, mareos, v&oacute;mitos</option>
-											<option value="3">HTA-DBT</option>
-											<option value="4">Ataque epil&eacute;ptico</option>
-											<option value="5">Herida abierta, traumatismo</option>
-											<option value="6">Dolor abdominal, lumbar</option>
-											<option value="7">Febr&iacute;cula</option>
-											<option value="8">Hipoglucemia</option>
-											<option value="9">Adormecimiento MS</option>
-											<option value="10">Otro</option>
-										</select>
+										<form:select class="form-control" path="reason" required="required">
+											<form:option value="" label="Seleccione una opción"/>
+											<form:option value="1" label="Contención emocional"/>
+											<form:option value="2" label="Cefalea, náuseas, mareos, vómitos"/>
+ 											<form:option value="3" label="HTA-DBT"/>
+ 											<form:option value="4" label="Ataque epiléptico"/>
+ 											<form:option value="5" label="Herida abierta, traumatismo"/>
+ 											<form:option value="6" label="Dolor abdominal, lumbar"/>
+ 											<form:option value="7" label="Febrícula"/>
+ 											<form:option value="8" label="Hipoglucemia"/>
+ 											<form:option value="9" label="Adormecimiento MS"/>
+ 											<form:option value="10" label="Otro"/>
+										</form:select>
 										<p class="help-block">Elija el motivo de la consulta</p>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label col-xs-3" >&#42; Antecedente:</label>
 									<div class="col-xs-8">
-										<select class="form-control" required>
-											<option selected>Seleccione una opci&oacute;n</option>
-											<option value="1">Ninguno</option>
-											<option value="2">HTA</option>
-											<option value="3">DBT</option>
-											<option value="4">Alergia</option>
-											<option value="5">Epilepsia</option>
-											<option value="6">Asma</option>
-											<option value="7">Card&iacute;aco</option>
-											<option value="8">Psiqui&aacute;trico</option>
-											<option value="9">ACV</option>
-											<option value="10">Neurol&oacute;gico</option>
-											<option value="11">EPOC</option>
-											<option value="12">CA</option>
-										</select>
+										<form:select class="form-control" path="medicalHistory" required="required">
+											<form:option value="" label="Seleccione una opción"/>
+											<form:option value="1" label="Ninguno"/>
+											<form:option value="2" label="HTA"/>
+											<form:option value="3" label="DBT"/>
+											<form:option value="4" label="Alergia"/>
+											<form:option value="5" label="Epilepsia"/>
+											<form:option value="6" label="Asma"/>
+											<form:option value="7" label="Cardíaco"/>
+											<form:option value="8" label="Psiquiátrico"/>
+											<form:option value="9" label="ACV"/>
+											<form:option value="10" label="Neurológico"/>
+											<form:option value="11" label="EPOC"/>
+											<form:option value="12" label="CA"/>
+										</form:select>
 										<p class="help-block">Elija el antecedente de la enfermedad actual</p>
 									</div>
 									<br>
@@ -251,45 +251,41 @@
 									<label class="control-label col-xs-3">&#42; &iquest;Se llam&oacute; a SAME?</label>
 									<div class="col-xs-7">
 										<label class="radio-inline">
-											<input type="radio" name="sameRadios" id="sameSi" required> S&iacute;
+											<form:radiobutton id="sameNo" path="same" name="sameRadios" value="false" required="required" /> No
 										</label>
-										<br/>
 										<label class="radio-inline">
-											<input type="radio" name="sameRadios" id="sameNo" required> No
+											<form:radiobutton id="sameSi" path="same" name="sameRadios" value="true" required="required" /> Sí
 										</label>
 									</div>
 								</div>
-								
 								<fieldset id="fieldset-same">
 								<div class="container-fluid">
 									<h4>SAME</h4>      
 								</div>
 								<div class="form-group">
 									<label class="control-label col-xs-5" >&#42; Profesional que atendi&oacute; al paciente: </label>
-									<div class="col-xs-7">
-										<input type="text" class="form-control" placeholder="Ingrese el nombre del profesional" required>
+									<div class="col-xs-7">	
+										<form:input type="text" id="doctor" path="doctor" class="form-control input-sm" placeholder="Ingrese el nombre del profesional"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label col-xs-5" >&#42; N&uacute;mero de m&oacute;vil: </label>
 									<div class="col-xs-7">
-										<input type="text" class="form-control" placeholder="Ingrese el n&uacute;mero de m&oacute;vil" required>
+										<form:input type="tel" id="doctorPhone" path="doctorPhone" class="form-control input-sm" placeholder="Ingrese el número de móvil"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label col-xs-5">&#42; &iquest;Se traslad&oacute; al paciente?</label>
 									<div class="col-xs-4">
 										<label class="radio-inline">
-											<input type="radio" name="trasladoRadios" id="trasladoSi" required> S&iacute;
+											<form:radiobutton id="trasladoNo" path="patientTransport" name="trasladoRadios" value="false"/> No
 										</label>
-										<br/>
 										<label class="radio-inline">
-											<input type="radio" name="trasladoRadios" id="trasladoNo" required> No
+											<form:radiobutton id="trasladoSi" path="patientTransport" name="trasladoRadios" value="true"/> Sí
 										</label>
 									</div>
 								</div>
-								</fieldset>
-								
+								</fieldset>								
 								<fieldset id="fieldset-traslado">								
 									<div class="container-fluid">
 										<h4>&iquest;D&oacute;nde se traslad&oacute; al paciente?<h4>      
@@ -297,13 +293,10 @@
 									<div class="form-group">
 										<label class="control-label col-xs-5" >&#42; Lugar: </label>
 										<div class="col-xs-7">
-											<input type="text" class="form-control" placeholder="Ingrese el lugar del traslado" required>
+											<form:input type="text" id="medicalInstitution" path="medicalInstitution" class="form-control input-sm" placeholder="Ingrese el nombre de la institución"/>
 										</div>
 									</div>
 			               		</fieldset>
-			               	
-			               	
-			               	
 			               	</div> <!-- col 12 -->
 						</div> <!-- col 12 -->	
 						<br>
