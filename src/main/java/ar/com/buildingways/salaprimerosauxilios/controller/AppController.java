@@ -88,6 +88,7 @@ public class AppController {
 	    return "consultations/consultationFormSuccess";
 	}
 	
+	
 	/**
 	 * This method open the metrics page.
 	 */

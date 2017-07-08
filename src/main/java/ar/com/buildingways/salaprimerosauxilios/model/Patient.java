@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="PATIENTS")
@@ -52,7 +56,8 @@ public class Patient {
 	@Column(name="PHONE")
 	private String phone;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="patient") 
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy="patient") 
 	private Set<Consultation> consultations;
 	
 	
@@ -128,10 +133,12 @@ public class Patient {
 		this.phone = phone;
 	}
 
+	@JsonProperty
 	public Set<Consultation> getConsultations() {
 		return consultations;
 	}
 
+	@JsonIgnore
 	public void setConsultations(Set<Consultation> consultations) {
 		this.consultations = consultations;
 	}

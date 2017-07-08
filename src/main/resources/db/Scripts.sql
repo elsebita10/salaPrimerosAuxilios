@@ -19,7 +19,7 @@ create table PATIENTS (
    dni INTEGER(8) NOT NULL,
    email VARCHAR(100) NULL,
    address VARCHAR(100) NULL,
-   phone INTEGER(20) NULL,
+   phone VARCHAR(20) NULL,
    PRIMARY KEY (id),
    UNIQUE (id)
 );
@@ -31,6 +31,13 @@ create table CONSULTATIONS (
    t VARCHAR(100) NOT NULL,
    fc VARCHAR(100) NOT NULL,
    spo2 VARCHAR(100) NOT NULL,
+   reason VARCHAR(100) NOT NULL,
+   medical_history VARCHAR(100) NOT NULL,
+   same BOOLEAN NOT NULL,
+   doctor VARCHAR(50) NULL,
+   ambulance VARCHAR(20) NULL,
+   patient_transport BOOLEAN NULL,
+   medical_institution VARCHAR(100) NULL,
    patient_id BIGINT NOT NULL,
    PRIMARY KEY (id),
    UNIQUE (id),
