@@ -152,7 +152,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3" >&#42; Tel&eacute;fono:</label>
 									<div class="col-xs-6">
-										<form:input type="tel" id="patient.phone" path="patient.phone" class="form-control input-sm" placeholder="Ingrese su teléfono" required="required"/>
+										<form:input type="text" id="patient.phone" path="patient.phone" class="form-control input-sm" placeholder="Ingrese su teléfono" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="patient.phone" class="help-inline"/>
 					                    </div>
@@ -271,7 +271,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-5" >&#42; N&uacute;mero de m&oacute;vil: </label>
 									<div class="col-xs-7">
-										<form:input type="tel" id="doctorPhone" path="doctorPhone" class="form-control input-sm" placeholder="Ingrese el número de móvil"/>
+										<form:input type="text" id="ambulance" path="ambulance" class="form-control input-sm" placeholder="Ingrese el número de móvil"/>
 									</div>
 								</div>
 								<div class="form-group">

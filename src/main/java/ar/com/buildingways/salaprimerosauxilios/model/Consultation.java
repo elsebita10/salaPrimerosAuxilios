@@ -45,15 +45,15 @@ public class Consultation {
 	@Column(name="MEDICAL_HISTORY", nullable=false)
 	private String medicalHistory;
 	
-	@NotEmpty
+	@NotNull
 	@Column(name="SAME", nullable=false)
 	private boolean same;
 	
 	@Column(name="DOCTOR", nullable=false)
 	private String doctor;
 	
-	@Column(name="DOCTOR_PHONE", nullable=false)
-	private String doctorPhone;
+	@Column(name="AMBULANCE", nullable=false)
+	private String ambulance;
 	
 	@Column(name="PATIENT_TRANSPORT", nullable=false)
 	private boolean patientTransport;
@@ -137,12 +137,12 @@ public class Consultation {
 		this.doctor = doctor;
 	}
 
-	public String getDoctorPhone() {
-		return doctorPhone;
+	public String getAmbulance() {
+		return ambulance;
 	}
 
-	public void setDoctorPhone(String doctorPhone) {
-		this.doctorPhone = doctorPhone;
+	public void setAmbulance(String ambulance) {
+		this.ambulance = ambulance;
 	}
 
 	public boolean isPatientTransport() {

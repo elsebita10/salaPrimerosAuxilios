@@ -50,26 +50,6 @@ public class AppController {
 	ConsultationService consultationService;
 	
 	/**
-	 * This method stores the new consultation in DB
-	 */
-	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.POST)
-	public String saveConsultation(@Valid Consultation consultation, BindingResult result, ModelMap model) {
-		if (result.hasErrors()) {
-			return "consultations/consultationForm";
-		}
-//        if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
-//        	FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
-//	        result.addError(ssoError);
-//	        return "registration";
-//	    }
-	    consultationService.saveConsultation(consultation);
-	    model.addAttribute("success", "El paciente " + consultation.getPatient().getFirstName() + " "+ consultation.getPatient().getLastName() + " fue registrado con éxito.");
-	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "consultations/consultationFormSuccess";
-	}
-	
-	
-	/**
 	 * This method returns to home page.
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
@@ -86,8 +66,21 @@ public class AppController {
 	    Consultation consultation = new Consultation();
 		model.addAttribute("loggedinuser", getPrincipal());
 	    model.addAttribute("consultation", consultation);
-	    model.addAttribute("edit", false);
 	    return "consultations/consultationForm";
+	}
+	
+	/**
+	 * This method stores the new consultation in DB
+	 */
+	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.POST)
+	public String saveConsultation(@Valid Consultation consultation, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			return "consultations/consultationForm";
+		}
+	    consultationService.saveConsultation(consultation);
+	    model.addAttribute("success", "La consulta del paciente " + consultation.getPatient().getFirstName() + " "+ consultation.getPatient().getLastName() + " fue registrada con éxito.");
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "consultations/consultationFormSuccess";
 	}
 	
 	/**
