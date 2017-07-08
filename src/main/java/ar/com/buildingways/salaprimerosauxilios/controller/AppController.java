@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,15 +23,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import ar.com.buildingways.salaprimerosauxilios.model.User;
 import ar.com.buildingways.salaprimerosauxilios.model.UserProfile;
 import ar.com.buildingways.salaprimerosauxilios.service.UserProfileService;
 import ar.com.buildingways.salaprimerosauxilios.service.UserService;
 import ar.com.buildingways.salaprimerosauxilios.model.Consultation;
+import ar.com.buildingways.salaprimerosauxilios.model.Patient;
 import ar.com.buildingways.salaprimerosauxilios.service.ConsultationService;
-
+import ar.com.buildingways.salaprimerosauxilios.service.PatientService;
 
 @Controller
 @RequestMapping("/")
@@ -48,26 +51,8 @@ public class AppController {
 	AuthenticationTrustResolver authenticationTrustResolver;
 	@Autowired
 	ConsultationService consultationService;
-	
-	/**
-	 * This method stores the new consultation in DB
-	 */
-	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.POST)
-	public String saveConsultation(@Valid Consultation consultation, BindingResult result, ModelMap model) {
-		if (result.hasErrors()) {
-			return "consultations/consultationForm";
-		}
-//        if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
-//        	FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
-//	        result.addError(ssoError);
-//	        return "registration";
-//	    }
-	    consultationService.saveConsultation(consultation);
-	    model.addAttribute("success", "El paciente " + consultation.getPatient().getFirstName() + " "+ consultation.getPatient().getLastName() + " fue registrado con éxito.");
-	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "consultations/consultationFormSuccess";
-	}
-	
+	@Autowired
+	PatientService patientService;
 	
 	/**
 	 * This method returns to home page.
@@ -86,8 +71,21 @@ public class AppController {
 	    Consultation consultation = new Consultation();
 		model.addAttribute("loggedinuser", getPrincipal());
 	    model.addAttribute("consultation", consultation);
-	    model.addAttribute("edit", false);
 	    return "consultations/consultationForm";
+	}
+	
+	/**
+	 * This method stores the new consultation in DB
+	 */
+	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.POST)
+	public String saveConsultation(@Valid Consultation consultation, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			return "consultations/consultationForm";
+		}
+	    consultationService.saveConsultation(consultation);
+	    model.addAttribute("success", "La consulta del paciente " + consultation.getPatient().getFirstName() + " "+ consultation.getPatient().getLastName() + " fue registrada con éxito.");
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "consultations/consultationFormSuccess";
 	}
 	
 	/**
@@ -100,13 +98,25 @@ public class AppController {
 	}
 	
 	/**
-	 * This method generates the metrics file and shows it on screen.
+	 * This method returns all consultations in DB.
 	 */
-	@RequestMapping(value = { "/generate-metrics" }, method = RequestMethod.GET)
-	public String generateMetrics(ModelMap model) {
-		consultationService.getMetrics();
+	@RequestMapping(value = { "/getallconsultations" }, method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Consultation>> getAllConsultations(ModelMap model) {
+		List<Consultation> consultations = consultationService.getAllConsultations();
 	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "metrics/metrics";
+	    return new ResponseEntity<List<Consultation>>(consultations,HttpStatus.OK);
+	}
+	
+	/**
+	 * This method returns all patients in DB.
+	 */
+	@RequestMapping(value = { "/getallpatients" }, method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Patient>> getAllPatients(ModelMap model) {
+		List<Patient> patients = patientService.getAllPatients();
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return new ResponseEntity<List<Patient>>(patients,HttpStatus.OK);
 	}
 	
 	/**

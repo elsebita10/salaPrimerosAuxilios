@@ -37,11 +37,34 @@ public class Consultation {
 	@Column(name="SPO2", nullable=false)
 	private String spo2;
 	
+	@NotEmpty
+	@Column(name="REASON", nullable=false)
+	private String reason;
+	
+	@NotEmpty
+	@Column(name="MEDICAL_HISTORY", nullable=false)
+	private String medicalHistory;
+	
+	@NotNull
+	@Column(name="SAME", nullable=false)
+	private boolean same;
+	
+	@Column(name="DOCTOR", nullable=false)
+	private String doctor;
+	
+	@Column(name="AMBULANCE", nullable=false)
+	private String ambulance;
+	
+	@Column(name="PATIENT_TRANSPORT", nullable=false)
+	private boolean patientTransport;
+	
+	@Column(name="MEDICAL_INSTITUTION", nullable=false)
+	private String medicalInstitution;
+	
 	@NotNull
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Patient patient;
- 
-   
+	
 	public Integer getId() {
 		return id;
 	}
@@ -49,7 +72,6 @@ public class Consultation {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	
 	public String getT_a() {
 		return t_a;
@@ -82,6 +104,62 @@ public class Consultation {
 	public void setSpo2(String spo2) {
 		this.spo2 = spo2;
 	}
+	
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	
+	public String getMedicalHistory() {
+		return medicalHistory;
+	}
+
+	public void setMedicalHistory(String medicalHistory) {
+		this.medicalHistory = medicalHistory;
+	}
+
+	public boolean isSame() {
+		return same;
+	}
+
+	public void setSame(boolean same) {
+		this.same = same;
+	}
+
+	public String getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(String doctor) {
+		this.doctor = doctor;
+	}
+
+	public String getAmbulance() {
+		return ambulance;
+	}
+
+	public void setAmbulance(String ambulance) {
+		this.ambulance = ambulance;
+	}
+
+	public boolean isPatientTransport() {
+		return patientTransport;
+	}
+
+	public void setPatientTransport(boolean patientTransport) {
+		this.patientTransport = patientTransport;
+	}
+
+	public String getMedicalInstitution() {
+		return medicalInstitution;
+	}
+
+	public void setMedicalInstitution(String medicalInstitution) {
+		this.medicalInstitution = medicalInstitution;
+	}
 
 	public Patient getPatient() {
 		return patient;
@@ -91,6 +169,4 @@ public class Consultation {
 		this.patient = patient;
 	}
 	
-	
-
 }
