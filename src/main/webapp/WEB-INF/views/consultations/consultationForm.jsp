@@ -207,16 +207,16 @@
 									<div class="col-xs-8">
 										<form:select class="form-control" path="reason" required="required">
 											<form:option value="" label="Seleccione una opción"/>
-											<form:option value="1" label="Contención emocional"/>
-											<form:option value="2" label="Cefalea, náuseas, mareos, vómitos"/>
- 											<form:option value="3" label="HTA-DBT"/>
- 											<form:option value="4" label="Ataque epiléptico"/>
- 											<form:option value="5" label="Herida abierta, traumatismo"/>
- 											<form:option value="6" label="Dolor abdominal, lumbar"/>
- 											<form:option value="7" label="Febrícula"/>
- 											<form:option value="8" label="Hipoglucemia"/>
- 											<form:option value="9" label="Adormecimiento MS"/>
- 											<form:option value="10" label="Otro"/>
+											<form:option value="Contención emocional" label="Contención emocional"/>
+											<form:option value="Cefalea, náuseas, mareos, vómitos" label="Cefalea, náuseas, mareos, vómitos"/>
+ 											<form:option value="HTA-DBT" label="HTA-DBT"/>
+ 											<form:option value="Ataque epiléptico" label="Ataque epiléptico"/>
+ 											<form:option value="Herida abierta, traumatismo" label="Herida abierta, traumatismo"/>
+ 											<form:option value="Dolor abdominal, lumbar" label="Dolor abdominal, lumbar"/>
+ 											<form:option value="Febrícula" label="Febrícula"/>
+ 											<form:option value="Hipoglucemia" label="Hipoglucemia"/>
+ 											<form:option value="Adormecimiento MS" label="Adormecimiento MS"/>
+ 											<form:option value="Otro" label="Otro"/>
 										</form:select>
 										<p class="help-block">Elija el motivo de la consulta</p>
 									</div>
@@ -226,18 +226,18 @@
 									<div class="col-xs-8">
 										<form:select class="form-control" path="medicalHistory" required="required">
 											<form:option value="" label="Seleccione una opción"/>
-											<form:option value="1" label="Ninguno"/>
-											<form:option value="2" label="HTA"/>
-											<form:option value="3" label="DBT"/>
-											<form:option value="4" label="Alergia"/>
-											<form:option value="5" label="Epilepsia"/>
-											<form:option value="6" label="Asma"/>
-											<form:option value="7" label="Cardíaco"/>
-											<form:option value="8" label="Psiquiátrico"/>
-											<form:option value="9" label="ACV"/>
-											<form:option value="10" label="Neurológico"/>
-											<form:option value="11" label="EPOC"/>
-											<form:option value="12" label="CA"/>
+											<form:option value="Ninguno" label="Ninguno"/>
+											<form:option value="HTA" label="HTA"/>
+											<form:option value="DBT" label="DBT"/>
+											<form:option value="Alergia" label="Alergia"/>
+											<form:option value="Epilepsia" label="Epilepsia"/>
+											<form:option value="Asma" label="Asma"/>
+											<form:option value="Cardíaco" label="Cardíaco"/>
+											<form:option value="Psiquiátrico" label="Psiquiátrico"/>
+											<form:option value="ACV" label="ACV"/>
+											<form:option value="Neurológico" label="Neurológico"/>
+											<form:option value="EPOC" label="EPOC"/>
+											<form:option value="CA" label="CA"/>
 										</form:select>
 										<p class="help-block">Elija el antecedente de la enfermedad actual</p>
 									</div>
