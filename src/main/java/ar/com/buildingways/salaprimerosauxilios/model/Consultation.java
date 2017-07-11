@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="CONSULTATIONS")
@@ -160,7 +162,7 @@ public class Consultation {
 	public void setMedicalInstitution(String medicalInstitution) {
 		this.medicalInstitution = medicalInstitution;
 	}
-
+	@JsonIgnore
 	public Patient getPatient() {
 		return patient;
 	}

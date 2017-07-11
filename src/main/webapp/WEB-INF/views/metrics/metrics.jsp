@@ -9,130 +9,55 @@
 	<title>Métricas</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
-    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
-	<script type="text/javascript" src="./static/jquery-1.12.0.min.js"></script>
-	<script type="text/javascript" src="./static/js/bootstrap/bootstrap.min.js"></script>
- 	<script type="text/javascript" src="./static/js/charts/Chart.bundle.min.js"></script>
-	<script type="text/javascript">
-		var consultations;
-		var patients;
-		var men = 0;
-		var women = 0;
-		var sexData;
-		
-		
-		$(document).ready(function(){
-			
-			consultations = getAllConsultations();
-			llamadoAController();
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/app.css" rel="stylesheet">
+    <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <!-- <link href="static/css/nprogress.css" rel="stylesheet" type="text/css"> -->
+ 	<link href="static/css/custom.min.css" rel="stylesheet" type="text/css">
 
-			function llamadoAController(){
-			     $.getJSON('${pageContext.request.contextPath}/getallpatients', function (data) {
-					patients=data;
-				}).done(function (data) {
-					getCountBothSexs();
-					createSexData();
-					document.getElementById("sexCount").innerHTML = men + women;
-			    });
-			}
-			
-			function createSexData(){
-				sexData = {
-						type : "pie",
-						data : {
-							datasets: [{
-								data : [
-									men,
-									women,
-								],
-								backgroundColor : [
-									"#F7464A",
-									"#46BFBD",
-								],
-							}],
-							labels : [
-								"Hombres",
-								"Mujeres",
-							]
-						},
-						options : {
-							responsive : true,
-						}
-				};
-				
-			
-				var sexCanvas = document.getElementById('sexChart').getContext('2d');
-				window.pie2 = new Chart(sexCanvas, sexData);
-				window.pie2.update();
-			}
-			
-	
-			setInterval(function(){
-				//pie with sex data
-				sexData.data.datasets.splice(0);
-				getAllConsultations();
-				var newSexData = {
-						backgroundColor : [
-											"#F7464A",
-											"#46BFBD",
-						],
-						data : [men, women]
-				}
-				sexData.data.datasets.push(newSexData);
-				
-				llamadoAController();
-
-				window.pie2.update();
-			
-			}, 10000);
-			
-			
-			function getRandom(){
-				return Math.round(Math.random() * 100);
-			}
-			
-			
-			function getAllConsultations(){
-				$.ajax({
-					type: "GET",
-					url: "${pageContext.request.contextPath}/getallconsultations",
-					data: "json",
-					success: function (result){
-						consultations =	result;
-					},
-					error: function (result){
-						alert('hubo un error en algun lado');
-					}
-				})
-			}
-			
-			function getCountBothSexs(){
-				men = 0;
-				women = 0;
-				for (i in patients) {
-					if (patients[i].sex == "Masculino"){
-						 men = men + 1;
-					 }else if (patients[i].sex == "Femenino"){
-						 women = women + 1;
-					 }else{
-						 alert ('Hubo un error con el sexo del paciente'+patient[i].lastname);
-					 }
-				 }
-			}
-		});
-		
-	</script>
 </head>
  
 <body>
 	<div id="wrapper">
-		<div id="sidebar-wrapper">
-			<div class="sidebar">
-				<%@ include file="/WEB-INF/views/commons/menu.jsp" %>
+		<!-- menu --><!-- These collapse to the responsive navigation menu on small screens -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="<c:url value="/" />"><i class="fa fa-heartbeat"></i>&nbsp;&nbsp;&nbsp;Sala de Primeros Auxilios</a>
 			</div>
-		</div>
-		<div id="main-wrapper" class="col-md-10 pull-right">
+		    <div class="collapse navbar-collapse navbar-ex1-collapse">
+		        <ul class="nav navbar-nav side-nav">
+		            <li>
+		                <a href="<c:url value="/" />"><i class="fa fa-fw fa-home"></i> Inicio</a>
+		            </li>
+		            <li>
+		                <a href="<c:url value='/list-users' />"><i class="fa fa-fw fa-user"></i> Usuarios</a>
+		            </li>
+		            <li class="active">
+		                <a href="<c:url value='/get-metrics' />"><i class="fa fa-fw fa-bar-chart-o"></i> M&eacute;tricas</a>
+		            </li>
+		            <li>
+		                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Consultas <i class="fa fa-fw fa-caret-down"></i></a>
+		                <ul id="demo" class="collapse">
+		                    <li>
+		                        <a href="<c:url value="/create-consultation" />"> <i class="fa fa-fw fa-pencil"></i> Crear consulta</a>
+		                    </li>
+		                </ul>
+		            </li>
+		            <li>
+		                <a href="<c:url value="/logout" />"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
+		            </li>
+		        </ul>
+		    </div>
+		</nav>
+		<!-- / menu -->
+		
+		<div id="page-wrapper">
 		    <div class="container-fluid">
 		        <div class="panel panel-default">
 		              <!-- Default panel contents -->
@@ -141,31 +66,149 @@
 		        <sec:authorize access="hasRole('ADMIN')">
 				<!-- usar este bloque para autorizar la operacion  -->
 		        </sec:authorize>
-		       <%--  <div class = "panel panel-default col-xs-6">
-   					<div class = "panel-heading"><h4>Pacientes</h4></div>
-					<div class="container-fluid">
-						Cantidad de pacientes recibidos:      
-					</div>
-					<br>
-					<div id="sex-canvas-container" style="width:20%;">
-		        		<canvas id="sexChart" width="300" height="250"></canvas>
-		        	</div>
-		        </div> --%>
-		        <td>
-			        <div id="canvas-container" style="width:40%;">
-			        	<div style="display:inline-block;">
-							<label><h5>Cantidad de pacientes recibidos: </h5></label>
-							<label id="sexCount"/>
-						</div>		        
-			        	<canvas id="sexChart" width="400" height="300"></canvas>
-			        	<canvas id="chart" width="400" height="300"></canvas>
-			        </div>
-		        </td>
-		        <td>
 		        
-		        </td>
+		        <div class="clearfix"></div>
+		        
+		        <div class="row">
+		        	
+		        	<!-- Torta de Pacientes -->
+		        	<div class="col-md-4 col-sm-4 col-xs-12">
+	                	<div class="x_panel">
+	                  		<div class="x_title">
+		                    	<h2>Pacientes <small>Cantidad: <label id="sexCount"/></small></h2>
+		                    	<ul class="nav navbar-right panel_toolbox">
+			                      	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+			                    	<li class="dropdown">
+			                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+			                        	<ul class="dropdown-menu" role="menu">
+			                          		<li><a href="#">Opcion 1</a></li>
+			                          		<li><a href="#">Opcion 2</a></li>
+			                        	</ul>
+			                      	</li>
+			                      	<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+		                    	</ul>
+		                    	<div class="clearfix"></div>
+	                  		</div>
+	                  		<div class="x_content">
+	                  			<canvas id="sexChart" width="400" height="300"></canvas>
+	                  		</div>
+	                	</div>
+	              </div>
+	              <!-- / Torta de Pacientes -->
+	              
+	              <!-- Torta de SAME -->
+		        	<div class="col-md-4 col-sm-4 col-xs-12">
+	                	<div class="x_panel">
+	                  		<div class="x_title">
+		                    	<h2>SAME <small>Llamados</small></h2>
+		                    	<ul class="nav navbar-right panel_toolbox">
+			                      	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+			                    	<li class="dropdown">
+			                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+			                        	<ul class="dropdown-menu" role="menu">
+			                          		<li><a href="#">Opcion 1</a></li>
+			                          		<li><a href="#">Opcion 2</a></li>
+			                        	</ul>
+			                      	</li>
+			                      	<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+		                    	</ul>
+		                    	<div class="clearfix"></div>
+	                  		</div>
+	                  		<div class="x_content">
+	                  			<canvas id="sameChart" width="400" height="300"></canvas>
+	                  		</div>
+	                	</div>
+	              </div>
+	              <!-- / Torta de SAME -->
+	              
+	              <!-- Torta de Traslados -->
+		        	<div class="col-md-4 col-sm-4 col-xs-12">
+	                	<div class="x_panel">
+	                  		<div class="x_title">
+		                    	<h2>Traslados <small>Llamados</small></h2>
+		                    	<ul class="nav navbar-right panel_toolbox">
+			                      	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+			                    	<li class="dropdown">
+			                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+			                        	<ul class="dropdown-menu" role="menu">
+			                          		<li><a href="#">Opcion 1</a></li>
+			                          		<li><a href="#">Opcion 2</a></li>
+			                        	</ul>
+			                      	</li>
+			                      	<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+		                    	</ul>
+		                    	<div class="clearfix"></div>
+	                  		</div>
+	                  		<div class="x_content">
+	                  			<canvas id="patientTransportationChart" width="400" height="300"></canvas>
+	                  		</div>
+	                	</div>
+	              </div>
+	              <!-- / Torta de Traslados -->
+	              
+	           </div>
+	           
+	           <div class="row">
+				  <!-- Torta de Antecedentes -->
+				  <div class="col-md-6 col-sm-6 col-xs-12">
+				      	<div class="x_panel">
+				        	<div class="x_title">
+					           	<h2>Antecedentes <small>M&eacute;dicos</small></h2>
+					           	<ul class="nav navbar-right panel_toolbox">
+					              	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+					            	<li class="dropdown">
+					                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+					                	<ul class="dropdown-menu" role="menu">
+					                  		<li><a href="#">Opcion 1</a></li>
+					                  		<li><a href="#">Opcion 2</a></li>
+					                	</ul>
+					              	</li>
+					              	<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+					           	</ul>
+					           	<div class="clearfix"></div>
+				        	</div>
+			        		<div class="x_content">
+			        			<canvas id="medicalHistoryChart" width="500" height="350"></canvas>
+			     			</div>
+				   		</div>
+				  </div>
+				  <!-- / Torta de Pacientes -->	   
+	           
+	            <!-- Torta de Motivos -->
+				<div class="col-md-6 col-sm-6 col-xs-12">
+				      	<div class="x_panel">
+				        	<div class="x_title">
+					           	<h2>Motivos<small></small></h2>
+					           	<ul class="nav navbar-right panel_toolbox">
+					              	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+					            	<li class="dropdown">
+					                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+					                	<ul class="dropdown-menu" role="menu">
+					                  		<li><a href="#">Opcion 1</a></li>
+					                  		<li><a href="#">Opcion 2</a></li>
+					                	</ul>
+					              	</li>
+					              	<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+					           	</ul>
+				           		<div class="clearfix"></div>
+			        		</div>
+			        		<div class="x_content">
+			        			<canvas id="reasonChart" width="500" height="350"></canvas>
+			     			</div>
+				   		</div>
+				</div>
+				<!-- / Torta de Pacientes -->
+					
+	           </div>
 		    </div>
 		</div>
     </div>
+	<script src="static/js/jquery.js"></script>
+    <script src="static/js/bootstrap.js"></script>
+    <script src="static/js/app.js"></script>
+    <script src="static/js/charts/Chart.js"></script>
+    <script>var myContextPath = "${pageContext.request.contextPath}"</script>
+    <script src="static/js/charts_resources.js"></script>
 </body>
+
 </html>
