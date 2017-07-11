@@ -1,6 +1,15 @@
 var consultations;
 var patients;
 
+//patient variables
+var men;
+var women;
+
+//rango de edades
+var minor;
+var adult;
+var old;
+
 //same
 var yes;
 var no;
@@ -34,6 +43,8 @@ var slightFever;
 var hypoglycemia;
 var numbness;
 var other;
+
+//datas
 var sexData;
 var sameData;
 var patientTransportationData;
@@ -67,39 +78,59 @@ $(document).ready(function(){
 	     $.getJSON(myContextPath+'/getallpatients', function (data) {
 			patients=data;
 		}).done(function (data) {
-			getCountBothSexs();
-			createSexData();
+			getPatientData();
+			createAgeData();
 			document.getElementById("sexCount").innerHTML = men + women;
+			document.getElementById("menCount").innerHTML = men;
+			document.getElementById("womenCount").innerHTML = women;
 	    });
 	}
 
 	//Creo torta de Cantidad de ambos sexos
-	function createSexData(){
-		sexData = {
+	function createAgeData(){
+		ageData = {
 				type : "pie",
 				data : {
 					datasets: [{
 						data : [
-							men,
-							women,
+							minor,
+							adult,
+							old,
 						],
 						backgroundColor : [
 							"#F7464A",
 							"#46BFBD",
+							"#04B486",
 						],
 					}],
 					labels : [
-						"Hombres",
-						"Mujeres",
+						"Menores de 18",
+						"Mayores de 18",
+						"Mayores de 70",
 					]
 				},
 				options : {
 					responsive : true,
+					tooltips: {
+						callbacks: {
+							label: function(tooltipItem, data) {
+								var allData = data.datasets[tooltipItem.datasetIndex].data;
+								var tooltipLabel = data.labels[tooltipItem.index];
+								var tooltipData = allData[tooltipItem.index];
+								var total = 0;
+								for (var i in allData) {
+									total += allData[i];
+								}
+								var tooltipPercentage = Math.round((tooltipData / total) * 100);
+								return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+							}
+						}
+					}
 				}
 		};
 	
-		var sexCanvas = document.getElementById('sexChart').getContext('2d');
-		window.pie1 = new Chart(sexCanvas, sexData);
+		var ageCanvas = document.getElementById('ageChart').getContext('2d');
+		window.pie1 = new Chart(ageCanvas, ageData);
 		window.pie1.update();
 	}
 	
@@ -125,6 +156,21 @@ $(document).ready(function(){
 				},
 				options : {
 					responsive : true,
+					tooltips: {
+						callbacks: {
+							label: function(tooltipItem, data) {
+								var allData = data.datasets[tooltipItem.datasetIndex].data;
+								var tooltipLabel = data.labels[tooltipItem.index];
+								var tooltipData = allData[tooltipItem.index];
+								var total = 0;
+								for (var i in allData) {
+									total += allData[i];
+								}
+								var tooltipPercentage = Math.round((tooltipData / total) * 100);
+								return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+							}
+						}
+					}
 				}
 		};
 	
@@ -155,6 +201,21 @@ $(document).ready(function(){
 				},
 				options : {
 					responsive : true,
+					tooltips: {
+						callbacks: {
+							label: function(tooltipItem, data) {
+								var allData = data.datasets[tooltipItem.datasetIndex].data;
+								var tooltipLabel = data.labels[tooltipItem.index];
+								var tooltipData = allData[tooltipItem.index];
+								var total = 0;
+								for (var i in allData) {
+									total += allData[i];
+								}
+								var tooltipPercentage = Math.round((tooltipData / total) * 100);
+								return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+							}
+						}
+					}
 				}
 		};
 	
@@ -205,16 +266,31 @@ $(document).ready(function(){
 						"Alergia",
 						"Epilepsia",
 						"Asma",
-						"Cardíaco",
-						"Psiquiátrico",
+						"Card\u00EDaco",
+						"Psiqui\u00E1trico",
 						"ACV",
-						"Neurológico",
-						"Epoc",
+						"Neurol\u00F3gico",
+						"EPOC",
 						"CA",						
 					]
 				},
 				options : {
 					responsive : true,
+					tooltips: {
+						callbacks: {
+							label: function(tooltipItem, data) {
+								var allData = data.datasets[tooltipItem.datasetIndex].data;
+								var tooltipLabel = data.labels[tooltipItem.index];
+								var tooltipData = allData[tooltipItem.index];
+								var total = 0;
+								for (var i in allData) {
+									total += allData[i];
+								}
+								var tooltipPercentage = Math.round((tooltipData / total) * 100.0);
+								return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+							}
+						}
+					}
 				}
 		};
 	
@@ -255,13 +331,13 @@ $(document).ready(function(){
 						],
 					}],
 					labels : [
-						"Contención emocional",
-						"Cefalea, náuseas, mareos, vómitos",
+						"Contenci\u00F3n emocional",
+						"Cefalea, n\u00E1useas, mareos, v\u00F3mitos",
 						"HBA-DBT",
-						"Ataque Epiléptico",
+						"Ataque Epil\u00E9ptico",
 						"Herida abierta, traumatismo",
 						"Dolor abdominal, lumbar",
-						"Febrícula",
+						"Febr\u00EDcula",
 						"Hipoglucemia",
 						"Adormecimiento MS",
 						"Otros",
@@ -269,6 +345,21 @@ $(document).ready(function(){
 				},
 				options : {
 					responsive : true,
+					tooltips: {
+						callbacks: {
+							label: function(tooltipItem, data) {
+								var allData = data.datasets[tooltipItem.datasetIndex].data;
+								var tooltipLabel = data.labels[tooltipItem.index];
+								var tooltipData = allData[tooltipItem.index];
+								var total = 0;
+								for (var i in allData) {
+									total += allData[i];
+								}
+								var tooltipPercentage = Math.round(((tooltipData / total) * 100),2);
+								return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+							}
+						}
+					}
 				}
 		};
 	
@@ -297,9 +388,8 @@ $(document).ready(function(){
 //	}
 	
 	//obtengo cantidad de cada uno de los sexos
-	function getCountBothSexs(){
-		men = 0;
-		women = 0;
+	function getPatientData(){
+		getInitializedPatientVariables();
 		for (i in patients) {
 			if (patients[i].sex == "Masculino"){
 				 men = men + 1;
@@ -308,6 +398,14 @@ $(document).ready(function(){
 			 }else{
 				 alert ('Hubo un error con el sexo del paciente'+patient[i].lastname);
 			 }
+			
+			if (patients[i].age < 18){
+				minor = minor + 1;
+			}else if (patients[i].age > 18 && patients[i].age < 70){
+				adult = adult + 1;
+			}else{
+				old = old + 1;
+			}
 		 }
 	}
 	
@@ -353,19 +451,19 @@ $(document).ready(function(){
 				case "Asma":
 					asthma = asthma + 1;
 					break;
-				case "Cardíaco":
+				case "Card\u00EDaco":
 					cardiac = cardiac + 1;
 					break;
-				case "Psiquiátrico":
+				case "Psiqui\u00E1trico":
 					psychiatric = psychiatric + 1;
 					break;
 				case "ACV":
 					acv = acv + 1;
 					break;
-				case "Neurológico":
+				case "Neurol\u00F3gico":
 					neurological = neurological + 1;
 					break;
-				case "Epoc":
+				case "EPOC":
 					epoc = epoc + 1;
 					break;
 				case "CA":
@@ -375,16 +473,16 @@ $(document).ready(function(){
 			
 			//pregunto por motivos
 			switch (consultations[i].reason){
-				case "Contención emocional": 
+				case "Contenci\u00F3n emocional": 
 					emotional = emotional + 1;
 					break;
-				case "Cefalea, náuseas, mareos, vómitos":
+				case "Cefalea, n\u00E1useas, mareos, v\u00F3mitos":
 					threwUp = threwUp + 1;
 					break;
 				case "HTA-DBT":
 					hba_dbt = hba_dbt + 1;
 					break;
-				case "Ataque epiléptico":
+				case "Ataque epil\u00E9ptico":
 					epilepticAttack = epilepticAttack + 1;
 					break;
 				case "Herida abierta, traumatismo":
@@ -393,7 +491,7 @@ $(document).ready(function(){
 				case "Dolor abdominal, lumbar":
 					abdominalPain = abdominalPain + 1;
 					break;
-				case "Febrícula":
+				case "Febr\u00EDcula":
 					slightFever = slightFever + 1;
 					break;
 				case "Hipoglucemia":
@@ -408,6 +506,14 @@ $(document).ready(function(){
 		}
 	}
 	
+	//inicializo todas las variables de patients
+	function getInitializedPatientVariables(){
+		men = 0;
+		women = 0;
+		minor = 0;
+		adult = 0;
+		old = 0;
+	}
 	
 	//inicializo todas las variables de consultations
 	function getInitializedConsultationsVariables(){

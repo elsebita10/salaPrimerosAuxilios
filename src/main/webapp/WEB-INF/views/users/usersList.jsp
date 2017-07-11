@@ -72,7 +72,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                     	<div class="form-group input-group">
-                        	<input type="text" class="form-control">
+                        	<input type="text" id="userSearchText" class="form-control">
                         	<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                 	<div class="col-lg-12">
                     	<h2>Listado de usuarios</h2>
                     	<div class="table-responsive">
-                            <table class="table table-hover table-striped">
+                            <table id="usersTable" class="table table-hover table-striped">
                                 <thead>
                                     <tr>
                                     	<th>ID de usuario</th>
@@ -129,5 +129,8 @@
 	<script src="static/js/jquery.js"></script>
     <script src="static/js/bootstrap.js"></script>
     <script src="static/js/app.js"></script>
+<!--     <script>var myContextPath = "${pageContext.request.contextPath}"</script>
+    <script>var userList = ${users}</script> -->
+    <script src="static/js/usersFunctions.js"></script>
 </body>
 </html>

@@ -61,7 +61,7 @@
 		    <div class="container-fluid">
 		        <div class="panel panel-default">
 		              <!-- Default panel contents -->
-		            <div class="panel-heading"><span class="lead">Metricas</span></div>
+		            <div class="panel-heading"><span class="lead">M&eacute;tricas</span></div>
 		        </div>
 		        <sec:authorize access="hasRole('ADMIN')">
 				<!-- usar este bloque para autorizar la operacion  -->
@@ -70,12 +70,19 @@
 		        <div class="clearfix"></div>
 		        
 		        <div class="row">
+		        	<h3>Pacientes <small>Cantidad: <label id="sexCount"/></small></h3>
+		        	<h4>Hombres: <small><label id="menCount"/></small></h4>
+		        	<h4>Mujeres: <small><label id="womenCount"/></small></h4>
+		        	</br>
+		        </div>
+		        
+		        <div class="row">
 		        	
 		        	<!-- Torta de Pacientes -->
 		        	<div class="col-md-4 col-sm-4 col-xs-12">
 	                	<div class="x_panel">
 	                  		<div class="x_title">
-		                    	<h2>Pacientes <small>Cantidad: <label id="sexCount"/></small></h2>
+		                    	<h2>Pacientes <small>Rangos de edad</small></h2>
 		                    	<ul class="nav navbar-right panel_toolbox">
 			                      	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
 			                    	<li class="dropdown">
@@ -90,7 +97,7 @@
 		                    	<div class="clearfix"></div>
 	                  		</div>
 	                  		<div class="x_content">
-	                  			<canvas id="sexChart" width="400" height="300"></canvas>
+	                  			<canvas id="ageChart" width="400" height="300"></canvas>
 	                  		</div>
 	                	</div>
 	              </div>
@@ -168,7 +175,7 @@
 					           	<div class="clearfix"></div>
 				        	</div>
 			        		<div class="x_content">
-			        			<canvas id="medicalHistoryChart" width="500" height="350"></canvas>
+			        			<canvas id="medicalHistoryChart" width="400" height="300"></canvas>
 			     			</div>
 				   		</div>
 				  </div>
@@ -193,11 +200,11 @@
 				           		<div class="clearfix"></div>
 			        		</div>
 			        		<div class="x_content">
-			        			<canvas id="reasonChart" width="500" height="350"></canvas>
+			        			<canvas id="reasonChart" width="400" height="300"></canvas>
 			     			</div>
 				   		</div>
 				</div>
-				<!-- / Torta de Pacientes -->
+				<!-- / Torta de Motivos -->
 					
 	           </div>
 		    </div>
