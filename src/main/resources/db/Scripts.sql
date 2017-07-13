@@ -38,6 +38,8 @@ create table CONSULTATIONS (
    ambulance VARCHAR(20) NULL,
    patient_transport BOOLEAN NULL,
    medical_institution VARCHAR(100) NULL,
+   created_date DATETIME NOT NULL,
+   last_modified_date DATETIME NULL,
    patient_id BIGINT NOT NULL,
    PRIMARY KEY (id),
    UNIQUE (id),
