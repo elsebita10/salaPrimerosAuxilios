@@ -29,6 +29,7 @@ import ar.com.buildingways.salaprimerosauxilios.model.User;
 import ar.com.buildingways.salaprimerosauxilios.model.UserProfile;
 import ar.com.buildingways.salaprimerosauxilios.service.UserProfileService;
 import ar.com.buildingways.salaprimerosauxilios.service.UserService;
+import ar.com.buildingways.salaprimerosauxilios.dto.ConsultationDTO;
 import ar.com.buildingways.salaprimerosauxilios.model.Consultation;
 import ar.com.buildingways.salaprimerosauxilios.model.Patient;
 import ar.com.buildingways.salaprimerosauxilios.service.ConsultationService;
@@ -64,32 +65,6 @@ public class AppController {
 	}
 	
 	/**
-	 * This method returns to the consultation form.
-	 */
-	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.GET)
-	public String createConsultation(ModelMap model) {
-	    Consultation consultation = new Consultation();
-		model.addAttribute("loggedinuser", getPrincipal());
-	    model.addAttribute("consultation", consultation);
-	    return "consultations/consultationForm";
-	}
-	
-	/**
-	 * This method stores the new consultation in DB
-	 */
-	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.POST)
-	public String saveConsultation(@Valid Consultation consultation, BindingResult result, ModelMap model) {
-		if (result.hasErrors()) {
-			return "consultations/consultationForm";
-		}
-	    consultationService.saveConsultation(consultation);
-	    model.addAttribute("success", "La consulta del paciente " + consultation.getPatient().getFirstName() + " "+ consultation.getPatient().getLastName() + " fue registrada con éxito.");
-	    model.addAttribute("loggedinuser", getPrincipal());
-	    return "consultations/consultationFormSuccess";
-	}
-	
-	
-	/**
 	 * This method open the metrics page.
 	 */
 	@RequestMapping(value = { "/get-metrics" }, method = RequestMethod.GET)
@@ -121,6 +96,91 @@ public class AppController {
 	}
 	
 	/**
+	 * This method will list all existing consultations.
+	 */
+	@RequestMapping(value = { "/list-consultations" }, method = RequestMethod.GET)
+	public String listConsultations(ModelMap model) {
+		List<Consultation> consultations = consultationService.getAllConsultations();
+	    model.addAttribute("consultations", consultations);
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "consultations/consultationsList";
+	}
+	
+	/**
+	 * This method returns to the consultation form.
+	 */
+	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.GET)
+	public String createConsultation(ModelMap model) {
+	    ConsultationDTO consultationDTO = new ConsultationDTO();
+		model.addAttribute("loggedinuser", getPrincipal());
+	    model.addAttribute("consultationDTO", consultationDTO);
+	    return "consultations/consultationForm";
+	}
+	
+	/**
+	 * This method stores the new consultation in DB
+	 */
+	@RequestMapping(value = { "/create-consultation" }, method = RequestMethod.POST)
+	public String saveConsultation(@Valid ConsultationDTO consultationDTO, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			return "consultations/consultationForm";
+		}
+	    consultationService.saveConsultation(consultationService.convertDTOToObject(consultationDTO));
+		model.addAttribute("id", consultationDTO.getId());
+	    model.addAttribute("success", "La consulta del paciente " + consultationDTO.getFirstName() + " "+ consultationDTO.getLastName() + " fue registrada con éxito.");
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "consultations/consultationFormSuccess";
+	}
+
+	/**
+	 * This method will provide the medium to update an existing consultation.
+	 */
+	@RequestMapping(value = { "/edit-consultation-{consultationId}" }, method = RequestMethod.GET)
+	public String editConsultation(@PathVariable Integer consultationId, ModelMap model) {
+		Consultation consultation = consultationService.findById(consultationId);
+		ConsultationDTO consultationDTO = consultationService.convertObjectToDTO(consultation);
+	    model.addAttribute("consultationDTO", consultationDTO);
+	    model.addAttribute("edit", true);
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "consultations/consultationForm";
+	}
+	     
+	/**
+	 * This method will be called on form submission, handling POST request for
+	 * updating consultation in database. It also validates the consultation input
+	 */
+	@RequestMapping(value = { "/edit-consultation-{consultationId}" }, method = RequestMethod.POST)
+	public String updateConsultation(@Valid ConsultationDTO consultationDTO, BindingResult result, ModelMap model, @PathVariable Integer consultationId) {
+		if (result.hasErrors()) {
+			return "consultations/consultationForm";
+	    }
+	 
+	    if(consultationService.findById(consultationId)==null){
+	    	FieldError consultationIdError =new FieldError("consultation","id",messageSource.getMessage("not.consultation.exist", new Integer [] {consultationId}, Locale.getDefault()));
+	       	result.addError(consultationIdError);
+	        return "consultations/consultationForm";
+	    }
+	 
+	    consultationService.updateConsultation(consultationDTO);
+	    model.addAttribute("success", "La consulta '" + consultationDTO.getId() + "' fue actualizada con éxito.");
+	    model.addAttribute("id", consultationDTO.getId());
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "consultations/consultationFormSuccess";
+	}
+	 
+	/**
+	 * This method will delete an consultation by it's ID value.
+	 */
+	@RequestMapping(value = { "/delete-consultation-{consultationId}" }, method = RequestMethod.GET)
+	public String deleteConsultation(@PathVariable Integer consultationId, ModelMap model) {
+		consultationService.deleteConsultationById(consultationId);
+		model.addAttribute("success", "La consulta '" + consultationId + "' fue eliminada con éxito.");
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "consultations/consultationFormSuccess";
+	}
+	
+	
+	/**
 	 * This method will list all existing users.
 	 */
 	@RequestMapping(value = { "/list-users" }, method = RequestMethod.GET)
@@ -130,6 +190,7 @@ public class AppController {
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "users/usersList";
 	}
+	
 	 
 	/**
 	 * This method will provide the medium to add a new user.

@@ -39,13 +39,16 @@
 		                <a href="<c:url value='/get-metrics' />"><i class="fa fa-fw fa-bar-chart-o"></i> M&eacute;tricas</a>
 		            </li>
 		            <li>
+		                <a href="<c:url value='/list-consultations' />"><i class="fa fa-fw fa-bar-chart-o"></i> Consultas</a>
+		            </li>
+		            <%-- <li>
 		                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Consultas <i class="fa fa-fw fa-caret-down"></i></a>
 		                <ul id="demo" class="collapse">
 		                    <li class="active">
 		                        <a href="<c:url value="/create-consultation" />"> <i class="fa fa-fw fa-pencil"></i> Crear consulta</a>
 		                    </li>
 		                </ul>
-		            </li>
+		            </li> --%>
 		            <li>
 		                <a href="<c:url value="/logout" />"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
 		            </li>
@@ -73,7 +76,7 @@
                         </h1>
                     </div>
                 </div>
-                <form:form class="form-horizontal" method="POST" modelAttribute="consultation" name="form">
+                <form:form class="form-horizontal" method="POST" modelAttribute="consultationDTO" name="form">
 				<form:input type="hidden" path="id" id="id"/>
                 	<div class="col-lg-12">
                 		<h2>Formulario de consultas</h2>
@@ -85,27 +88,27 @@
 			               		<div class="form-group">
 									<label class="control-label col-xs-3">&#42; Apellido:</label>
 									<div class="col-xs-8">
-										<form:input type="text" path="patient.lastName" id="patient.lastName" class="form-control input-sm" placeholder="Ingrese su apellido" required="required"/>
+										<form:input type="text" path="lastName" id="lastName" class="form-control input-sm" placeholder="Ingrese su apellido" required="required"/>
 		 								<div class="has-error">
-		                    				<form:errors path="patient.lastName" class="help-inline"/>
+		                    				<form:errors path="lastName" class="help-inline"/>
 		                   	 			</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label col-xs-3">&#42; Nombre:</label>
 									<div class="col-xs-8">
-										<form:input type="text" path="patient.firstName" id="patient.firstName" class="form-control input-sm" placeholder="Ingrese su nombre" required="required"/>
+										<form:input type="text" path="firstName" id="firstName" class="form-control input-sm" placeholder="Ingrese su nombre" required="required"/>
 					 					<div class="has-error">
-					                    	<form:errors path="patient.firstName" class="help-inline"/>
+					                    	<form:errors path="firstName" class="help-inline"/>
 					                    </div>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label col-xs-3">&#42; D.N.I.:</label>
 									<div class="col-xs-8">
-										<form:input type="text" path="patient.dni" id="patient.dni" class="form-control input-sm" placeholder="Ingrese su D.N.I." required="required"/>
+										<form:input type="text" path="dni" id="dni" class="form-control input-sm" placeholder="Ingrese su D.N.I." required="required"/>
 					 					<div class="has-error">
-					                    	<form:errors path="patient.dni" class="help-inline"/>
+					                    	<form:errors path="dni" class="help-inline"/>
 					                    </div>			
 									</div>
 								</div>
@@ -113,11 +116,11 @@
 									<label class="control-label col-xs-3">&#42; Sexo:</label>
 				 					<div class="col-xs-8">
 					 					<label class="radio-inline">
-											<form:radiobutton id="patient.sex" path="patient.sex" name="genderRadios" value="Masculino" required="required" /> Masculino
+											<form:radiobutton id="sex" path="sex" name="genderRadios" value="Masculino" required="required" /> Masculino
 										</label>
 										<br/>
 					 					<label class="radio-inline">
-											<form:radiobutton id="patient.sex" path="patient.sex" name="genderRadios" value="Femenino" required="required"/> Femenino
+											<form:radiobutton id="sex" path="sex" name="genderRadios" value="Femenino" required="required"/> Femenino
 										</label>
 										<br/>
 									</div>
@@ -125,16 +128,16 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3">&#42; Domicilio:</label>
 									<div class="col-xs-8">
-										<form:input type="text" id="patient.address" path="patient.address" class="form-control input-sm" placeholder="Ingrese su domicilio" required="required"/>
+										<form:input type="text" id="address" path="address" class="form-control input-sm" placeholder="Ingrese su domicilio" required="required"/>
 					 					<div class="has-error">
-					                    	<form:errors path="patient.address" class="help-inline"/>
+					                    	<form:errors path="address" class="help-inline"/>
 					                    </div>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label col-xs-3">&#42; Email:</label>
 									<div class="col-xs-8">
-										<form:input type="text" id="patient.email" path="patient.email" class="form-control input-sm" placeholder="Ingrese su correo electrónico"/>
+										<form:input type="text" id="email" path="email" class="form-control input-sm" placeholder="Ingrese su correo electrónico"/>
 								   <%-- <div class="has-error">
 					                    	<form:errors path="patient.address" class="help-inline"/>
 					                    </div> --%>
@@ -143,18 +146,18 @@
 								<div class="form-group">
 									<label class="control-label col-xs-3">&#42; Edad:</label>
 									<div class="col-xs-4">
-										<form:input type="text" id="patient.age" path="patient.age" class="form-control input-sm" placeholder="Ingrese su edad" required="required"/>
+										<form:input type="text" id="age" path="age" class="form-control input-sm" placeholder="Ingrese su edad" required="required"/>
 					 					<div class="has-error">
-					                    	<form:errors path="patient.age" class="help-inline"/>
+					                    	<form:errors path="age" class="help-inline"/>
 					                    </div>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label col-xs-3" >&#42; Tel&eacute;fono:</label>
 									<div class="col-xs-6">
-										<form:input type="text" id="patient.phone" path="patient.phone" class="form-control input-sm" placeholder="Ingrese su teléfono" required="required"/>
+										<form:input type="text" id="phone" path="phone" class="form-control input-sm" placeholder="Ingrese su teléfono" required="required"/>
 					 					<div class="has-error">
-					                    	<form:errors path="patient.phone" class="help-inline"/>
+					                    	<form:errors path="phone" class="help-inline"/>
 					                    </div>
 									</div>
 								</div>
@@ -300,14 +303,29 @@
 			               	</div> <!-- col 12 -->
 						</div> <!-- col 12 -->	
 						<br>
-						<div class="container-fluid">
+<!-- 						<div class="container-fluid">
 							<div class="form-group">
 								<div class="col-xs-12">
 				 					<input type="submit" class="btn btn-success custom-width" value="Guardar">&nbsp;&nbsp;&nbsp;&nbsp;
 									<input type="reset" class="btn btn-default" value="Limpiar">
 								</div>
 							</div>
-						</div>
+						</div> -->
+						
+						<div class="row">
+		    					<div class="col-md-6">
+		                			<div class="form-actions">
+		                    		<c:choose>
+		                        		<c:when test="${edit}">
+		                        			<input type="submit" value="Actualizar" class="btn btn-success"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-consultations' />" class="btn btn-danger">Cancelar</a>
+		                        		</c:when>
+		                        		<c:otherwise>
+		                            		<input type="submit" value="Guardar" class="btn btn-success"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-consultations' />" class="btn btn-danger">Cancelar</a>
+		                        		</c:otherwise>
+		                    		</c:choose>
+		                			</div>
+		            			</div>
+		            		</div>
 						<br>				
 					</form:form>
 	    		</div> <!-- row -->

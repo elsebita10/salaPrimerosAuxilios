@@ -39,13 +39,16 @@
 		                <a href="<c:url value='/get-metrics' />"><i class="fa fa-fw fa-bar-chart-o"></i> M&eacute;tricas</a>
 		            </li>
 		            <li>
+		                <a href="<c:url value='/list-consultations' />"><i class="fa fa-fw fa-bar-chart-o"></i> Consultas</a>
+		            </li>
+		            <%-- <li>
 		                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Consultas <i class="fa fa-fw fa-caret-down"></i></a>
 		                <ul id="demo" class="collapse">
 		                    <li>
 		                        <a href="<c:url value="/create-consultation" />"> <i class="fa fa-fw fa-pencil"></i> Crear consulta</a>
 		                    </li>
 		                </ul>
-		            </li>
+		            </li> --%>
 		            <li>
 		                <a href="<c:url value="/logout" />"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
 		            </li>
@@ -88,7 +91,7 @@
 		                                	<form:input type="text" path="username" id="username" class="form-control input-sm" disabled="true"/>
 		                            	</c:when>
 		                            	<c:otherwise>
-		                                	<form:input type="text" path="username" id="username" class="form-control input-sm" />
+		                                	<form:input type="text" path="username" id="username" class="form-control input-sm" text=""/>
 		                                	<div class="has-error">
 		                                    	<form:errors path="username" class="help-inline"/>
 		                                	</div>
@@ -165,5 +168,11 @@
 	<script src="static/js/jquery.js"></script>
     <script src="static/js/bootstrap.js"></script>
     <script src="static/js/app.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		
+    	}
+    
+    </script>
 </body>
 </html>

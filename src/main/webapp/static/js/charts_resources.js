@@ -132,8 +132,7 @@ $(document).ready(function(){
 		var ageCanvas = document.getElementById('ageChart').getContext('2d');
 		window.pie1 = new Chart(ageCanvas, ageData);
 		window.pie1.update();
-	}
-	
+	}	
 	//Creo torta de cantidad de llamados al SAME
 	function createSAMEData(){
 		sameData = {

@@ -64,11 +64,11 @@
                                 <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-user"></i> Usuarios
+                                <i class="fa fa-user"></i> Consultas
                             </li>
                         </ol>
                         <h1 class="page-header">
-                            Usuarios
+                            Consultas
                         </h1>
                     </div>
                 </div>
@@ -82,15 +82,19 @@
                 </div>
                 <div class="row">
                 	<div class="col-lg-12">
-                    	<h2>Listado de usuarios</h2>
+                    	<h2>Listado de consultas</h2>
                     	<div class="table-responsive">
                             <table id="usersTable" class="table table-hover table-striped">
                                 <thead>
                                     <tr>
-                                    	<th>ID de usuario</th>
-		                        		<th>Username</th>
-		                        		<th>Direcci&oacute;n</th>
-		                        		<th>E-mail</th>
+                                    	<th>ID</th>
+                                    	<th>Fecha</th>
+		                        		<th style="width: 200px">Nombre Paciente</th>
+		                        		<th>DNI Paciente</th>
+		                        		<th style="width: 200px">Motivo</th>
+		                        		<th>Antecedente</th>
+		                        		<th>SAME</th>
+		                        		<th>Traslado</th>
 		                        		<sec:authorize access="hasRole('ADMIN')">
 		                            		<th width="100"></th>
 		                        		</sec:authorize>
@@ -100,17 +104,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${users}" var="user">
+                                    <c:forEach items="${consultations}" var="consultation">
 		                    		<tr>
-		                    			<td>${user.id}</td>
-		                        		<td>${user.username}</td>
-		                        		<td>${user.address}</td>
-		                        		<td>${user.email}</td>
+		                    			<td>${consultation.id}</td>
+		                        		<td>${consultation.createdDate}</td>
+		                        		<td>${consultation.patient.firstName} ${consultation.patient.lastName}</td>
+		                        		<td>${consultation.patient.dni}</td>
+		                        		<td>${consultation.reason}</td>
+		                        		<td>${consultation.medicalHistory}</td>
+		                        		<td>${consultation.same}</td>
+		                        		<td>${consultation.patientTransport}</td>
 		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<td><a href="<c:url value='/edit-user-${user.username}' />" class="btn btn-success">editar</a></td>
+		                            		<td><a href="<c:url value='/edit-consultation-${consultation.id}' />" class="btn btn-success">Editar</a></td>
 		                        		</sec:authorize>
 		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<td><a href="<c:url value='/delete-user-${user.username}' />" class="btn btn-danger">eliminar</a></td>
+		                            		<td><a href="<c:url value='/delete-consultation-${consultation.id}' />" class="btn btn-danger">Eliminar</a></td>
 		                        		</sec:authorize>
 		                    		</tr>
 		                			</c:forEach>
@@ -122,7 +130,7 @@
                 <div class="row">
                     <div class="col-lg-6">
 	            	<sec:authorize access="hasRole('ADMIN')">
-		                <a href="<c:url value='/create-user' />" class="btn btn-primary">Crear usuario nuevo</a>
+		                <a href="<c:url value='/create-consultation' />" class="btn btn-primary">Crear consulta nueva</a>
 			        </sec:authorize>
 			        </div>
             	</div>

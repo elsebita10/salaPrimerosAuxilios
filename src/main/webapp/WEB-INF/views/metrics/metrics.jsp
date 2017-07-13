@@ -10,11 +10,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="static/css/bootstrap.css" rel="stylesheet">
-    <link href="static/css/app.css" rel="stylesheet">
+	<link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <!-- <link href="static/css/nprogress.css" rel="stylesheet" type="text/css"> -->
- 	<link href="static/css/custom.min.css" rel="stylesheet" type="text/css">
-
 </head>
  
 <body>
@@ -42,13 +39,16 @@
 		                <a href="<c:url value='/get-metrics' />"><i class="fa fa-fw fa-bar-chart-o"></i> M&eacute;tricas</a>
 		            </li>
 		            <li>
+		                <a href="<c:url value='/list-consultations' />"><i class="fa fa-fw fa-bar-chart-o"></i> Consultas</a>
+		            </li>
+		            <%-- <li>
 		                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Consultas <i class="fa fa-fw fa-caret-down"></i></a>
 		                <ul id="demo" class="collapse">
 		                    <li>
 		                        <a href="<c:url value="/create-consultation" />"> <i class="fa fa-fw fa-pencil"></i> Crear consulta</a>
 		                    </li>
 		                </ul>
-		            </li>
+		            </li> --%>
 		            <li>
 		                <a href="<c:url value="/logout" />"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
 		            </li>
@@ -59,10 +59,21 @@
 		
 		<div id="page-wrapper">
 		    <div class="container-fluid">
-		        <div class="panel panel-default">
-		              <!-- Default panel contents -->
-		            <div class="panel-heading"><span class="lead">M&eacute;tricas</span></div>
-		        </div>
+		        <div class="row">
+                    <div class="col-lg-12">
+                    	<ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-user"></i> M&eacute;tricas
+                            </li>
+                        </ol>
+                        <h1 class="page-header">
+                            M&eacute;tricas
+                        </h1>
+                    </div>
+                </div>
 		        <sec:authorize access="hasRole('ADMIN')">
 				<!-- usar este bloque para autorizar la operacion  -->
 		        </sec:authorize>
@@ -80,10 +91,10 @@
 		        	
 		        	<!-- Torta de Pacientes -->
 		        	<div class="col-md-4 col-sm-4 col-xs-12">
-	                	<div class="x_panel">
-	                  		<div class="x_title">
-		                    	<h2>Pacientes <small>Rangos de edad</small></h2>
-		                    	<ul class="nav navbar-right panel_toolbox">
+	                	<div class="x_panelNew">
+	                  		<div class="x_titleNew">
+		                    	<h3>Pacientes <small>Rangos de edad</small></h3>
+		                    	<!-- <ul class="nav navbar-right panel_toolbox"> 
 			                      	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
 			                    	<li class="dropdown">
 			                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
@@ -93,10 +104,10 @@
 			                        	</ul>
 			                      	</li>
 			                      	<li><a class="close-link"><i class="fa fa-close"></i></a></li>
-		                    	</ul>
+		                    	</ul> -->
 		                    	<div class="clearfix"></div>
 	                  		</div>
-	                  		<div class="x_content">
+	                  		<div class="x_contentNew">
 	                  			<canvas id="ageChart" width="400" height="300"></canvas>
 	                  		</div>
 	                	</div>
@@ -105,23 +116,12 @@
 	              
 	              <!-- Torta de SAME -->
 		        	<div class="col-md-4 col-sm-4 col-xs-12">
-	                	<div class="x_panel">
-	                  		<div class="x_title">
-		                    	<h2>SAME <small>Llamados</small></h2>
-		                    	<ul class="nav navbar-right panel_toolbox">
-			                      	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-			                    	<li class="dropdown">
-			                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-			                        	<ul class="dropdown-menu" role="menu">
-			                          		<li><a href="#">Opcion 1</a></li>
-			                          		<li><a href="#">Opcion 2</a></li>
-			                        	</ul>
-			                      	</li>
-			                      	<li><a class="close-link"><i class="fa fa-close"></i></a></li>
-		                    	</ul>
+	                	<div class="x_panelNew">
+	                  		<div class="x_titleNew">
+		                    	<h3>SAME <small>Llamados</small></h3>
 		                    	<div class="clearfix"></div>
 	                  		</div>
-	                  		<div class="x_content">
+	                  		<div class="x_contentNew">
 	                  			<canvas id="sameChart" width="400" height="300"></canvas>
 	                  		</div>
 	                	</div>
@@ -130,23 +130,12 @@
 	              
 	              <!-- Torta de Traslados -->
 		        	<div class="col-md-4 col-sm-4 col-xs-12">
-	                	<div class="x_panel">
-	                  		<div class="x_title">
-		                    	<h2>Traslados <small>Llamados</small></h2>
-		                    	<ul class="nav navbar-right panel_toolbox">
-			                      	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-			                    	<li class="dropdown">
-			                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-			                        	<ul class="dropdown-menu" role="menu">
-			                          		<li><a href="#">Opcion 1</a></li>
-			                          		<li><a href="#">Opcion 2</a></li>
-			                        	</ul>
-			                      	</li>
-			                      	<li><a class="close-link"><i class="fa fa-close"></i></a></li>
-		                    	</ul>
+	                	<div class="x_panelNew">
+	                  		<div class="x_titleNew">
+		                    	<h3>Traslados <small>Llamados</small></h3>
 		                    	<div class="clearfix"></div>
 	                  		</div>
-	                  		<div class="x_content">
+	                  		<div class="x_contentNew">
 	                  			<canvas id="patientTransportationChart" width="400" height="300"></canvas>
 	                  		</div>
 	                	</div>
@@ -158,48 +147,26 @@
 	           <div class="row">
 				  <!-- Torta de Antecedentes -->
 				  <div class="col-md-6 col-sm-6 col-xs-12">
-				      	<div class="x_panel">
-				        	<div class="x_title">
-					           	<h2>Antecedentes <small>M&eacute;dicos</small></h2>
-					           	<ul class="nav navbar-right panel_toolbox">
-					              	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-					            	<li class="dropdown">
-					                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-					                	<ul class="dropdown-menu" role="menu">
-					                  		<li><a href="#">Opcion 1</a></li>
-					                  		<li><a href="#">Opcion 2</a></li>
-					                	</ul>
-					              	</li>
-					              	<li><a class="close-link"><i class="fa fa-close"></i></a></li>
-					           	</ul>
+				      	<div class="x_panelNew">
+				        	<div class="x_titleNew">
+					           	<h3>Antecedentes <small>M&eacute;dicos</small></h3>
 					           	<div class="clearfix"></div>
 				        	</div>
-			        		<div class="x_content">
+			        		<div class="x_contentNew">
 			        			<canvas id="medicalHistoryChart" width="400" height="300"></canvas>
 			     			</div>
 				   		</div>
 				  </div>
-				  <!-- / Torta de Pacientes -->	   
+				  <!-- / Torta de Antecedentes -->	   
 	           
 	            <!-- Torta de Motivos -->
 				<div class="col-md-6 col-sm-6 col-xs-12">
-				      	<div class="x_panel">
-				        	<div class="x_title">
-					           	<h2>Motivos<small></small></h2>
-					           	<ul class="nav navbar-right panel_toolbox">
-					              	<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-					            	<li class="dropdown">
-					                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-					                	<ul class="dropdown-menu" role="menu">
-					                  		<li><a href="#">Opcion 1</a></li>
-					                  		<li><a href="#">Opcion 2</a></li>
-					                	</ul>
-					              	</li>
-					              	<li><a class="close-link"><i class="fa fa-close"></i></a></li>
-					           	</ul>
+				      	<div class="x_panelNew">
+				        	<div class="x_titleNew">
+					           	<h3>Motivos<small></small></h3>
 				           		<div class="clearfix"></div>
 			        		</div>
-			        		<div class="x_content">
+			        		<div class="x_contentNew">
 			        			<canvas id="reasonChart" width="400" height="300"></canvas>
 			     			</div>
 				   		</div>
