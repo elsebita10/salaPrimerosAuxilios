@@ -22,21 +22,23 @@
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<div class="row">
-                    <div class="col-lg-12">
-                    	<ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-edit"></i>  Consultas
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-pencil"></i>   <a href="<c:url value="/create-consultation" />">Crear consulta</a>
-                            </li>
-                        </ol>
-                        <h1 class="page-header">
-                            Consultas
-                        </h1>
+                    <div id="page-title" class="col-lg-12">
+                    	<div class="col-lg-4">
+	                    	<ol class="breadcrumb">
+	                            <li>
+	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
+	                            </li>
+	                            <li>
+	                                <i class="fa fa-edit"></i>  Consultas
+	                            </li>
+	                            <li class="active">
+	                                <i class="fa fa-pencil"></i>   <a href="<c:url value="/create-consultation" />">Crear consulta</a>
+	                            </li>
+	                        </ol>
+	                    </div>
+	                    <div class="col-lg-4">
+	                        <h1 class="page-header">Consultas</h1>
+                    	</div>
                     </div>
                 </div>
                 <form:form class="form-horizontal" method="POST" modelAttribute="consultationDTO" name="form">

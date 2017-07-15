@@ -22,21 +22,23 @@
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<div class="row">
-                    <div class="col-lg-12">
-                    	<ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-user"></i>  <a href="<c:url value="/list-users" />">Usuarios</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-user-plus"></i> Crear usuario nuevo
-                            </li>
-                        </ol>
-                        <h1 class="page-header">
-                            Usuarios
-                        </h1>
+                    <div id="page-title" class="col-lg-12">
+                    	<div class="col-lg-4"> 
+	                    	<ol class="breadcrumb">
+	                            <li>
+	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
+	                            </li>
+	                            <li>
+	                                <i class="fa fa-user"></i>  <a href="<c:url value="/list-users" />">Usuarios</a>
+	                            </li>
+	                            <li class="active">
+	                                <i class="fa fa-user-plus"></i> Crear usuario nuevo
+	                            </li>
+	                        </ol>
+	                    </div>
+	                    <div class="col-lg-4"> 
+	                        <h1 class="page-header">Usuarios</h1>
+	                    </div>
                     </div>
                 </div>
                 <div class="row">

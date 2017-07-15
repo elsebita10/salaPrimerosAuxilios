@@ -22,19 +22,21 @@
 		<div id="page-wrapper">
 		    <div class="container-fluid">
 		        <div class="row">
-                    <div class="col-lg-12">
-                    	<ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-bar-chart-o"></i> M&eacute;tricas
-                            </li>
-                        </ol>
-                        <h1 class="page-header">
-                            M&eacute;tricas
-                        </h1>
-                    </div>
+                    <div id="page-title" class="col-lg-12">
+	                	<div class="col-lg-4"> 
+	                    	<ol class="breadcrumb">
+	                            <li>
+	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
+	                            </li>
+	                            <li class="active">
+	                                <i class="fa fa-bar-chart-o"></i> M&eacute;tricas
+	                            </li>
+	                        </ol>
+	                    </div>
+	                    <div class="col-lg-4">
+                        	<h1 class="page-header">M&eacute;tricas</h1></div>
+                		</div>
+                	</div>	
                 </div>
 		        <sec:authorize access="hasRole('ADMIN')">
 				<!-- usar este bloque para autorizar la operacion  -->
