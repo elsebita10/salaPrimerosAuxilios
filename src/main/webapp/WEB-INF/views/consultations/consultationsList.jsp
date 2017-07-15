@@ -27,7 +27,7 @@
                                 <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-user"></i> Consultas
+                                <i class="fa fa-stethoscope custom"></i> Consultas
                             </li>
                         </ol>
                         <h1 class="page-header">
@@ -37,9 +37,8 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
-                    	<div class="form-group input-group">
-                        	<input type="text" id="userSearchText" class="form-control">
-                        	<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+                        <div class="form-group input-group">
+                        	<input type="text" id="userSearchText" class="form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
                         </div>
                     </div>
                 </div>

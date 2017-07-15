@@ -28,7 +28,7 @@
                                 <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-user"></i> M&eacute;tricas
+                                <i class="fa fa-bar-chart-o"></i> M&eacute;tricas
                             </li>
                         </ol>
                         <h1 class="page-header">
@@ -41,16 +41,10 @@
 		        </sec:authorize>
 		        
 		        <div class="clearfix"></div>
-		        
+		        	<h3><i class="fa fa-fw fa-wheelchair custom"></i> Pacientes: <small><label id="sexCount"/></small></h3>
+		        	<h4><i class="fa fa-male"></i> Hombres: <small><label id="menCount"/></small></h4>
+		        	<h4><i class="fa fa-female"></i> Mujeres: <small><label id="womenCount"/></small></h4>
 		        <div class="row">
-		        	<h3>Pacientes <small>Cantidad: <label id="sexCount"/></small></h3>
-		        	<h4>Hombres: <small><label id="menCount"/></small></h4>
-		        	<h4>Mujeres: <small><label id="womenCount"/></small></h4>
-		        	</br>
-		        </div>
-		        
-		        <div class="row">
-		        	
 		        	<!-- Torta de Pacientes -->
 		        	<div class="col-md-4 col-sm-4 col-xs-12">
 	                	<div class="x_panelNew">
