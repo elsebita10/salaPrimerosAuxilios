@@ -188,8 +188,12 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/list-users" }, method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
+		int usersCount=0;
 		List<User> users = userService.findAllUsers();
+		if (users!=null)
+			usersCount = users.size();
 	    model.addAttribute("users", users);
+	    model.addAttribute("usersCount", usersCount);
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "users/usersList";
 	}

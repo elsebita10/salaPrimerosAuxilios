@@ -274,7 +274,6 @@ ul.alert-dropdown {
 
 .panel-heading {
 	text-align: center;
-	padding-top: 25px;
 }
 
 .panel-body {
@@ -608,4 +607,7 @@ ul.alert-dropdown {
     height: 0;
     clear: both;
     visibility: hidden;
+}
+.custombutton {
+    width: 35px !important;
 }
