@@ -4,7 +4,6 @@ import java.util.List;
 
 import ar.com.buildingways.salaprimerosauxilios.dto.ConsultationDTO;
 import ar.com.buildingways.salaprimerosauxilios.model.Consultation;
-import ar.com.buildingways.salaprimerosauxilios.service.ConsultationService;
 
 public interface ConsultationService {
 
@@ -22,5 +21,4 @@ public interface ConsultationService {
 	
 	Consultation convertDTOToObject(ConsultationDTO consultationDTO);
 	
-
 }

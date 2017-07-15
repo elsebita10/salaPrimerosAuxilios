@@ -38,17 +38,12 @@
 		            <li>
 		                <a href="<c:url value='/get-metrics' />"><i class="fa fa-fw fa-bar-chart-o"></i> M&eacute;tricas</a>
 		            </li>
-		            <li>
+		            <li class="active">
 		                <a href="<c:url value='/list-consultations' />"><i class="fa fa-fw fa-bar-chart-o"></i> Consultas</a>
 		            </li>
-		            <%-- <li>
-		                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Consultas <i class="fa fa-fw fa-caret-down"></i></a>
-		                <ul id="demo" class="collapse">
-		                    <li class="active">
-		                        <a href="<c:url value="/create-consultation" />"> <i class="fa fa-fw fa-pencil"></i> Crear consulta</a>
-		                    </li>
-		                </ul>
-		            </li> --%>
+		            <li>
+		                <a href="<c:url value='/list-patients' />"><i class="fa fa-fw fa-bar-chart-o"></i> Pacientes</a>
+		            </li>
 		            <li>
 		                <a href="<c:url value="/logout" />"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
 		            </li>

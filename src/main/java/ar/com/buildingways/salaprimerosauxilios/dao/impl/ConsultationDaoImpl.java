@@ -1,7 +1,7 @@
 package ar.com.buildingways.salaprimerosauxilios.dao.impl;
 
-import java.util.Date;
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -20,9 +20,7 @@ public class ConsultationDaoImpl extends AbstractDao<Integer, Consultation> impl
 
 	@Override
 	public void saveConsultation(Consultation consultation) {
-		consultation.setCreatedDate(new Date());
 		persist(consultation);
-
 	}
 
 	@SuppressWarnings("unchecked")
@@ -53,7 +51,7 @@ public class ConsultationDaoImpl extends AbstractDao<Integer, Consultation> impl
 	@Override
 	public Patient getPatientByDNI(Integer dni) {
 		Criteria criteria = getSession().createCriteria(Patient.class, "patient");
-		criteria.add(Restrictions.eqProperty("dni",dni.toString()));
+		criteria.add(Restrictions.eq("dni",String.valueOf(dni)));
 		Patient patient = (Patient) criteria.uniqueResult();
 		return patient;
 	}
@@ -69,6 +67,8 @@ public class ConsultationDaoImpl extends AbstractDao<Integer, Consultation> impl
 		Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("id", consultationId));
         Consultation consultation = (Consultation)criteria.uniqueResult();
+        Patient patient = consultation.getPatient();
+        patient.getConsultations().remove(consultation);
         delete(consultation);
 	}
 

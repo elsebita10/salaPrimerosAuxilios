@@ -55,7 +55,7 @@ public class ConsultationServiceImpl implements ConsultationService{
             patient.setLastName(consultationDTO.getLastName());
             patient.setAge(consultationDTO.getAge());
             patient.setSex(consultationDTO.getSex());
-            patient.setDni(consultationDTO.getDni());
+            patient.setDni(Integer.valueOf(consultationDTO.getDni()));
             patient.setEmail(consultationDTO.getEmail());
             patient.setAddress(consultationDTO.getAddress());
             patient.setPhone(consultationDTO.getPhone());
@@ -66,7 +66,6 @@ public class ConsultationServiceImpl implements ConsultationService{
 	@Override
 	public void deleteConsultationById(Integer consultationId) {
 		consultationDao.deleteById(consultationId);
-		
 	}
 
 	@Override
@@ -90,7 +89,7 @@ public class ConsultationServiceImpl implements ConsultationService{
         consultationDTO.setLastName(patient.getLastName());
         consultationDTO.setAge(patient.getAge());
         consultationDTO.setSex(patient.getSex());
-        consultationDTO.setDni(patient.getDni());
+        consultationDTO.setDni(patient.getDni().toString());
         consultationDTO.setEmail(patient.getEmail());
         consultationDTO.setAddress(patient.getAddress());
         patient.setPhone(patient.getPhone());
@@ -112,16 +111,18 @@ public class ConsultationServiceImpl implements ConsultationService{
         consultation.setAmbulance(consultationDTO.getAmbulance());
         consultation.setPatientTransport(consultationDTO.isPatientTransport());
         consultation.setMedicalInstitution(consultationDTO.getMedicalInstitution());
-        consultation.setLastModifiedDate(new Date());
+        consultation.setCreatedDate(new Date());
         Patient patient = consultationDao.getPatientByDNI(Integer.valueOf(consultationDTO.getDni()));
-        if (patient==null)
+        if (patient==null){
         	patient = new Patient();
-        patient.setDni(consultationDTO.getDni());
+        }else{
+        	patient.getConsultations().add(consultation);
+        }
         patient.setFirstName(consultationDTO.getFirstName());
         patient.setLastName(consultationDTO.getLastName());
         patient.setAge(consultationDTO.getAge());
         patient.setSex(consultationDTO.getSex());
-        patient.setDni(consultationDTO.getDni());
+        patient.setDni(Integer.valueOf(consultationDTO.getDni()));
         patient.setEmail(consultationDTO.getEmail());
         patient.setAddress(consultationDTO.getAddress());
         patient.setPhone(consultationDTO.getPhone());

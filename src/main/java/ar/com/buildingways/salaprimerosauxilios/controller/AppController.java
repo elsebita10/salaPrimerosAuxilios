@@ -3,9 +3,11 @@ package ar.com.buildingways.salaprimerosauxilios.controller;
 
 import java.util.List;
 import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -25,15 +27,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import ar.com.buildingways.salaprimerosauxilios.model.User;
-import ar.com.buildingways.salaprimerosauxilios.model.UserProfile;
-import ar.com.buildingways.salaprimerosauxilios.service.UserProfileService;
-import ar.com.buildingways.salaprimerosauxilios.service.UserService;
+
 import ar.com.buildingways.salaprimerosauxilios.dto.ConsultationDTO;
 import ar.com.buildingways.salaprimerosauxilios.model.Consultation;
 import ar.com.buildingways.salaprimerosauxilios.model.Patient;
+import ar.com.buildingways.salaprimerosauxilios.model.User;
+import ar.com.buildingways.salaprimerosauxilios.model.UserProfile;
 import ar.com.buildingways.salaprimerosauxilios.service.ConsultationService;
 import ar.com.buildingways.salaprimerosauxilios.service.PatientService;
+import ar.com.buildingways.salaprimerosauxilios.service.UserProfileService;
+import ar.com.buildingways.salaprimerosauxilios.service.UserService;
 
 @Controller
 @RequestMapping("/")
@@ -90,7 +93,7 @@ public class AppController {
 	@RequestMapping(value = { "/getallpatients" }, method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<Patient>> getAllPatients(ModelMap model) {
-		List<Patient> patients = patientService.getAllPatients();
+		List<Patient> patients =patientService.getAllPatients();
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return new ResponseEntity<List<Patient>>(patients,HttpStatus.OK);
 	}
@@ -273,7 +276,64 @@ public class AppController {
 		    return "users/userFormSuccess";
 		}
 	}
+	
+	/**
+	 * This method will list all existing patients.
+	 */
+	@RequestMapping(value = { "/list-patients" }, method = RequestMethod.GET)
+	public String listPatients(ModelMap model) {
+		List<Patient> patients = patientService.getAllPatients();
+	    model.addAttribute("patients", patients);
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "patients/patientsList";
+	}
+	
+	/**
+	 * This method will provide the medium to update an existing user.
+	 */
+	@RequestMapping(value = { "/edit-patient-{id}" }, method = RequestMethod.GET)
+	public String editPatient(@PathVariable Integer id, ModelMap model) {
+		Patient patient = patientService.findById(id);
+	    model.addAttribute("patient", patient);
+	    model.addAttribute("edit", true);
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "patients/patientForm";
+	}
 	     
+	/**
+	 * This method will be called on form submission, handling POST request for
+	 * updating user in database. It also validates the user input
+	 */
+	@RequestMapping(value = { "/edit-patient-{id}" }, method = RequestMethod.POST)
+	public String updatePatient(@Valid Patient patient, BindingResult result, ModelMap model, @PathVariable Integer id) {
+		if (result.hasErrors()) {
+			return "patients/patientForm";
+	    }
+	 
+	    if(patientService.findByDni(patient.getDni())==null){
+	    	FieldError patientError =new FieldError("patient","dni",messageSource.getMessage("not.patient.exists", new String[]{patient.getDni().toString()}, Locale.getDefault()));
+	       	result.addError(patientError);
+	        return "patients/patientForm";
+	    }
+	 
+	    patientService.updatePatient(patient);
+	    model.addAttribute("success", "El paciente con DNI " + patient.getDni() + " fue actualizado con éxito.");
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "patients/patientFormSuccess";
+	}
+	 
+	/**
+	 * This method will delete an user by it's Username value.
+	 */
+	@RequestMapping(value = { "/delete-patient-{id}" }, method = RequestMethod.GET)
+	public String deletePatient(@PathVariable Integer id, ModelMap model) {
+		Integer dniPatientDeleted = patientService.findById(id).getDni();
+		patientService.deletePatientById(id);
+		model.addAttribute("success", "El paciente con DNI " + dniPatientDeleted + " fue eliminado con éxito.");
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "patients/patientFormSuccess";
+	}
+	
 	/**
 	  * This method will provide UserProfile list to views
 	  */

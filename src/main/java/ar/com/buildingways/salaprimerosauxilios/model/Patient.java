@@ -5,11 +5,13 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -40,9 +42,9 @@ public class Patient {
 	@Column(name="SEX", nullable=false)
 	private String sex;
 	
-	@NotEmpty
+	@NotNull
 	@Column(name="DNI", nullable=false)
-	private String dni;
+	private Integer dni;
 	
 	@Column(name="EMAIL")
 	private String email;
@@ -56,7 +58,7 @@ public class Patient {
 	private String phone;
 	
 	@JsonIgnore
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="patient") 
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL, mappedBy="patient",orphanRemoval=true) 
 	private Set<Consultation> consultations;
 	
 	
@@ -100,11 +102,11 @@ public class Patient {
 		this.sex = sex;
 	}
 
-	public String getDni() {
+	public Integer getDni() {
 		return dni;
 	}
 
-	public void setDni(String dni) {
+	public void setDni(Integer dni) {
 		this.dni = dni;
 	}
 

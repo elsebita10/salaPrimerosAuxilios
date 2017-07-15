@@ -40,6 +40,9 @@
 		            <li>
 		                <a href="<c:url value='/list-consultations' />"><i class="fa fa-fw fa-bar-chart-o"></i> Consultas</a>
 		            </li>
+		            <li>
+		                <a href="<c:url value='/list-patients' />"><i class="fa fa-fw fa-bar-chart-o"></i> Pacientes</a>
+		            </li>
 		            <%-- <li>
 		                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Consultas <i class="fa fa-fw fa-caret-down"></i></a>
 		                <ul id="demo" class="collapse">
