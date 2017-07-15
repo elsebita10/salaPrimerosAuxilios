@@ -32,16 +32,16 @@
 		                <a href="<c:url value="/" />"><i class="fa fa-fw fa-home"></i> Inicio</a>
 		            </li>
 		            <li>
-		                <a href="<c:url value='/list-users' />"><i class="fa fa-fw fa-user"></i> Usuarios</a>
+		                <a href="<c:url value='/list-users' />"><i class="fa fa-fw fa-users"></i> Usuarios</a>
 		            </li>
 		            <li>
 		                <a href="<c:url value='/get-metrics' />"><i class="fa fa-fw fa-bar-chart-o"></i> M&eacute;tricas</a>
 		            </li>
 		            <li>
-		                <a href="<c:url value='/list-consultations' />"><i class="fa fa-fw fa-bar-chart-o"></i> Consultas</a>
+		                <a href="<c:url value='/list-consultations' />"><i class="fa fa-fw fa-stethoscope custom"></i> Consultas</a>
 		            </li>
 		            <li class="active">
-		                <a href="<c:url value='/list-patients' />"><i class="fa fa-fw fa-bar-chart-o"></i> Pacientes</a>
+		                <a href="<c:url value='/list-patients' />"><i class="fa fa-fw fa-wheelchair custom"></i> Pacientes</a>
 		            </li>
 		            <%-- <li>
 		                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Consultas <i class="fa fa-fw fa-caret-down"></i></a>
@@ -67,7 +67,7 @@
                                 <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-user"></i> Pacientes
+                                <i class="fa fa-wheelchair custom"></i> Pacientes
                             </li>
                         </ol>
                         <h1 class="page-header">
