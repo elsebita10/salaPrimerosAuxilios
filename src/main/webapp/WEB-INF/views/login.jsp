@@ -16,7 +16,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
+                <div id="panel-login" class="login-panel panel panel-default">
                     <div class="login-form">
                         <c:url var="loginUrl" value="/login" />
                         <form action="${loginUrl}" method="post" class="form-horizontal">
