@@ -75,8 +75,8 @@
 				                        <td>${user.email}</td>
 										<td align="center">
 										  <a class="btn btn-success custombutton"><em class="fa fa-info"></em></a>
-										  <a class="btn btn-warning custombutton"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger custombutton"><em class="fa fa-trash"></em></a>
+										  <a class="btn btn-warning custombutton" href="<c:url value='/edit-user-${user.username}' />"><em class="fa fa-pencil"></em></a>
+										  <a class="btn btn-danger custombutton" href="<c:url value='/delete-user-${user.username}' />"><em class="fa fa-trash"></em></a>
 										</td>
 									  </tr>
 		                			</c:forEach>
