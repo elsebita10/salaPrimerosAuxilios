@@ -11,6 +11,23 @@ body {
     background-color: #222;
 }
 
+.page-header {
+    padding-bottom: 0px;
+    margin: 10px 10px;
+    border-bottom: none;
+    text-align: center;
+}
+
+#page-title {
+    border-bottom: 1px solid #dfdfdf;
+    margin: 10px 0px 5px 0px;
+}
+
+#page-subtitle {
+    text-align: left;
+    margin: 35px 10px 10px;
+}
+
 @media(min-width:768px) {
     body {
         margin-top: 50px;
@@ -257,11 +274,13 @@ ul.alert-dropdown {
 
 .panel-heading {
 	text-align: center;
+	padding-top: 25px;
 }
 
 .panel-body {
 	text-align: center;
 	font-size: 16px;
+	padding-bottom: 0px;
 }
 
 .checkbox label {
