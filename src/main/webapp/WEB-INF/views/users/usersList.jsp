@@ -45,7 +45,7 @@
 							  	<div class="row">
 								  <div class="col col-xs-6">
 								  	  <div class="form-group input-group">
-	                        			  <input type="text" id="userSearchText" class="form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
+	                        			  <input type="text" id="userSearchText" class="form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome; width:300px;">
 	                        		  </div>
 								  </div>
 								  <div class="col col-xs-6 text-right">
@@ -74,34 +74,43 @@
 				                        <td>${user.address}</td>
 				                        <td>${user.email}</td>
 										<td align="center">
-										  <a class="btn btn-success"><em class="fa fa-info"></em></a>
-										  <a class="btn btn-warning"><em class="fa fa-pencil"></em></a>
-										  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+										  <a class="btn btn-success custombutton"><em class="fa fa-info"></em></a>
+										  <a class="btn btn-warning custombutton"><em class="fa fa-pencil"></em></a>
+										  <a class="btn btn-danger custombutton"><em class="fa fa-trash"></em></a>
 										</td>
 									  </tr>
 		                			</c:forEach>
 								 </tbody>
 								</table>
 						    </div>
-						    <div class="panel-footer">
-								<div class="row">
-								  <div id="current-page" class="col col-xs-4">P&aacute;gina 1 de 5
-								  </div>
-								  <div class="col col-xs-8">
-									<ul class="pagination hidden-xs pull-right">
-									  <li><a href="#">1</a></li>
-									  <li><a href="#">2</a></li>
-									  <li><a href="#">3</a></li>
-									  <li><a href="#">4</a></li>
-									  <li><a href="#">5</a></li>
-									</ul>
-									<ul class="pagination visible-xs pull-right">
-										<li><a href="#">&laquo;</a></li>
-										<li><a href="#">&raquo;</a></li>
-									</ul>
-								  </div>
-								</div>
-						  	</div>
+							<div class="panel-footer">
+			                    <div class="row">
+			                    	<div class="col col-xs-3" style="padding-top:25px;">
+			                    		<div id="current-page">P&aacute;gina 1 de 5</div>
+			                    	</div>
+			                        <div class="col col-xs-6">
+			                            <nav aria-label="Page navigation" class="text-center">
+			                                <ul class="pagination">
+			                                    <li>
+			                                        <a href="#" aria-label="Previous">
+			                                            <span aria-hidden="true">&laquo;</span>
+			                                        </a>
+			                                    </li>
+			                                    <li class="active"><a href="#">1</a></li>
+			                                    <li><a href="#">2</a></li>
+			                                    <li><a href="#">3</a></li>
+			                                    <li><a href="#">4</a></li>
+			                                    <li><a href="#">5</a></li>
+			                                    <li>
+			                                        <a href="#" aria-label="Next">
+			                                            <span aria-hidden="true">&raquo;</span>
+			                                        </a>
+			                                    </li>
+			                                </ul>
+			                            </nav>
+			                        </div>
+			                    </div>
+			                </div>
                    		</div>
             		</div> <!-- col-md-12 -->
             	</div> <!-- row -->

@@ -609,3 +609,6 @@ ul.alert-dropdown {
     clear: both;
     visibility: hidden;
 }
+.custombutton {
+    width: 35px !important;
+}
