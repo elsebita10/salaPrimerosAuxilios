@@ -27,7 +27,7 @@
                                 <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-user"></i> Usuarios
+                                <i class="fa fa-users"></i> Usuarios
                             </li>
                         </ol>
                         <h1 class="page-header">
@@ -41,8 +41,9 @@
 					  	<div class="panel-heading">
 						  	<div class="row">
 							  <div class="col col-xs-6">
-								<input type="text" id="userSearchText" class="form-control">
-                        		<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+							  	  <div class="form-group input-group">
+                        			  <input type="text" id="userSearchText" class="form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
+                        		  </div>
 							  </div>
 							  <div class="col col-xs-6 text-right">
 				            	<sec:authorize access="hasRole('ADMIN')">
