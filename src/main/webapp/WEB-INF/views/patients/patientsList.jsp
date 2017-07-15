@@ -31,17 +31,17 @@
 		            <li>
 		                <a href="<c:url value="/" />"><i class="fa fa-fw fa-home"></i> Inicio</a>
 		            </li>
-		            <li class="active">
-		                <a href="<c:url value='/list-users' />"><i class="fa fa-fw fa-user"></i> Usuarios</a>
+		            <li>
+		                <a href="<c:url value='/list-users' />"><i class="fa fa-fw fa-users"></i> Usuarios</a>
 		            </li>
 		            <li>
 		                <a href="<c:url value='/get-metrics' />"><i class="fa fa-fw fa-bar-chart-o"></i> M&eacute;tricas</a>
 		            </li>
 		            <li>
-		                <a href="<c:url value='/list-consultations' />"><i class="fa fa-fw fa-bar-chart-o"></i> Consultas</a>
+		                <a href="<c:url value='/list-consultations' />"><i class="fa fa-fw fa-stethoscope custom"></i> Consultas</a>
 		            </li>
-		            <li>
-		                <a href="<c:url value='/list-patients' />"><i class="fa fa-fw fa-bar-chart-o"></i> Pacientes</a>
+		            <li class="active">
+		                <a href="<c:url value='/list-patients' />"><i class="fa fa-fw fa-wheelchair custom"></i> Pacientes</a>
 		            </li>
 		            <%-- <li>
 		                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Consultas <i class="fa fa-fw fa-caret-down"></i></a>
@@ -67,11 +67,11 @@
                                 <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-user"></i> Consultas
+                                <i class="fa fa-wheelchair custom"></i> Pacientes
                             </li>
                         </ol>
                         <h1 class="page-header">
-                            Consultas
+                            Pacientes
                         </h1>
                     </div>
                 </div>
@@ -85,19 +85,20 @@
                 </div>
                 <div class="row">
                 	<div class="col-lg-12">
-                    	<h2>Listado de consultas</h2>
+                    	<h2>Listado de pacientes</h2>
                     	<div class="table-responsive">
-                            <table id="usersTable" class="table table-hover table-striped">
+                            <table id="patientsTable" class="table table-hover table-striped">
                                 <thead>
                                     <tr>
                                     	<th>ID</th>
-                                    	<th>Fecha</th>
-		                        		<th style="width: 200px">Nombre Paciente</th>
-		                        		<th>DNI Paciente</th>
-		                        		<th style="width: 200px">Motivo</th>
-		                        		<th>Antecedente</th>
-		                        		<th>SAME</th>
-		                        		<th>Traslado</th>
+                                    	<th>Nombre</th>
+		                        		<th>Apellido</th>
+		                        		<th>Edad</th>
+		                        		<th>Sexo</th>
+		                        		<th>DNI</th>
+		                        		<th style="width: 200px">Email</th>
+		                        		<th>Direccion</th>
+		                        		<th>Telefono</th>
 		                        		<sec:authorize access="hasRole('ADMIN')">
 		                            		<th width="100"></th>
 		                        		</sec:authorize>
@@ -107,21 +108,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${consultations}" var="consultation">
+                                    <c:forEach items="${patients}" var="patient">
 		                    		<tr>
-		                    			<td>${consultation.id}</td>
-		                        		<td>${consultation.createdDate}</td>
-		                        		<td>${consultation.patient.firstName} ${consultation.patient.lastName}</td>
-		                        		<td>${consultation.patient.dni}</td>
-		                        		<td>${consultation.reason}</td>
-		                        		<td>${consultation.medicalHistory}</td>
-		                        		<td>${consultation.same}</td>
-		                        		<td>${consultation.patientTransport}</td>
+		                    			<td>${patient.id}</td>
+		                        		<td>${patient.firstName}</td>
+		                        		<td>${patient.lastName}</td>
+		                        		<td>${patient.age}</td>
+		                        		<td>${patient.sex}</td>
+		                        		<td>${patient.dni}</td>
+		                        		<td>${patient.email}</td>
+		                        		<td>${patient.address}</td>
+		                        		<td>${patient.phone}</td>		                        		
 		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<td><a href="<c:url value='/edit-consultation-${consultation.id}' />" class="btn btn-success">Editar</a></td>
+		                            		<td><a href="<c:url value='/edit-patient-${patient.id}' />" class="btn btn-success">Editar</a></td>
 		                        		</sec:authorize>
 		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<td><a href="<c:url value='/delete-consultation-${consultation.id}' />" class="btn btn-danger">Eliminar</a></td>
+		                            		<td><a href="<c:url value='/delete-patient-${patient.id}' />" class="btn btn-danger">Eliminar</a></td>
 		                        		</sec:authorize>
 		                    		</tr>
 		                			</c:forEach>
@@ -130,13 +132,6 @@
                         </div>
                    </div>
             	</div> <!-- row -->
-                <div class="row">
-                    <div class="col-lg-6">
-	            	<sec:authorize access="hasRole('ADMIN')">
-		                <a href="<c:url value='/create-consultation' />" class="btn btn-primary">Crear consulta nueva</a>
-			        </sec:authorize>
-			        </div>
-            	</div>
 		    </div> <!-- container-fluid -->
 		</div> <!-- page-wrapper -->
 	</div> <!-- wrapper  -->

@@ -93,7 +93,7 @@ public class ConsultationServiceImpl implements ConsultationService{
         consultationDTO.setDni(patient.getDni());
         consultationDTO.setEmail(patient.getEmail());
         consultationDTO.setAddress(patient.getAddress());
-        patient.setPhone(patient.getPhone());
+        consultationDTO.setPhone(patient.getPhone());
 		return consultationDTO;
 	}
 
