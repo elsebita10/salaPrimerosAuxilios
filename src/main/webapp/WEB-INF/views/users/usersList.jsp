@@ -36,66 +36,77 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
-                    	<div class="form-group input-group">
-                        	<input type="text" id="userSearchText" class="form-control">
-                        	<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                	<div class="col-lg-12">
-                    	<h2>Listado de usuarios</h2>
-                    	<div class="table-responsive">
-                            <table id="usersTable" class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                    	<th>ID de usuario</th>
-		                        		<th>Username</th>
-		                        		<th>Direcci&oacute;n</th>
-		                        		<th>E-mail</th>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<th width="100"></th>
-		                        		</sec:authorize>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<th width="100"></th>
-		                        		</sec:authorize>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${users}" var="user">
-		                    		<tr>
-		                    			<td>${user.id}</td>
-		                        		<td>${user.username}</td>
-		                        		<td>${user.address}</td>
-		                        		<td>${user.email}</td>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<td><a href="<c:url value='/edit-user-${user.username}' />" class="btn btn-success">editar</a></td>
-		                        		</sec:authorize>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<td><a href="<c:url value='/delete-user-${user.username}' />" class="btn btn-danger">eliminar</a></td>
-		                        		</sec:authorize>
-		                    		</tr>
-		                			</c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
-                   </div>
+					<div class="col-md-12">
+						<div class="panel panel-default panel-table">
+					  	<div class="panel-heading">
+						  	<div class="row">
+							  <div class="col col-xs-6">
+								<input type="text" id="userSearchText" class="form-control">
+                        		<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+							  </div>
+							  <div class="col col-xs-6 text-right">
+				            	<sec:authorize access="hasRole('ADMIN')">
+					                <a href="<c:url value='/create-user' />" class="btn btn-primary">Crear usuario nuevo</a>
+						        </sec:authorize>
+						      </div>
+							</div>
+					  	</div>
+					  	<div class="panel-body">
+							<table id="usersTable" class="table table-striped table-bordered table-list">
+							  <thead>
+								<tr>
+									<th>ID de usuario</th>
+			                        <th>Username</th>
+			                        <th>Direcci&oacute;n</th>
+			                        <th>E-mail</th>
+									<th><em class="fa fa-cog"></em></th>
+								</tr> 
+							  </thead>
+							  <tbody>
+							  	<c:forEach items="${users}" var="user">
+								  <tr>
+									<td>${user.id}</td>
+			                        <td>${user.username}</td>
+			                        <td>${user.address}</td>
+			                        <td>${user.email}</td>
+									<td align="center">
+									  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+									  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+									</td>
+								  </tr>
+	                			</c:forEach>
+							 </tbody>
+							</table>
+					    </div>
+					    <div class="panel-footer">
+							<div class="row">
+							  <div class="col col-xs-4">Page 1 of 5
+							  </div>
+							  <div class="col col-xs-8">
+								<ul class="pagination hidden-xs pull-right">
+								  <li><a href="#">1</a></li>
+								  <li><a href="#">2</a></li>
+								  <li><a href="#">3</a></li>
+								  <li><a href="#">4</a></li>
+								  <li><a href="#">5</a></li>
+								</ul>
+								<ul class="pagination visible-xs pull-right">
+									<li><a href="#">&laquo;</a></li>
+									<li><a href="#">&raquo;</a></li>
+								</ul>
+							  </div>
+							</div>
+					  	</div>
+                   		</div>
+            		</div>
             	</div> <!-- row -->
-                <div class="row">
-                    <div class="col-lg-6">
-	            	<sec:authorize access="hasRole('ADMIN')">
-		                <a href="<c:url value='/create-user' />" class="btn btn-primary">Crear usuario nuevo</a>
-			        </sec:authorize>
-			        </div>
-            	</div>
-		    </div> <!-- container-fluid -->
+ 		    </div> <!-- container-fluid -->
 		</div> <!-- page-wrapper -->
 	</div> <!-- wrapper  -->
 	<script src="static/js/jquery.js"></script>
     <script src="static/js/bootstrap.js"></script>
     <script src="static/js/app.js"></script>
-<!--     <script>var myContextPath = "${pageContext.request.contextPath}"</script>
+<!--<script>var myContextPath = "${pageContext.request.contextPath}"</script>
     <script>var userList = ${users}</script> -->
     <script src="static/js/usersFunctions.js"></script>
 </body>
