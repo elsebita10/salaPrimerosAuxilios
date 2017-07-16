@@ -28,7 +28,7 @@
 	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
 	                            </li>
 	                            <li class="active">
-	                                <i class="fa fa-user"></i> Usuarios
+	                                <i class="fa fa-users"></i> Usuarios
 	                            </li>
 	                        </ol>
 	                     </div>

@@ -29,10 +29,10 @@
 	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
 	                            </li>
 	                            <li>
-	                                <i class="fa fa-user"></i>  <a href="<c:url value="/list-users" />">Usuarios</a>
+	                                <i class="fa fa-users"></i>  <a href="<c:url value="/list-users" />">Usuarios</a>
 	                            </li>
 	                            <li class="active">
-	                                <i class="fa fa-user-plus"></i> Crear usuario nuevo
+	                                <i class="fa fa-user-plus"></i> Crear usuario
 	                            </li>
 	                        </ol>
 	                    </div>

@@ -29,10 +29,10 @@
 	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
 	                            </li>
 	                            <li>
-	                                <i class="fa fa-edit"></i>  Consultas
+	                                <i class="fa fa-stethoscope custom"></i>  <a href="<c:url value="/list-consultations" />">Consultas</a>
 	                            </li>
-	                            <li class="active">
-	                                <i class="fa fa-pencil"></i>   <a href="<c:url value="/create-consultation" />">Crear consulta</a>
+	                            <li>
+	                                <i class="fa fa-stethoscope custom"></i>  Crear consulta
 	                            </li>
 	                        </ol>
 	                    </div>
