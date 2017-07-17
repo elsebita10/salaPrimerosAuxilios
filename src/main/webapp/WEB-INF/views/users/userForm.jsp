@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>ABM de usuarios</title>
-    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
@@ -29,10 +29,10 @@
 	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
 	                            </li>
 	                            <li>
-	                                <i class="fa fa-user"></i>  <a href="<c:url value="/list-users" />">Usuarios</a>
+	                                <i class="fa fa-users"></i>  <a href="<c:url value="/list-users" />">Usuarios</a>
 	                            </li>
 	                            <li class="active">
-	                                <i class="fa fa-user-plus"></i> Crear usuario nuevo
+	                                <i class="fa fa-user-plus"></i> Crear usuario
 	                            </li>
 	                        </ol>
 	                    </div>
@@ -131,13 +131,7 @@
 		</div> <!-- page-wrapper -->
 	</div> <!-- wrapper -->
 	<script src="static/js/jquery.js"></script>
-    <script src="static/js/bootstrap.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
     <script src="static/js/app.js"></script>
-    <script type="text/javascript">
-    	$(document).ready(function(){
-    		
-    	}
-    
-    </script>
 </body>
 </html>
