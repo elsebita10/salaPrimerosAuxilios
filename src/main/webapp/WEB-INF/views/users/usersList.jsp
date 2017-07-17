@@ -9,7 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Inicio</title>
-    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
@@ -38,22 +39,19 @@
                     </div>
                 </div>
                 <div class="row">
-					<div class="col-md-12">
+					<div class="col col-xs-6">
 						<h3 id="page-subtitle">Listado de usuarios</h3>
+					</div>
+					<div class="col col-xs-6 text-right"  style="height: 56px; padding-top: 12px;">
+						<sec:authorize access="hasRole('ADMIN')">
+				        	<a href="<c:url value='/create-user' />" class="btn btn-primary text-right">Crear usuario</a>
+					    </sec:authorize>
+					</div>
+				</div>
+				<div class="row">	
+					<div class="col-md-12">
 						<div class="panel panel-default panel-table">
 						  	<div class="panel-heading">
-							  	<div class="row">
-								  <div class="col col-xs-6" style="padding-top:15px;">
-								  	  <div class="form-group input-group">
-	                        			  <input type="text" id="userSearchText" class="form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome; width:300px;">
-	                        		  </div>
-								  </div>
-								  <div class="col col-xs-6 text-right" style="padding-top:15px;">
-					            	<sec:authorize access="hasRole('ADMIN')">
-						                <a href="<c:url value='/create-user' />" class="btn btn-primary">Crear usuario</a>
-							        </sec:authorize>
-							      </div>
-								</div>
 						  	</div>
 						  	<div class="panel-body">
 								<table id="usersTable" class="table table-striped table-bordered table-list">
@@ -83,7 +81,7 @@
 								 </tbody>
 								</table>
 						    </div>
-							<div class="panel-footer">
+							<!-- <div class="panel-footer">
 			                    <div class="row">
 			                    	<div class="col col-xs-3" style="padding-top:25px;">
 			                    		<div id="current-page">P&aacute;gina 1 de 5</div>
@@ -110,18 +108,23 @@
 			                            </nav>
 			                        </div>
 			                    </div>
-			                </div>
-                   		</div>
+			                </div> -->
+                   		</div> <!-- panel-table -->
             		</div> <!-- col-md-12 -->
             	</div> <!-- row -->
  		    </div> <!-- container-fluid -->
 		</div> <!-- page-wrapper -->
 	</div> <!-- wrapper  -->
 	<script src="static/js/jquery.js"></script>
-    <script src="static/js/bootstrap.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/bootstrap/js/jquery.dataTables_SP.js"></script>
+    <script src="static/bootstrap/js/dataTables.bootstrap.js"></script>
     <script src="static/js/app.js"></script>
 <!--<script>var myContextPath = "${pageContext.request.contextPath}"</script>
     <script>var userList = ${users}</script> -->
     <script src="static/js/usersFunctions.js"></script>
+    <script>
+    $('#usersTable').dataTable();
+    </script>
 </body>
 </html>

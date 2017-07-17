@@ -23,11 +23,6 @@ body {
     margin: 10px 0px 5px 0px;
 }
 
-#page-subtitle {
-    text-align: left;
-    margin: 35px 10px 10px;
-}
-
 @media(min-width:768px) {
     body {
         margin-top: 50px;

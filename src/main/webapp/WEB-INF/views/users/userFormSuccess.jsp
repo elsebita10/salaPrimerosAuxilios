@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>ABM de usuarios</title>
-    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <script src="static/js/jquery.js"></script>
-    <script src="static/js/bootstrap.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
     <script src="static/js/app.js"></script>
 </body>
 </html>
