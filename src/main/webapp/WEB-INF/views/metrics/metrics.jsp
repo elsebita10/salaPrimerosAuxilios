@@ -9,7 +9,7 @@
 	<title>Métricas</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
@@ -136,7 +136,7 @@
 		</div>
     </div>
 	<script src="static/js/jquery.js"></script>
-    <script src="static/js/bootstrap.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
     <script src="static/js/app.js"></script>
     <script src="static/js/charts/Chart.js"></script>
     <script>var myContextPath = "${pageContext.request.contextPath}"</script>

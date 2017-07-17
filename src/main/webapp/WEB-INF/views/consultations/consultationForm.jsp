@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Formulario de consultas</title>
-    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
@@ -29,10 +29,10 @@
 	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
 	                            </li>
 	                            <li>
-	                                <i class="fa fa-edit"></i>  Consultas
+	                                <i class="fa fa-stethoscope custom"></i>  <a href="<c:url value="/list-consultations" />">Consultas</a>
 	                            </li>
-	                            <li class="active">
-	                                <i class="fa fa-pencil"></i>   <a href="<c:url value="/create-consultation" />">Crear consulta</a>
+	                            <li>
+	                                <i class="fa fa-stethoscope custom"></i>  Crear consulta
 	                            </li>
 	                        </ol>
 	                    </div>
@@ -298,7 +298,7 @@
 		</div> <!-- page-wrapper -->
 	</div> <!-- wrapper -->
 	<script src="static/js/jquery.js"></script>
-    <script src="static/js/bootstrap.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
     <script src="static/js/app.js"></script>
 </body>
 </html>
