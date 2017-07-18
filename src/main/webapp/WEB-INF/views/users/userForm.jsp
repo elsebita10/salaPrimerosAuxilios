@@ -2,6 +2,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -118,12 +119,12 @@
 	                			<div class="form-group col-md-12">
 	                    		<label class="col-md-6 control-label" for="userProfiles">Rol:</label>
 	                    			<div class="col-md-6">
-<%-- 	                    			<security:authorize access="hasRole('ADMIN')">
+ 	                    				<sec:authorize access="hasRole('ADMIN')">
 	                        				<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" />
-	                        			</security:authorize> --%>
-	                        			<security:authorize access="hasRole('USER')">
+	                        			</sec:authorize>
+	                        			<sec:authorize access="hasRole('USER')">
 	                        				<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" disabled="true"/>
-	                        			</security:authorize>
+	                        			</sec:authorize>
 	                        			<div class="has-error">
 	                            			<form:errors path="userProfiles" class="help-inline"/>
 	                        			</div>
