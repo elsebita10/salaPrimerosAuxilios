@@ -21,34 +21,43 @@
 		</div>
 		<div id="page-wrapper">
 			<div class="container-fluid">
-				<div class="row">
-                    <div id="page-title" class="col-lg-12">
-                    	<div class="col-lg-4"> 
-	                    	<ol class="breadcrumb">
-	                            <li>
-	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
-	                            </li>
-	                            <li>
-	                                <i class="fa fa-users"></i>  <a href="<c:url value="/list-users" />">Usuarios</a>
-	                            </li>
-	                            <li class="active">
-	                                <i class="fa fa-user-plus"></i> Crear usuario
-	                            </li>
-	                        </ol>
-	                    </div>
-	                    <div class="col-lg-4"> 
-	                        <h1 class="page-header">Usuarios</h1>
-	                    </div>
-                    </div>
+		    	<div class="row col-lg-12 text-left">
+                 	<ol class="breadcrumb">
+                         <li>
+                             <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
+                         </li>
+                         <li>
+                             <i class="fa fa-users"></i>  <a href="<c:url value="/list-users" />">Usuarios</a>
+                         </li>
+                         <c:choose>
+                           	<c:when test="${edit}">
+                               	<li class="active">
+		                            <i class="fa fa-pencil"></i> Modificar usuario
+		                        </li>
+                           	</c:when>
+                           	<c:otherwise>
+                               	<li class="active">
+		                            <i class="fa fa-user-plus"></i> Crear usuario
+		                        </li>
+                           	</c:otherwise>
+                       	 </c:choose>
+                     </ol>
+                </div>
+                <div id="page-title" class="row col-lg-12 text-center" style="margin-top:-40px">
+                	<h1 class="page-header">Usuarios</h1>
                 </div>
                 <div class="row">
-                	<div class="col-lg-12">
-                		<h2>Formulario de registro de usuarios</h2>
-                		<br>
-                		<form:form method="POST" modelAttribute="user" class="form-horizontal">
+					<div class="col col-xs-6">
+                		<h3>Formulario de registro de usuarios</h3>
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col col-xs-6">                	
+	               		<br>
+	               		<form:form method="POST" modelAttribute="user" class="form-horizontal">
 	            			<form:input type="hidden" path="id" id="id"/>
 	            			<div class="row">
-	                			<div class="form-group col-md-6">
+	                			<div class="form-group col-md-12">
 	                    		<label class="col-md-6 control-label" for="username">Username:</label>
 		                    		<div class="col-md-6">
 		                        	<c:choose>
@@ -66,7 +75,7 @@
 	                			</div>
 	           	 			</div>
 	           	 			<div class="row">
-	                			<div class="form-group col-md-6">
+	                			<div class="form-group col-md-12">
 	                    		<label class="col-md-6 control-label" for="password">Contraseña:</label>
 	                    			<div class="col-md-6">
 	                        			<form:input type="password" path="password" id="password" class="form-control input-sm" />
@@ -77,7 +86,7 @@
 	                			</div>
 	            			</div>
 	            			<div class="row">
-	                			<div class="form-group col-md-6">
+	                			<div class="form-group col-md-12">
 	                    		<label class="col-md-6 control-label" for="lastName">Direcci&oacute;n:</label>
 	                    			<div class="col-md-6">
 	                        			<form:input type="text" path="address" id="address" class="form-control input-sm" />
@@ -88,7 +97,7 @@
 	                			</div>
 	            			</div>
 	            			<div class="row">
-	                			<div class="form-group col-md-6">
+	                			<div class="form-group col-md-12">
 	                    		<label class="col-md-6 control-label" for="email">E-mail:</label>
 	                   	 			<div class="col-md-6">
 	                        			<form:input type="text" path="email" id="email" class="form-control input-sm" />
@@ -99,7 +108,7 @@
 	                			</div>
 	            			</div>
 	            			<div class="row">
-	                			<div class="form-group col-md-6">
+	                			<div class="form-group col-md-12">
 	                    		<label class="col-md-6 control-label" for="userProfiles">Rol:</label>
 	                    			<div class="col-md-6">
 	                        			<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" />
@@ -115,17 +124,17 @@
 		                			<div class="form-actions">
 		                    		<c:choose>
 		                        		<c:when test="${edit}">
-		                        			<input type="submit" value="Actualizar" class="btn btn-success"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger">Cancelar</a>
+		                        			<input type="submit" value="Actualizar" class="btn btn-success" style="width:85px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
 		                        		</c:when>
 		                        		<c:otherwise>
-		                            		<input type="submit" value="Registrar" class="btn btn-success"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger">Cancelar</a>
+		                            		<input type="submit" value="Crear" class="btn btn-success" style="width:85px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
 		                        		</c:otherwise>
 		                    		</c:choose>
 		                			</div>
 		            			</div>
 		            		</div>
 	            		</form:form>
-                	</div> <!-- col 12 -->
+	            	</div> 
                 </div> <!-- row -->
 			</div> <!-- container-fluid -->
 		</div> <!-- page-wrapper -->
