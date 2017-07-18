@@ -24,10 +24,10 @@
 		    	<div class="row col-lg-12 text-left">
                  	<ol class="breadcrumb">
                          <li>
-                             <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
+                             <i class="fa fa-home"></i><a href="<c:url value="/" />"> Inicio</a>
                          </li>
                          <li>
-                             <i class="fa fa-users"></i>  <a href="<c:url value="/list-users" />">Usuarios</a>
+                             <i class="fa fa-users"></i><a href="<c:url value="/list-users" />"> Usuarios</a>
                          </li>
                          <c:choose>
                            	<c:when test="${edit}">
@@ -48,7 +48,14 @@
                 </div>
                 <div class="row">
 					<div class="col col-xs-6">
-                		<h3>Formulario de registro de usuarios</h3>
+						<c:choose>
+                           	<c:when test="${edit}">
+                				<h3>Formulario de modificaci&oacute;n de usuarios</h3>
+                			</c:when>
+                			<c:otherwise>
+                				<h3>Formulario de registro de usuarios</h3>	                				
+                			</c:otherwise>
+                		</c:choose>
                 	</div>
                 </div>
                 <div class="row">
@@ -58,7 +65,7 @@
 	            			<form:input type="hidden" path="id" id="id"/>
 	            			<div class="row">
 	                			<div class="form-group col-md-12">
-	                    		<label class="col-md-6 control-label" for="username">Username:</label>
+		                    		<label class="col-md-6 control-label" for="username">Username:</label>
 		                    		<div class="col-md-6">
 		                        	<c:choose>
 		                            	<c:when test="${edit}">
@@ -111,7 +118,12 @@
 	                			<div class="form-group col-md-12">
 	                    		<label class="col-md-6 control-label" for="userProfiles">Rol:</label>
 	                    			<div class="col-md-6">
-	                        			<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" />
+<%-- 	                    			<security:authorize access="hasRole('ADMIN')">
+	                        				<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" />
+	                        			</security:authorize> --%>
+	                        			<security:authorize access="hasRole('USER')">
+	                        				<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" disabled="true"/>
+	                        			</security:authorize>
 	                        			<div class="has-error">
 	                            			<form:errors path="userProfiles" class="help-inline"/>
 	                        			</div>
@@ -119,17 +131,17 @@
 	                			</div>
 	            			</div>
 	            			<br>
-	            			<div class="row">
-		    					<div class="col-md-6">
-		                			<div class="form-actions">
-		                    		<c:choose>
-		                        		<c:when test="${edit}">
-		                        			<input type="submit" value="Actualizar" class="btn btn-success" style="width:85px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
-		                        		</c:when>
-		                        		<c:otherwise>
-		                            		<input type="submit" value="Crear" class="btn btn-success" style="width:85px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
-		                        		</c:otherwise>
-		                    		</c:choose>
+	            			<div class="row" style="padding-top:50px">
+		    					<div class="form-group col-md-12">
+		                			<div class="form-actions text-center">
+			                    		<c:choose>
+			                        		<c:when test="${edit}">
+			                        			<input type="submit" value="Actualizar" class="btn btn-success" style="width:85px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
+			                        		</c:when>
+			                        		<c:otherwise>
+			                            		<input type="submit" value="Crear" class="btn btn-success" style="width:85px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
+			                        		</c:otherwise>
+			                    		</c:choose>
 		                			</div>
 		            			</div>
 		            		</div>

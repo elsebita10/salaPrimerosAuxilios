@@ -21,60 +21,69 @@
 		</div>
 		<div id="page-wrapper">
 			<div class="container-fluid">
-				<div class="row">
-                    <div class="col-lg-12">
-                    	<ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-edit"></i>  Pacientes
-                            </li>
-                        </ol>
-                        <h1 class="page-header">
-                            Pacientes
-                        </h1>
-                    </div>
+				<div class="row col-lg-12 text-left">
+                	<ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i><a href="<c:url value="/" />"> Inicio</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-wheelchair"></i><a href="<c:url value="/list-patients" />"> Pacientes</a>
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-edit"></i> Modificar paciente
+                        </li>
+                    </ol>
                 </div>
-                <form:form class="form-horizontal" method="POST" modelAttribute="patient" name="form">
-				<form:input type="hidden" path="id" id="id"/>
-                	<div class="col-lg-12">
-                		<h2>Formulario de pacientes</h2>
-                		<h5 style="color:#B40404;">(Los campos con &#42; son obligatorios)</h5> 
-                		<br>
-			               	<div class="col-lg-6">
-			               		<h3>Datos personales del paciente</h3>
-			               		<br>
-			               		<div class="form-group">
-									<label class="control-label col-xs-3">&#42; Apellido:</label>
-									<div class="col-xs-8">
+                <div id="page-title" class="row col-lg-12 text-center" style="margin-top:-40px">
+                	<h1 class="page-header">Pacientes</h1>
+                </div>
+                <div class="row">
+					<div class="col col-xs-6">
+                		<h3>Formulario de modificaci&oacute;n de pacientes</h3>
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col col-xs-6">                	
+	               		<br>
+		                <form:form class="form-horizontal" method="POST" modelAttribute="patient" name="form">
+							<form:input type="hidden" path="id" id="id"/>
+							<div class="row">
+			               		<div class="form-group col-md-12">
+									<label class="col-md-6 control-label">Apellido:</label>
+									<div class="col-md-6">
 										<form:input type="text" path="lastName" id="lastName" class="form-control input-sm" placeholder="Ingrese su apellido" required="required"/>
 		 								<div class="has-error">
 		                    				<form:errors path="lastName" class="help-inline"/>
 		                   	 			</div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-xs-3">&#42; Nombre:</label>
-									<div class="col-xs-8">
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-6 control-label">Nombre:</label>
+									<div class="col-md-6">
 										<form:input type="text" path="firstName" id="firstName" class="form-control input-sm" placeholder="Ingrese su nombre" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="firstName" class="help-inline"/>
 					                    </div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-xs-3">&#42; D.N.I.:</label>
-									<div class="col-xs-8">
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-6 control-label">D.N.I.:</label>
+									<div class="col-md-6">
 										<form:input type="text" path="dni" id="dni" class="form-control input-sm" placeholder="Ingrese su D.N.I." required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="dni" class="help-inline"/>
 					                    </div>			
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-xs-3">&#42; Sexo:</label>
-				 					<div class="col-xs-8">
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-6 control-label">Sexo:</label>
+				 					<div class="col-md-6">
 					 					<label class="radio-inline">
 											<form:radiobutton id="sex" path="sex" name="genderRadios" value="Masculino" required="required" /> Masculino
 										</label>
@@ -85,60 +94,61 @@
 										<br/>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-xs-3">&#42; Domicilio:</label>
-									<div class="col-xs-8">
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-6 control-label">Domicilio:</label>
+									<div class="col-md-6">
 										<form:input type="text" id="address" path="address" class="form-control input-sm" placeholder="Ingrese su domicilio" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="address" class="help-inline"/>
 					                    </div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-xs-3">&#42; Email:</label>
-									<div class="col-xs-8">
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-6 control-label">Email:</label>
+									<div class="col-md-6">
 										<form:input type="text" id="email" path="email" class="form-control input-sm" placeholder="Ingrese su correo electrónico"/>
 								   <%-- <div class="has-error">
 					                    	<form:errors path="patient.address" class="help-inline"/>
 					                    </div> --%>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-xs-3">&#42; Edad:</label>
-									<div class="col-xs-4">
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-6 control-label">Edad:</label>
+									<div class="col-md-6">
 										<form:input type="text" id="age" path="age" class="form-control input-sm" placeholder="Ingrese su edad" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="age" class="help-inline"/>
 					                    </div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-xs-3" >&#42; Tel&eacute;fono:</label>
-									<div class="col-xs-6">
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-6 control-label" >Tel&eacute;fono:</label>
+									<div class="col-md-6">
 										<form:input type="text" id="phone" path="phone" class="form-control input-sm" placeholder="Ingrese su teléfono" required="required"/>
 					 					<div class="has-error">
 					                    	<form:errors path="phone" class="help-inline"/>
 					                    </div>
 									</div>
 								</div>
-			               	</div>
-						<br>
-						<div class="row">
-		    					<div class="col-md-6">
-		                			<div class="form-actions">
-		                    		<c:choose>
-		                        		<c:when test="${edit}">
-		                        			<input type="submit" value="Actualizar" class="btn btn-success"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-patients' />" class="btn btn-danger">Cancelar</a>
-		                        		</c:when>
-		                        		<c:otherwise>
-		                            		<input type="submit" value="Guardar" class="btn btn-success"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-patients' />" class="btn btn-danger">Cancelar</a>
-		                        		</c:otherwise>
-		                    		</c:choose>
+							<br>
+							<div class="row" style="padding-top:70px">
+		    					<div class="form-group col-md-12">
+		                			<div class="form-actions text-center">
+	                        			<input type="submit" value="Actualizar" class="btn btn-success" style="width:85px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-patients' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
 		                			</div>
 		            			</div>
 		            		</div>
-						<br>				
-					</form:form>
+							<br>				
+						</form:form>
+					</div>
 	    		</div> <!-- row -->
 	    	</div> <!-- container-fluid -->
 		</div> <!-- page-wrapper -->

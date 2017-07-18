@@ -142,7 +142,7 @@
             			<div class="row">
 	    					<div class="col-md-6">
 	                			<div class="form-actions">
-                        			&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-patients' />" class="btn btn-danger style="width:85px;"">Volver</a>
+                        			&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-patients' />" class="btn btn-danger" style="width:85px;">Volver</a>
 	                			</div>
 	            			</div>
 	            		</div>

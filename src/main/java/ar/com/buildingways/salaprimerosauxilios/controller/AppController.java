@@ -1,6 +1,7 @@
 package ar.com.buildingways.salaprimerosauxilios.controller;
 
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
@@ -14,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
@@ -63,6 +65,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String returnHome(ModelMap model) {
+	    model.addAttribute("roleloggedinuser", getRoleByUsername());
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "commons/home";
 	}
@@ -419,6 +422,20 @@ public class AppController {
 	        userName = principal.toString();
 	    }
 	    	return userName;
+	}
+	
+	/**
+	 * This method returns the role of logged-in user.
+	 */
+	private Collection<? extends GrantedAuthority> getRoleByUsername(){
+		Collection<? extends GrantedAuthority> roles = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal instanceof UserDetails) {
+	    	roles = ((UserDetails)principal).getAuthorities();
+	    } else {
+	        roles = null;
+	    }
+	    	return roles;
 	}
 	     
 	/**

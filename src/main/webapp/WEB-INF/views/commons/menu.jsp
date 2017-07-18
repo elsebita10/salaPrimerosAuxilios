@@ -12,9 +12,11 @@
 	            <li>
 	                <a href="<c:url value="/" />"><i class="fa fa-fw fa-home"></i> Inicio</a>
 	            </li>
-	            <li>
-	                <a href="<c:url value='/list-users' />"><i class="fa fa-fw fa-users"></i> Usuarios</a>
-	            </li>
+	            <!-- <security:authorize access="hasRole('ADMIN')"> -->
+		            <li>
+		            	<a href="<c:url value='/list-users' />"><i class="fa fa-fw fa-users"></i> Usuarios</a>
+		            </li>
+	            <!-- </security:authorize> -->
 	            <li>
 	                <a href="<c:url value='/get-metrics' />"><i class="fa fa-fw fa-bar-chart-o"></i> M&eacute;tricas</a>
 	            </li>
