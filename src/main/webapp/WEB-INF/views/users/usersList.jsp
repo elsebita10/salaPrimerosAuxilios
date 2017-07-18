@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Inicio</title>
+    <title>Lista de Usuarios</title>
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="static/css/app.css" rel="stylesheet">
@@ -81,34 +81,6 @@
 								 </tbody>
 								</table>
 						    </div>
-							<!-- <div class="panel-footer">
-			                    <div class="row">
-			                    	<div class="col col-xs-3" style="padding-top:25px;">
-			                    		<div id="current-page">P&aacute;gina 1 de 5</div>
-			                    	</div>
-			                        <div class="col col-xs-6">
-			                            <nav aria-label="Page navigation" class="text-center">
-			                                <ul class="pagination">
-			                                    <li>
-			                                        <a href="#" aria-label="Previous">
-			                                            <span aria-hidden="true">&laquo;</span>
-			                                        </a>
-			                                    </li>
-			                                    <li class="active"><a href="#">1</a></li>
-			                                    <li><a href="#">2</a></li>
-			                                    <li><a href="#">3</a></li>
-			                                    <li><a href="#">4</a></li>
-			                                    <li><a href="#">5</a></li>
-			                                    <li>
-			                                        <a href="#" aria-label="Next">
-			                                            <span aria-hidden="true">&raquo;</span>
-			                                        </a>
-			                                    </li>
-			                                </ul>
-			                            </nav>
-			                        </div>
-			                    </div>
-			                </div> -->
                    		</div> <!-- panel-table -->
             		</div> <!-- col-md-12 -->
             	</div> <!-- row -->

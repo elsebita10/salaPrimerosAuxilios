@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>ABM de Usuarios</title>
+    <title>BM de Pacientes</title>
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -27,50 +27,76 @@
                             <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
                         </li>
                         <li>
-                            <i class="fa fa-users"></i>  <a href="<c:url value="/list-users" />">Usuarios</a>
+                            <i class="fa fa-wheelchair custom"></i>  <a href="<c:url value="/list-patients" />">Pacientes</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-info"></i> Informaci&oacute;n de Usuario
+                            <i class="fa fa-info"></i> Informaci&oacute;n del Paciente
                         </li>
                     </ol>
 	            </div>
           		<div id="page-title" class="row col-lg-12 text-center" style="margin-top:-40px">
-                    <h1 class="page-header">Usuarios</h1>
+                    <h1 class="page-header">Pacientes</h1>
                 </div>
                 <div class="row">
                 	<div class="col col-xs-6">
-                		<h3 id="page-subtitle">Informaci&oacute;n de usuario</h3>
+                		<h3 id="page-subtitle">Informaci&oacute;n del paciente</h3>
                 	</div>
                 </div>
                 <div class="row">
                		<br>
-               		<form:form method="POST" modelAttribute="user" class="form-horizontal">
+               		<form:form method="POST" modelAttribute="patient" class="form-horizontal">
             			<form:input type="hidden" path="id" id="id"/>
             			<div class="row">
                 			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="username">Username:</label>
+                    		<label class="col-md-6 control-label" for="lastName">Apellido:</label>
 	                    		<div class="col-md-6">
-                                	<form:input type="text" path="username" id="username" class="form-control input-sm" disabled="true"/>
+                                	<form:input type="text" path="lastName" id="lastName" class="form-control input-sm" disabled="true"/>
                             	   	<div class="has-error">
-                                    	<form:errors path="username" class="help-inline"/>
+                                    	<form:errors path="lastName" class="help-inline"/>
                                 	</div>
 	                    		</div>
                 			</div>
            	 			</div>
            	 			<div class="row">
                 			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="password">Contraseña:</label>
+                    		<label class="col-md-6 control-label" for="firstName">Nombre:</label>
                     			<div class="col-md-6">
-                        			<form:input type="password" path="password" id="password" class="form-control input-sm" disabled="true"/>
+                        			<form:input type="text" path="firstName" id="firstName" class="form-control input-sm" disabled="true"/>
                         			<div class="has-error">
-                            			<form:errors path="password" class="help-inline"/>
+                            			<form:errors path="firstName" class="help-inline"/>
                         			</div>
                     			</div>
                 			</div>
             			</div>
             			<div class="row">
                 			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="lastName">Direcci&oacute;n:</label>
+                    		<label class="col-md-6 control-label" for="dni">D.N.I.:</label>
+                    			<div class="col-md-6">
+                        			<form:input type="text" path="dni" id="dni" class="form-control input-sm" disabled="true"/>
+                        			<div class="has-error">
+                            			<form:errors path="dni" class="help-inline"/>
+                        			</div>
+                    			</div>
+                			</div>
+            			</div>
+            			<div class="row">
+                			<div class="form-group col-md-6">
+                    		<label class="col-md-6 control-label" for="sex">Sexo:</label>
+                    			<div class="col-md-6">
+				 					<label class="radio-inline">
+										<form:radiobutton id="sex" path="sex" name="genderRadios" value="Masculino" required="required" disabled="true"/> Masculino
+									</label>
+									<br/>
+				 					<label class="radio-inline">
+										<form:radiobutton id="sex" path="sex" name="genderRadios" value="Femenino" required="required" disabled="true"/> Femenino
+									</label>
+									<br/>
+                    			</div>
+                			</div>
+            			</div>
+            			<div class="row">
+                			<div class="form-group col-md-6">
+                    		<label class="col-md-6 control-label" for="address">Direcci&oacute;n:</label>
                     			<div class="col-md-6">
                         			<form:input type="text" path="address" id="address" class="form-control input-sm" disabled="true"/>
                         			<div class="has-error">
@@ -92,11 +118,22 @@
             			</div>
             			<div class="row">
                 			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="userProfiles">Rol:</label>
+                    		<label class="col-md-6 control-label" for="age">Edad:</label>
                     			<div class="col-md-6">
-                        			<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" disabled="true"/>
+                        			<form:input type="text" path="age" id="age" class="form-control input-sm" disabled="true"/>
                         			<div class="has-error">
-                            			<form:errors path="userProfiles" class="help-inline"/>
+                            			<form:errors path="age" class="help-inline"/>
+                        			</div>
+                    			</div>
+                			</div>
+            			</div>
+            			<div class="row">
+                			<div class="form-group col-md-6">
+                    		<label class="col-md-6 control-label" for="phone">Tel&eacute;fono:</label>
+                    			<div class="col-md-6">
+                        			<form:input type="text" path="phone" id="phone" class="form-control input-sm" disabled="true"/>
+                        			<div class="has-error">
+                            			<form:errors path="phone" class="help-inline"/>
                         			</div>
                     			</div>
                 			</div>
@@ -105,7 +142,7 @@
             			<div class="row">
 	    					<div class="col-md-6">
 	                			<div class="form-actions">
-                        			&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger style="width:85px;"">Volver</a>
+                        			&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-patients' />" class="btn btn-danger style="width:85px;"">Volver</a>
 	                			</div>
 	            			</div>
 	            		</div>

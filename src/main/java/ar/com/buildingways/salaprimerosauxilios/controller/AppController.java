@@ -305,6 +305,18 @@ public class AppController {
 	}
 	
 	/**
+	 * This method will provide the medium to see the info of an existing patient.
+	 */
+	@RequestMapping(value = { "/info-patient-{id}" }, method = RequestMethod.GET)
+	public String infoPatient(@PathVariable Integer id, ModelMap model) {
+		Patient patient = patientService.findById(id);
+	    model.addAttribute("patient", patient);
+	    model.addAttribute("edit", false);
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "patients/patientDetails";
+	}
+	
+	/**
 	 * This method will provide the medium to update an existing user.
 	 */
 	@RequestMapping(value = { "/edit-patient-{id}" }, method = RequestMethod.GET)

@@ -8,89 +8,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Inicio</title>
+    <title>Lista de Pacientes</title>
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<c:set var="patientSex" value="${patient.sex}"/>
 	<div id="wrapper">
 		<div class="sidebar-wrapper">
 			<%@ include file="/WEB-INF/views/commons/menu.jsp" %>
 		</div>
 		<div id="page-wrapper">
 		    <div class="container-fluid">
-		    	<div class="row">
-                    <div id="page-title" class="col-lg-12">
-                    	<div class="col-lg-4">
-	                    	<ol class="breadcrumb">
-	                            <li>
-	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
-	                            </li>
-	                            <li class="active">
-	                                <i class="fa fa-wheelchair custom"></i> Pacientes
-	                            </li>
-	                        </ol>
-	                    </div>
-	                    <div class="col-lg-4">
-	                        <h1 class="page-header">Pacientes</h1>
-	                    </div>
+		    	<div class="row col-lg-12 text-left">
+                	<ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-wheelchair custom"></i> Pacientes
+                        </li>
+                    </ol>
+                    <div id="page-title" class="row col-lg-12 text-center" style="margin-top:-40px">
+                        <h1 class="page-header">Pacientes</h1>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6" style="padding-top:25px;">
-                        <div class="form-group input-group">
-                        	<input type="text" id="userSearchText" class="form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
-                        </div>
+                 	<div class="col col-xs-6">
+                    	<h3 id="page-subtitle">Listado de pacientes</h3>
                     </div>
                 </div>
                 <div class="row">
-                	<div class="col-lg-12">
-                    	<h2>Listado de pacientes</h2>
-                    	<div class="table-responsive">
-                            <table id="patientsTable" class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                    	<th>ID</th>
-                                    	<th>Nombre</th>
-		                        		<th>Apellido</th>
-		                        		<th>Edad</th>
-		                        		<th>Sexo</th>
-		                        		<th>DNI</th>
-		                        		<th style="width: 200px">Email</th>
-		                        		<th>Direccion</th>
-		                        		<th>Telefono</th>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<th width="100"></th>
-		                        		</sec:authorize>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<th width="100"></th>
-		                        		</sec:authorize>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${patients}" var="patient">
-		                    		<tr>
-		                    			<td>${patient.id}</td>
-		                        		<td>${patient.firstName}</td>
-		                        		<td>${patient.lastName}</td>
-		                        		<td>${patient.age}</td>
-		                        		<td>${patient.sex}</td>
-		                        		<td>${patient.dni}</td>
-		                        		<td>${patient.email}</td>
-		                        		<td>${patient.address}</td>
-		                        		<td>${patient.phone}</td>		                        		
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<td><a href="<c:url value='/edit-patient-${patient.id}' />" class="btn btn-success">Editar</a></td>
-		                        		</sec:authorize>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<td><a href="<c:url value='/delete-patient-${patient.id}' />" class="btn btn-danger">Eliminar</a></td>
-		                        		</sec:authorize>
-		                    		</tr>
-		                			</c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
+                	<div class="col-md-12">
+						<div class="panel panel-default panel-table">
+						  	<div class="panel-heading">
+						  	</div>
+						  	<div class="panel-body">
+	                            <table id="patientsTable" class="table table-striped table-bordered table-list">
+	                                <thead>
+	                                    <tr>
+	                                    	<!-- <th style="width:3%">ID</th> -->
+	                                    	<th style="width:20%">Nombre Paciente</th>
+			                        		<th style="width:3%">Edad</th>
+			                        		<th style="width:5%">Sexo</th>
+			                        		<th style="width:8%">DNI</th>
+			                        		<th style="width:15%">Email</th>
+			                        		<th style="width:15%">Direccion</th>
+			                        		<th style="width:8%">Telefono</th>
+			                        		<sec:authorize access="hasRole('ADMIN')">
+			                        			<th style="width:15%">Acciones</th>
+			                        		</sec:authorize>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                    <c:forEach items="${patients}" var="patient">
+				                    		<tr>
+				                    			<%-- <td>${patient.id}</td> --%>
+				                        		<td>${patient.firstName} ${patient.lastName}</td>
+				                        		<td>${patient.age}</td>
+				                        		<c:choose>
+                           							<c:when test="${patient.sex=='Femenino'}">
+                           								<td>F</td>
+                           							</c:when>
+                           							<c:otherwise>
+                           								<td>M</td>
+                           							</c:otherwise>
+                           						</c:choose>
+				                        		<td>${patient.dni}</td>
+				                        		<td>${patient.email}</td>
+				                        		<td>${patient.address}</td>
+				                        		<td>${patient.phone}</td>		                        		
+				                        		<sec:authorize access="hasRole('ADMIN')">
+					                            	<td align="center">
+													  <a class="btn btn-success custombutton"  href="<c:url value='/info-patient-${patient.id}' />"><em class="fa fa-info"></em></a>
+													  <a class="btn btn-warning custombutton" href="<c:url value='/edit-patient-${patient.id}' />"><em class="fa fa-pencil"></em></a>
+													  <a class="btn btn-danger custombutton" href="<c:url value='/delete-patient-${patient.id}' />"><em class="fa fa-trash"></em></a>
+													</td>
+				                        		</sec:authorize>
+				                    		</tr>
+			                			</c:forEach>
+	                                </tbody>
+	                            </table>
+                        	</div>
+                      	</div>
                    </div>
             	</div> <!-- row -->
 		    </div> <!-- container-fluid -->
@@ -98,9 +100,14 @@
 	</div> <!-- wrapper  -->
 	<script src="static/js/jquery.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/bootstrap/js/jquery.dataTables_SP.js"></script>
+    <script src="static/bootstrap/js/dataTables.bootstrap.js"></script>
     <script src="static/js/app.js"></script>
 <!--     <script>var myContextPath = "${pageContext.request.contextPath}"</script>
     <script>var userList = ${users}</script> -->
     <script src="static/js/usersFunctions.js"></script>
+    <script>
+    	$('#patientsTable').dataTable();
+    </script>
 </body>
 </html>
