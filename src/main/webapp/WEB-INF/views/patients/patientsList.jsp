@@ -50,15 +50,15 @@
 	                                <thead>
 	                                    <tr>
 	                                    	<!-- <th style="width:3%">ID</th> -->
-	                                    	<th style="width:20%">Nombre Paciente</th>
-			                        		<th style="width:3%">Edad</th>
-			                        		<th style="width:5%">Sexo</th>
-			                        		<th style="width:8%">DNI</th>
-			                        		<th style="width:15%">Email</th>
-			                        		<th style="width:15%">Direccion</th>
-			                        		<th style="width:8%">Telefono</th>
+	                                    	<th style="width:20%;font-size:90%">Nombre Paciente</th>
+			                        		<th style="width:3%;font-size:90%">Edad</th>
+			                        		<th style="width:3%;font-size:90%">Sexo</th>
+			                        		<th style="width:8%;font-size:90%">DNI</th>
+			                        		<th style="width:15%;font-size:90%">Email</th>
+			                        		<th style="width:15%;font-size:90%">Direccion</th>
+			                        		<th style="width:8%;font-size:90%">Telefono</th>
 			                        		<sec:authorize access="hasRole('ADMIN')">
-			                        			<th style="width:15%">Acciones</th>
+			                        			<th style="width:15%;font-size:90%">Acciones</th>
 			                        		</sec:authorize>
 	                                    </tr>
 	                                </thead>
@@ -66,20 +66,20 @@
 	                                    <c:forEach items="${patients}" var="patient">
 				                    		<tr>
 				                    			<%-- <td>${patient.id}</td> --%>
-				                        		<td>${patient.firstName} ${patient.lastName}</td>
-				                        		<td>${patient.age}</td>
+				                        		<td style="font-size:90%">${patient.firstName} ${patient.lastName}</td>
+				                        		<td style="font-size:90%; text-align:center">${patient.age}</td>
 				                        		<c:choose>
                            							<c:when test="${patient.sex=='Femenino'}">
-                           								<td>F</td>
+                           								<td style="font-size:90%; text-align:center">F</td>
                            							</c:when>
                            							<c:otherwise>
-                           								<td>M</td>
+                           								<td style="font-size:90%; text-align:center">M</td>
                            							</c:otherwise>
                            						</c:choose>
-				                        		<td>${patient.dni}</td>
-				                        		<td>${patient.email}</td>
-				                        		<td>${patient.address}</td>
-				                        		<td>${patient.phone}</td>		                        		
+				                        		<td style="font-size:90%">${patient.dni}</td>
+				                        		<td style="font-size:90%">${patient.email}</td>
+				                        		<td style="font-size:90%">${patient.address}</td>
+				                        		<td style="font-size:90%">${patient.phone}</td>		                        		
 				                        		<sec:authorize access="hasRole('ADMIN')">
 					                            	<td align="center">
 													  <a class="btn btn-success custombutton"  href="<c:url value='/info-patient-${patient.id}' />"><em class="fa fa-info"></em></a>
@@ -107,7 +107,11 @@
     <script>var userList = ${users}</script> -->
     <script src="static/js/usersFunctions.js"></script>
     <script>
-    	$('#patientsTable').dataTable();
+    	$('#patientsTable').dataTable({
+    		"aoColumnDefs": [
+    		                 { 'bSortable': false, 'aTargets': [ 2, 7 ] }
+    		              ]
+	   	});
     </script>
 </body>
 </html>

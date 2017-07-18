@@ -47,7 +47,7 @@ div.dataTables_wrapper div.dataTables_info {
   text-align: left;
 }
 div.dataTables_wrapper div.dataTables_paginate {
-  margin: 0;
+  margin: 5;
   white-space: nowrap;
   text-align: right;
 }

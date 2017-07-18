@@ -96,7 +96,11 @@
     <script>var userList = ${users}</script> -->
     <script src="static/js/usersFunctions.js"></script>
     <script>
-    $('#usersTable').dataTable();
+    $('#usersTable').dataTable({
+    	"aoColumnDefs": [
+		                 { 'bSortable': false, 'aTargets': [ 1, 4 ] }
+		              ]
+    });
     </script>
 </body>
 </html>
