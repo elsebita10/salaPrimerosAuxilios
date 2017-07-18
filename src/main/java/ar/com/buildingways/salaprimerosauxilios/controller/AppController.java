@@ -1,21 +1,17 @@
 package ar.com.buildingways.salaprimerosauxilios.controller;
 
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
@@ -29,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import ar.com.buildingways.salaprimerosauxilios.dto.ConsultationDTO;
 import ar.com.buildingways.salaprimerosauxilios.model.Consultation;
 import ar.com.buildingways.salaprimerosauxilios.model.Patient;
@@ -65,7 +60,6 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String returnHome(ModelMap model) {
-	    model.addAttribute("roleloggedinuser", getRoleByUsername());
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "commons/home";
 	}
@@ -424,20 +418,6 @@ public class AppController {
 	    	return userName;
 	}
 	
-	/**
-	 * This method returns the role of logged-in user.
-	 */
-	private Collection<? extends GrantedAuthority> getRoleByUsername(){
-		Collection<? extends GrantedAuthority> roles = null;
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    if (principal instanceof UserDetails) {
-	    	roles = ((UserDetails)principal).getAuthorities();
-	    } else {
-	        roles = null;
-	    }
-	    	return roles;
-	}
-	     
 	/**
 	  * This method returns true if users is already authenticated [logged-in], else false.
 	  */
