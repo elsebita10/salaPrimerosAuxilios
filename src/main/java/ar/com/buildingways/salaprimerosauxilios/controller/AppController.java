@@ -230,6 +230,18 @@ public class AppController {
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "users/userFormSuccess";
 	}
+	
+	/**
+	 * This method will provide the medium to see the info of an existing user.
+	 */
+	@RequestMapping(value = { "/info-user-{username}" }, method = RequestMethod.GET)
+	public String infoUser(@PathVariable String username, ModelMap model) {
+		User user = userService.findByUsername(username);
+	    model.addAttribute("user", user);
+	    model.addAttribute("edit", false);
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "users/userDetails";
+	}
 	 
 	/**
 	 * This method will provide the medium to update an existing user.

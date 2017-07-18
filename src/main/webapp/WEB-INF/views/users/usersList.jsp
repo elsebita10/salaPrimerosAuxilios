@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <title>Inicio</title>
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="static/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
@@ -21,23 +21,19 @@
 		</div>
 		<div id="page-wrapper">
 		    <div class="container-fluid">
-		    	<div class="row">
-                    <div id="page-title" class="col-lg-12">
-	                	<div class="col-lg-4">    	
-	                    	<ol class="breadcrumb">
-	                            <li>
-	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
-	                            </li>
-	                            <li class="active">
-	                                <i class="fa fa-users"></i> Usuarios
-	                            </li>
-	                        </ol>
-	                     </div>
-	                     <div class="col-lg-4">
-                    	 	<h1 class="page-header">Usuarios</h1>
-						 </div>                    
-                    </div>
+		    	<div class="row col-lg-12 text-left">
+                   	<ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-users"></i> Usuarios
+                        </li>
+                    </ol>
                 </div>
+                <div id="page-title" class="row col-lg-12 text-center" style="margin-top:-40px">
+           	 		<h1 class="page-header">Usuarios</h1>
+				</div>              
                 <div class="row">
 					<div class="col col-xs-6">
 						<h3 id="page-subtitle">Listado de usuarios</h3>
@@ -57,22 +53,26 @@
 								<table id="usersTable" class="table table-striped table-bordered table-list">
 								  <thead>
 									<tr>
-										<th style="width:3%">ID</th>
-				                        <th style="width:25%">Nombre de usuario</th>
+				                        <th style="width:20%">Nombre de usuario</th>
+				                        <th style="width:5%">Roles</th>
 				                        <th style="width:25%">Direcci&oacute;n</th>
 				                        <th style="width:25%">E-mail</th>
-										<th style="width:12%">Acciones</th>
+										<th style="width:15%">Acciones</th>
 									</tr> 
 								  </thead>
 								  <tbody>
 								  	<c:forEach items="${users}" var="user">
 									  <tr>
-										<td>${user.id}</td>
 				                        <td>${user.username}</td>
+				                        <td>
+				                        	<c:forEach items="${user.userProfiles}" var="profile">
+				                        		${profile.type}
+				                        	</c:forEach>
+				                        </td>
 				                        <td>${user.address}</td>
 				                        <td>${user.email}</td>
 										<td align="center">
-										  <a class="btn btn-success custombutton"><em class="fa fa-info"></em></a>
+										  <a class="btn btn-success custombutton"  href="<c:url value='/info-user-${user.username}' />"><em class="fa fa-info"></em></a>
 										  <a class="btn btn-warning custombutton" href="<c:url value='/edit-user-${user.username}' />"><em class="fa fa-pencil"></em></a>
 										  <a class="btn btn-danger custombutton" href="<c:url value='/delete-user-${user.username}' />"><em class="fa fa-trash"></em></a>
 										</td>

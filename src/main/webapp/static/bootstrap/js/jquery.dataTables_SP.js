@@ -11425,7 +11425,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "No data available in table",
+			"sEmptyTable": "No hay datos en la tabla",
 	
 	
 			/**
@@ -11457,8 +11457,8 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Mostrando _START_ de _END_ de _TOTAL_ entradas",
-	
+//			"sInfo": "Mostrando _START_ de _END_ de _TOTAL_ entradas",
+			"sInfo": "Resultados: _TOTAL_",
 	
 			/**
 			 * Display information string for when the table is empty. Typically the
@@ -11478,8 +11478,9 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Mostrando 0 de 0 de 0 entradas",
-	
+//			"sInfoEmpty": "Mostrando 0 de 0 de 0 entradas",
+			"sInfoEmpty": "Resultados: 0",
+
 	
 			/**
 			 * When a user filters the information in a table, this string is appended
@@ -11500,7 +11501,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtrado de un total de _MAX_ entradas)",
+			"sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
 	
 	
 			/**
