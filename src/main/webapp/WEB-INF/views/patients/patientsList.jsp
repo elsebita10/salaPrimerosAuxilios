@@ -50,16 +50,14 @@
 	                                <thead>
 	                                    <tr>
 	                                    	<!-- <th style="width:3%">ID</th> -->
-	                                    	<th style="width:20%;font-size:90%">Nombre Paciente</th>
-			                        		<th style="width:3%;font-size:90%">Edad</th>
-			                        		<th style="width:3%;font-size:90%">Sexo</th>
-			                        		<th style="width:8%;font-size:90%">DNI</th>
-			                        		<th style="width:15%;font-size:90%">Email</th>
-			                        		<th style="width:15%;font-size:90%">Direccion</th>
-			                        		<th style="width:8%;font-size:90%">Telefono</th>
-			                        		<sec:authorize access="hasRole('ADMIN')">
-			                        			<th style="width:15%;font-size:90%">Acciones</th>
-			                        		</sec:authorize>
+	                                    	<th class="text-center" style="width:20%;font-size:90%">Nombre Paciente</th>
+			                        		<th class="text-center" style="width:3%;font-size:90%">Edad</th>
+			                        		<th class="text-center" style="width:3%;font-size:90%">Sexo</th>
+			                        		<th class="text-center" style="width:8%;font-size:90%">DNI</th>
+			                        		<th class="text-center" style="width:15%;font-size:90%">Email</th>
+			                        		<th class="text-center" style="width:15%;font-size:90%">Direccion</th>
+			                        		<th class="text-center" style="width:8%;font-size:90%">Telefono</th>
+			                        		<th class="text-center" style="width:15%;font-size:90%">Acciones</th>
 	                                    </tr>
 	                                </thead>
 	                                <tbody>
@@ -80,13 +78,11 @@
 				                        		<td style="font-size:90%">${patient.email}</td>
 				                        		<td style="font-size:90%">${patient.address}</td>
 				                        		<td style="font-size:90%">${patient.phone}</td>		                        		
-				                        		<sec:authorize access="hasRole('ADMIN')">
-					                            	<td align="center">
-													  <a class="btn btn-success custombutton"  href="<c:url value='/info-patient-${patient.id}' />"><em class="fa fa-info"></em></a>
-													  <a class="btn btn-warning custombutton" href="<c:url value='/edit-patient-${patient.id}' />"><em class="fa fa-pencil"></em></a>
-													  <a class="btn btn-danger custombutton" href="<c:url value='/delete-patient-${patient.id}' />"><em class="fa fa-trash"></em></a>
-													</td>
-				                        		</sec:authorize>
+				                            	<td align="center">
+												  <a class="btn btn-success custombutton"  href="<c:url value='/info-patient-${patient.id}' />"><em class="fa fa-info"></em></a>
+												  <a class="btn btn-warning custombutton" href="<c:url value='/edit-patient-${patient.id}' />"><em class="fa fa-pencil"></em></a>
+												  <a class="btn btn-danger custombutton" href="<c:url value='/delete-patient-${patient.id}' />"><em class="fa fa-trash"></em></a>
+												</td>
 				                    		</tr>
 			                			</c:forEach>
 	                                </tbody>

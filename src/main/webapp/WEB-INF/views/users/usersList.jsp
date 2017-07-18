@@ -53,11 +53,11 @@
 								<table id="usersTable" class="table table-striped table-bordered table-list">
 								  <thead>
 									<tr>
-				                        <th style="width:20%">Nombre de usuario</th>
-				                        <th style="width:5%">Roles</th>
-				                        <th style="width:25%">Direcci&oacute;n</th>
-				                        <th style="width:25%">E-mail</th>
-										<th style="width:15%">Acciones</th>
+				                        <th class="text-center" style="width:20%">Nombre de usuario</th>
+				                        <th class="text-center" style="width:5%">Roles</th>
+				                        <th class="text-center" style="width:25%">Direcci&oacute;n</th>
+				                        <th class="text-center" style="width:25%">E-mail</th>
+										<th class="text-center" style="width:15%">Acciones</th>
 									</tr> 
 								  </thead>
 								  <tbody>
