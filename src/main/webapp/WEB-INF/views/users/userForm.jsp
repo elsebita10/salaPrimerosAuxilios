@@ -132,15 +132,15 @@
 	                			</div>
 	            			</div>
 	            			<br>
-	            			<div class="row" style="padding-top:50px">
+	            			<div class="row" style="padding-top:30px">
 		    					<div class="form-group col-md-12">
 		                			<div class="form-actions text-center">
 			                    		<c:choose>
 			                        		<c:when test="${edit}">
-			                        			<input type="submit" value="Actualizar" class="btn btn-success" style="width:85px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
+			                        			<input type="submit" value="Actualizar" class="btn btn-success" style="width:85px;margin: 0px 60px 0px 0px"/><a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
 			                        		</c:when>
 			                        		<c:otherwise>
-			                            		<input type="submit" value="Crear" class="btn btn-success" style="width:85px;"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
+			                            		<input type="submit" value="Crear" class="btn btn-success" style="width:85px;margin: 0px 60px 0px 0px"/><a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
 			                        		</c:otherwise>
 			                    		</c:choose>
 		                			</div>
