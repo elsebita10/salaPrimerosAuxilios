@@ -43,73 +43,75 @@
                 	</div>
                 </div>
                 <div class="row">
-               		<br>
-               		<form:form method="POST" modelAttribute="user" class="form-horizontal">
-            			<form:input type="hidden" path="id" id="id"/>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="username">Username:</label>
-	                    		<div class="col-md-6">
-                                	<form:input type="text" path="username" id="username" class="form-control input-sm" disabled="true"/>
-                            	   	<div class="has-error">
-                                    	<form:errors path="username" class="help-inline"/>
-                                	</div>
-	                    		</div>
-                			</div>
-           	 			</div>
-           	 			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="password">Contraseña:</label>
-                    			<div class="col-md-6">
-                        			<form:input type="password" path="password" id="password" class="form-control input-sm" disabled="true"/>
-                        			<div class="has-error">
-                            			<form:errors path="password" class="help-inline"/>
-                        			</div>
-                    			</div>
-                			</div>
-            			</div>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="lastName">Direcci&oacute;n:</label>
-                    			<div class="col-md-6">
-                        			<form:input type="text" path="address" id="address" class="form-control input-sm" disabled="true"/>
-                        			<div class="has-error">
-                            			<form:errors path="address" class="help-inline"/>
-                        			</div>
-                    			</div>
-                			</div>
-            			</div>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="email">E-mail:</label>
-                   	 			<div class="col-md-6">
-                        			<form:input type="text" path="email" id="email" class="form-control input-sm" disabled="true"/>
-                        			<div class="has-error">
-                            			<form:errors path="email" class="help-inline"/>
-                        			</div>
-                    			</div>
-                			</div>
-            			</div>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="userProfiles">Rol:</label>
-                    			<div class="col-md-6">
-                        			<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" disabled="true"/>
-                        			<div class="has-error">
-                            			<form:errors path="userProfiles" class="help-inline"/>
-                        			</div>
-                    			</div>
-                			</div>
-            			</div>
-            			<br>
-            			<div class="row" style="padding-top:30px">
-	    					<div class="col-md-6">
-	                			<div class="form-actions text-center">
-                        			<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Volver</a>
+                	<div class="col col-xs-6">
+	               		<br>
+	               		<form:form method="POST" modelAttribute="user" class="form-horizontal">
+	            			<form:input type="hidden" path="id" id="id"/>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="username">Username:</label>
+		                    		<div class="col-md-6">
+	                                	<form:input type="text" path="username" id="username" class="form-control input-sm" disabled="true"/>
+	                            	   	<div class="has-error">
+	                                    	<form:errors path="username" class="help-inline"/>
+	                                	</div>
+		                    		</div>
+	                			</div>
+	           	 			</div>
+	           	 			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="password">Contraseña:</label>
+	                    			<div class="col-md-6">
+	                        			<form:input type="password" path="password" id="password" class="form-control input-sm" disabled="true"/>
+	                        			<div class="has-error">
+	                            			<form:errors path="password" class="help-inline"/>
+	                        			</div>
+	                    			</div>
 	                			</div>
 	            			</div>
-	            		</div>
-            		</form:form>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="lastName">Direcci&oacute;n:</label>
+	                    			<div class="col-md-6">
+	                        			<form:input type="text" path="address" id="address" class="form-control input-sm" disabled="true"/>
+	                        			<div class="has-error">
+	                            			<form:errors path="address" class="help-inline"/>
+	                        			</div>
+	                    			</div>
+	                			</div>
+	            			</div>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="email">E-mail:</label>
+	                   	 			<div class="col-md-6">
+	                        			<form:input type="text" path="email" id="email" class="form-control input-sm" disabled="true"/>
+	                        			<div class="has-error">
+	                            			<form:errors path="email" class="help-inline"/>
+	                        			</div>
+	                    			</div>
+	                			</div>
+	            			</div>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="userProfiles">Rol:</label>
+	                    			<div class="col-md-6">
+	                        			<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" disabled="true"/>
+	                        			<div class="has-error">
+	                            			<form:errors path="userProfiles" class="help-inline"/>
+	                        			</div>
+	                    			</div>
+	                			</div>
+	            			</div>
+	            			<br>
+	            			<div class="row" style="padding-top:30px">
+		    					<div class="col-md-12">
+		                			<div class="form-actions text-center">
+	                        			<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Volver</a>
+		                			</div>
+		            			</div>
+		            		</div>
+	            		</form:form>
+	            	</div>
                 </div> <!-- row -->
 			</div> <!-- container-fluid -->
 		</div> <!-- page-wrapper -->

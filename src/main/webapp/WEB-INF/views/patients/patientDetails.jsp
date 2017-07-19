@@ -43,110 +43,112 @@
                 	</div>
                 </div>
                 <div class="row">
-               		<br>
-               		<form:form method="POST" modelAttribute="patient" class="form-horizontal">
-            			<form:input type="hidden" path="id" id="id"/>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="lastName">Apellido:</label>
-	                    		<div class="col-md-6">
-                                	<form:input type="text" path="lastName" id="lastName" class="form-control input-sm" disabled="true"/>
-                            	   	<div class="has-error">
-                                    	<form:errors path="lastName" class="help-inline"/>
-                                	</div>
-	                    		</div>
-                			</div>
-           	 			</div>
-           	 			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="firstName">Nombre:</label>
-                    			<div class="col-md-6">
-                        			<form:input type="text" path="firstName" id="firstName" class="form-control input-sm" disabled="true"/>
-                        			<div class="has-error">
-                            			<form:errors path="firstName" class="help-inline"/>
-                        			</div>
-                    			</div>
-                			</div>
-            			</div>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="dni">D.N.I.:</label>
-                    			<div class="col-md-6">
-                        			<form:input type="text" path="dni" id="dni" class="form-control input-sm" disabled="true"/>
-                        			<div class="has-error">
-                            			<form:errors path="dni" class="help-inline"/>
-                        			</div>
-                    			</div>
-                			</div>
-            			</div>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="sex">Sexo:</label>
-                    			<div class="col-md-6">
-				 					<label class="radio-inline">
-										<form:radiobutton id="sex" path="sex" name="genderRadios" value="Masculino" required="required" disabled="true"/> Masculino
-									</label>
-									<br/>
-				 					<label class="radio-inline">
-										<form:radiobutton id="sex" path="sex" name="genderRadios" value="Femenino" required="required" disabled="true"/> Femenino
-									</label>
-									<br/>
-                    			</div>
-                			</div>
-            			</div>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="address">Direcci&oacute;n:</label>
-                    			<div class="col-md-6">
-                        			<form:input type="text" path="address" id="address" class="form-control input-sm" disabled="true"/>
-                        			<div class="has-error">
-                            			<form:errors path="address" class="help-inline"/>
-                        			</div>
-                    			</div>
-                			</div>
-            			</div>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="email">E-mail:</label>
-                   	 			<div class="col-md-6">
-                        			<form:input type="text" path="email" id="email" class="form-control input-sm" disabled="true"/>
-                        			<div class="has-error">
-                            			<form:errors path="email" class="help-inline"/>
-                        			</div>
-                    			</div>
-                			</div>
-            			</div>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="age">Edad:</label>
-                    			<div class="col-md-6">
-                        			<form:input type="text" path="age" id="age" class="form-control input-sm" disabled="true"/>
-                        			<div class="has-error">
-                            			<form:errors path="age" class="help-inline"/>
-                        			</div>
-                    			</div>
-                			</div>
-            			</div>
-            			<div class="row">
-                			<div class="form-group col-md-6">
-                    		<label class="col-md-6 control-label" for="phone">Tel&eacute;fono:</label>
-                    			<div class="col-md-6">
-                        			<form:input type="text" path="phone" id="phone" class="form-control input-sm" disabled="true"/>
-                        			<div class="has-error">
-                            			<form:errors path="phone" class="help-inline"/>
-                        			</div>
-                    			</div>
-                			</div>
-            			</div>
-            			<br>
-            			<div class="row" style="padding-top:20px">
-	    					<div class="col-md-6">
-	                			<div class="form-actions text-center">
-                        			<a href="<c:url value='/list-patients' />" class="btn btn-danger" style="width:85px;">Volver</a>
+                	<div class="col col-xs-6"> 
+	               		<br>
+	               		<form:form method="POST" modelAttribute="patient" class="form-horizontal">
+	            			<form:input type="hidden" path="id" id="id"/>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="lastName">Apellido:</label>
+		                    		<div class="col-md-6">
+	                                	<form:input type="text" path="lastName" id="lastName" class="form-control input-sm" disabled="true"/>
+	                            	   	<div class="has-error">
+	                                    	<form:errors path="lastName" class="help-inline"/>
+	                                	</div>
+		                    		</div>
+	                			</div>
+	           	 			</div>
+	           	 			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="firstName">Nombre:</label>
+	                    			<div class="col-md-6">
+	                        			<form:input type="text" path="firstName" id="firstName" class="form-control input-sm" disabled="true"/>
+	                        			<div class="has-error">
+	                            			<form:errors path="firstName" class="help-inline"/>
+	                        			</div>
+	                    			</div>
 	                			</div>
 	            			</div>
-	            		</div>
-            		</form:form>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="dni">D.N.I.:</label>
+	                    			<div class="col-md-6">
+	                        			<form:input type="text" path="dni" id="dni" class="form-control input-sm" disabled="true"/>
+	                        			<div class="has-error">
+	                            			<form:errors path="dni" class="help-inline"/>
+	                        			</div>
+	                    			</div>
+	                			</div>
+	            			</div>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="sex">Sexo:</label>
+	                    			<div class="col-md-6">
+					 					<label class="radio-inline">
+											<form:radiobutton id="sex" path="sex" name="genderRadios" value="Masculino" required="required" disabled="true"/> Masculino
+										</label>
+										<br/>
+					 					<label class="radio-inline">
+											<form:radiobutton id="sex" path="sex" name="genderRadios" value="Femenino" required="required" disabled="true"/> Femenino
+										</label>
+										<br/>
+	                    			</div>
+	                			</div>
+	            			</div>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="address">Direcci&oacute;n:</label>
+	                    			<div class="col-md-6">
+	                        			<form:input type="text" path="address" id="address" class="form-control input-sm" disabled="true"/>
+	                        			<div class="has-error">
+	                            			<form:errors path="address" class="help-inline"/>
+	                        			</div>
+	                    			</div>
+	                			</div>
+	            			</div>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="email">E-mail:</label>
+	                   	 			<div class="col-md-6">
+	                        			<form:input type="text" path="email" id="email" class="form-control input-sm" disabled="true"/>
+	                        			<div class="has-error">
+	                            			<form:errors path="email" class="help-inline"/>
+	                        			</div>
+	                    			</div>
+	                			</div>
+	            			</div>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="age">Edad:</label>
+	                    			<div class="col-md-6">
+	                        			<form:input type="text" path="age" id="age" class="form-control input-sm" disabled="true"/>
+	                        			<div class="has-error">
+	                            			<form:errors path="age" class="help-inline"/>
+	                        			</div>
+	                    			</div>
+	                			</div>
+	            			</div>
+	            			<div class="row">
+	                			<div class="form-group col-md-12">
+	                    		<label class="col-md-6 control-label" for="phone">Tel&eacute;fono:</label>
+	                    			<div class="col-md-6">
+	                        			<form:input type="text" path="phone" id="phone" class="form-control input-sm" disabled="true"/>
+	                        			<div class="has-error">
+	                            			<form:errors path="phone" class="help-inline"/>
+	                        			</div>
+	                    			</div>
+	                			</div>
+	            			</div>
+	            			<br>
+	            			<div class="row" style="padding-top:20px">
+		    					<div class="col-md-12">
+		                			<div class="form-actions text-center">
+	                        			<a href="<c:url value='/list-patients' />" class="btn btn-danger" style="width:85px;">Volver</a>
+		                			</div>
+		            			</div>
+		            		</div>
+	            		</form:form>
+	            	</div>
                 </div> <!-- row -->
 			</div> <!-- container-fluid -->
 		</div> <!-- page-wrapper -->
