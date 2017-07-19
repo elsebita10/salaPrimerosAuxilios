@@ -58,20 +58,20 @@
                 		</c:choose>
                 		<h5 style="color:#B40404;">(Los campos con &#42; son obligatorios)</h5>
                 	</div>
-                	<c:choose>
+                	<%-- <c:choose>
                         <c:when test="${!edit}">
 			               	<div class="col col-xs-6" style="padding-top:40px;">
 								<label class="col-xs-5 text-right">Ingrese DNI Paciente: </label>
 								<div class="col-xs-5">
-									<input type="text" path="patientSearch" id="patientSearch" class="form-control input-sm" placeholder="Ingrese DNI del Paciente" required="required"/>
+									<input type="text" name="patientDNIToSearch" id="patientSearch" class="form-control input-sm" placeholder="Ingrese DNI del Paciente" required="required"/>
 										<div class="has-error">
 			             					<form:errors path="lastName" class="help-inline"/>
 			            	 			</div>
 								</div>
-								<a href="<c:url value='/getpatientbydni' />" class="btn btn-info col-xs-2" style="width:85px;height:28px;">Buscar</a>
+								<a href="<c:url value='/getconsultationdtopatientbydni?patientDNIToSearch=${request.getParameter("patientDNIToSearch")}' />" class="btn btn-info col-xs-2" style="width:85px;height:28px;">Buscar</a>
 							</div>
 						</c:when>
-					</c:choose>							
+					</c:choose>							 --%>
                 </div>
                 <form:form class="form-horizontal" method="POST" modelAttribute="consultationDTO" name="form">
 				<form:input type="hidden" path="id" id="id"/>

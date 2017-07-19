@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import ar.com.buildingways.salaprimerosauxilios.dto.ConsultationDTO;
@@ -312,6 +313,22 @@ public class AppController {
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "patients/patientsList";
 	}
+	
+	/**
+	 * This method will list all existing patients.
+	 */
+	@RequestMapping(value = { "/getconsultationdtopatientbydni{patientDNIToSearch}" }, method = RequestMethod.GET)
+	public String getConsultationDTOwithPatient(ModelMap model, @RequestParam Integer patientDNIToSearch, @Valid ConsultationDTO consultationDTO) {
+		Patient patient = patientService.findByDni(patientDNIToSearch);
+	    if (patient==null)
+	    	consultationDTO.setDni(patientDNIToSearch);
+	    else
+	    	consultationDTO = consultationService.getConsultationDTOQWithPatient(consultationDTO,patient);
+		model.addAttribute("loggedinuser", getPrincipal());
+	    model.addAttribute("consultationDTO", consultationDTO);
+	    return "consultations/consultationForm";
+	}
+	
 	
 	/**
 	 * This method will provide the medium to see the info of an existing patient.

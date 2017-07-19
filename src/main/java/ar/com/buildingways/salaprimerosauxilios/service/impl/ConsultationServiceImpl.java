@@ -85,14 +85,7 @@ public class ConsultationServiceImpl implements ConsultationService{
         consultationDTO.setMedicalInstitution(consultation.getMedicalInstitution());
         consultationDTO.setLastModifiedDate(new Date());
         Patient patient = consultation.getPatient();
-        consultationDTO.setFirstName(patient.getFirstName());
-        consultationDTO.setLastName(patient.getLastName());
-        consultationDTO.setAge(patient.getAge());
-        consultationDTO.setSex(patient.getSex());
-        consultationDTO.setDni(patient.getDni());
-        consultationDTO.setEmail(patient.getEmail());
-        consultationDTO.setAddress(patient.getAddress());
-        consultationDTO.setPhone(patient.getPhone());
+        consultationDTO = getConsultationDTOQWithPatient(consultationDTO, patient);
 		return consultationDTO;
 	}
 
@@ -129,6 +122,19 @@ public class ConsultationServiceImpl implements ConsultationService{
         patient.setPhone(consultationDTO.getPhone());
         consultation.setPatient(patient);
 		return consultation;
+	}
+
+	@Override
+	public ConsultationDTO getConsultationDTOQWithPatient(ConsultationDTO consultationDTO, Patient patient) {
+		consultationDTO.setFirstName(patient.getFirstName());
+        consultationDTO.setLastName(patient.getLastName());
+        consultationDTO.setAge(patient.getAge());
+        consultationDTO.setSex(patient.getSex());
+        consultationDTO.setDni(patient.getDni());
+        consultationDTO.setEmail(patient.getEmail());
+        consultationDTO.setAddress(patient.getAddress());
+        consultationDTO.setPhone(patient.getPhone());
+		return consultationDTO;
 	}
 
 }
