@@ -102,7 +102,7 @@
 							<div class="form-group">
 								<label class="control-label col-xs-3">&#42; D.N.I.:</label>
 								<div class="col-xs-8">
-									<form:input type="text" path="dni" id="dni" class="form-control input-sm" placeholder="Ingrese su D.N.I." required="required"/>
+									<form:input type="text" path="dni" id="dni" class="form-control input-sm" placeholder="Ingrese su D.N.I." minlength="7" maxlength="8" onKeyPress="return acceptOnlyNumbers(event);" required="required"/>
 				 					<div class="has-error">
 				                    	<form:errors path="dni" class="help-inline"/>
 				                    </div>			
@@ -142,7 +142,7 @@
 							<div class="form-group">
 								<label class="control-label col-xs-3">&#42; Edad:</label>
 								<div class="col-xs-4">
-									<form:input type="text" id="age" path="age" class="form-control input-sm" placeholder="Ingrese su edad" required="required"/>
+									<form:input type="text" id="age" path="age" class="form-control input-sm" placeholder="Ingrese su edad" minlength="1" maxlength="3" onKeyPress="return acceptOnlyNumbers(event);" required="required"/>
 				 					<div class="has-error">
 				                    	<form:errors path="age" class="help-inline"/>
 				                    </div>
@@ -151,7 +151,7 @@
 							<div class="form-group">
 								<label class="control-label col-xs-3" >&#42; Tel&eacute;fono:</label>
 								<div class="col-xs-6">
-									<form:input type="text" id="phone" path="phone" class="form-control input-sm" placeholder="Ingrese su teléfono" required="required"/>
+									<form:input type="text" id="phone" path="phone" class="form-control input-sm" placeholder="Ingrese su teléfono" minlength="7" maxlength="20" onKeyPress="return acceptedCharactersForPhone(event);" required="required"/>
 				 					<div class="has-error">
 				                    	<form:errors path="phone" class="help-inline"/>
 				                    </div>
@@ -322,6 +322,17 @@
 	    	</div> <!-- container-fluid -->
 		</div> <!-- page-wrapper -->
 	</div> <!-- wrapper -->
+	<script type="text/javascript">
+	function acceptOnlyNumbers(e) {
+		var key = window.Event ? e.which : e.keyCode;
+		return (key >= 48 && key <= 57);
+	}
+	
+	function acceptedCharactersForPhone(e) {
+		var key = window.Event ? e.which : e.keyCode;
+		return (key >= 48 && key <= 57 || key == 40 || key == 41 || key == 45);
+	}
+	</script>
 	<script src="static/js/jquery.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
     <script src="static/js/app.js"></script>

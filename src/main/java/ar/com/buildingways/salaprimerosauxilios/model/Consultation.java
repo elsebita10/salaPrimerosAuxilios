@@ -73,7 +73,7 @@ public class Consultation {
 	private Date lastModifiedDate;
 	
 	@NotNull
-	@ManyToOne(optional = false,cascade=CascadeType.PERSIST)
+	@ManyToOne(optional = false,cascade={CascadeType.MERGE, CascadeType.PERSIST})
 	@JoinColumn(name = "PATIENT_ID")
 	private Patient patient;
 	

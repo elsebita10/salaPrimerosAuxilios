@@ -20,7 +20,11 @@ public class ConsultationDaoImpl extends AbstractDao<Integer, Consultation> impl
 
 	@Override
 	public void saveConsultation(Consultation consultation) {
-		persist(consultation);
+		if(consultation.getPatient().getId()==null){
+			persist(consultation);
+		} else {
+			getSession().saveOrUpdate(consultation);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
