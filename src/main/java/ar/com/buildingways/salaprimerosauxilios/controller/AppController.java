@@ -167,6 +167,18 @@ public class AppController {
 	    model.addAttribute("loggedinuser", getPrincipal());
 	    return "consultations/consultationFormSuccess";
 	}
+	
+	/**
+	 * This method will provide the medium to see the info of an existing consultation.
+	 */
+	@RequestMapping(value = { "/info-consultation-{consultationId}" }, method = RequestMethod.GET)
+	public String infoConsultation(@PathVariable Integer consultationId, ModelMap model) {
+		Consultation consultation = consultationService.findById(consultationId);
+	    model.addAttribute("consultationDTO", consultationService.convertObjectToDTO(consultation));
+	    model.addAttribute("edit", false);
+	    model.addAttribute("loggedinuser", getPrincipal());
+	    return "consultations/consultationDetails";
+	}
 	 
 	/**
 	 * This method will delete an consultation by it's ID value.
