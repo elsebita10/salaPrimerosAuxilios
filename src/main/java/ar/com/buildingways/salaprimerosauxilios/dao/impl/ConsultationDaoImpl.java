@@ -51,7 +51,7 @@ public class ConsultationDaoImpl extends AbstractDao<Integer, Consultation> impl
 	@Override
 	public Patient getPatientByDNI(Integer dni) {
 		Criteria criteria = getSession().createCriteria(Patient.class, "patient");
-		criteria.add(Restrictions.eq("dni",String.valueOf(dni)));
+		criteria.add(Restrictions.eq("dni",dni));
 		Patient patient = (Patient) criteria.uniqueResult();
 		return patient;
 	}

@@ -89,7 +89,7 @@ public class ConsultationServiceImpl implements ConsultationService{
         consultationDTO.setLastName(patient.getLastName());
         consultationDTO.setAge(patient.getAge());
         consultationDTO.setSex(patient.getSex());
-        consultationDTO.setDni(patient.getDni().toString());
+        consultationDTO.setDni(patient.getDni());
         consultationDTO.setEmail(patient.getEmail());
         consultationDTO.setAddress(patient.getAddress());
         consultationDTO.setPhone(patient.getPhone());
@@ -99,7 +99,8 @@ public class ConsultationServiceImpl implements ConsultationService{
 	@Override
 	public Consultation convertDTOToObject(ConsultationDTO consultationDTO) {
 		Consultation consultation = new Consultation();
-		consultation.setId(consultationDTO.getId());
+		if (consultationDTO.getId()!= null)
+			consultation.setId(consultationDTO.getId());
 		consultation.setT_a(consultationDTO.getT_a());
         consultation.setT(consultationDTO.getT());
         consultation.setFc(consultationDTO.getFc());
@@ -112,7 +113,7 @@ public class ConsultationServiceImpl implements ConsultationService{
         consultation.setPatientTransport(consultationDTO.isPatientTransport());
         consultation.setMedicalInstitution(consultationDTO.getMedicalInstitution());
         consultation.setCreatedDate(new Date());
-        Patient patient = consultationDao.getPatientByDNI(Integer.valueOf(consultationDTO.getDni()));
+        Patient patient = consultationDao.getPatientByDNI(consultationDTO.getDni());
         if (patient==null){
         	patient = new Patient();
         }else{

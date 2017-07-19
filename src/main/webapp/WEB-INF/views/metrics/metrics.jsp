@@ -6,9 +6,12 @@
 <html>
  
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 	<title>Métricas</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -21,34 +24,36 @@
 		</div>
 		<div id="page-wrapper">
 		    <div class="container-fluid">
-		        <div class="row">
-                    <div id="page-title" class="col-lg-12">
-	                	<div class="col-lg-4"> 
-	                    	<ol class="breadcrumb">
-	                            <li>
-	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
-	                            </li>
-	                            <li class="active">
-	                                <i class="fa fa-bar-chart-o"></i> M&eacute;tricas
-	                            </li>
-	                        </ol>
-	                    </div>
-	                    <div class="col-lg-4">
-                        	<h1 class="page-header">M&eacute;tricas</h1></div>
-                		</div>
-                	</div>	
+		        <div class="row col-lg-12 text-left">
+                	<ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-bar-chart-o"></i> M&eacute;tricas
+                        </li>
+                    </ol>
+                </div>
+                <div id="page-title" class="row col-lg-12 text-center" style="margin-top:-40px">
+                	<h1 class="page-header">M&eacute;tricas</h1>
                 </div>
 		        <sec:authorize access="hasRole('ADMIN')">
 				<!-- usar este bloque para autorizar la operacion  -->
 		        </sec:authorize>
 		        
 		        <div class="clearfix"></div>
-		        	<h3><i class="fa fa-fw fa-wheelchair custom"></i> Pacientes: <small><label id="sexCount"/></small></h3>
-		        	<h4><i class="fa fa-male"></i> Hombres: <small><label id="menCount"/></small></h4>
-		        	<h4><i class="fa fa-female"></i> Mujeres: <small><label id="womenCount"/></small></h4>
+		        <h2 class="col-lg-12 text-center"><i class="fa fa-fw fa-wheelchair custom"></i> Pacientes: <label id="sexCount"/></h2>
+		        <div class="row">
+			        <div class="col-lg-4 col-lg-offset-2 text-right">	
+			        	<h3><i class="fa fa-male custom"></i> Hombres: <label id="menCount"/></h3>
+			        </div>
+			        <div class="col-lg-offset2 col-lg-4 text-left">
+			        	<h3><i class="fa fa-female custom"></i> Mujeres: <label id="womenCount"/></h3>
+			        </div>
+			    </div>
 		        <div class="row">
 		        	<!-- Torta de Pacientes -->
-		        	<div class="col-md-4 col-sm-4 col-xs-12">
+		        	<div class="col-xs-4">
 	                	<div class="x_panelNew">
 	                  		<div class="x_titleNew">
 		                    	<h3>Pacientes <small>Rangos de edad</small></h3>
@@ -73,7 +78,7 @@
 	              <!-- / Torta de Pacientes -->
 	              
 	              <!-- Torta de SAME -->
-		        	<div class="col-md-4 col-sm-4 col-xs-12">
+					<div class="col-xs-4">
 	                	<div class="x_panelNew">
 	                  		<div class="x_titleNew">
 		                    	<h3>SAME <small>Llamados</small></h3>
@@ -87,10 +92,10 @@
 	              <!-- / Torta de SAME -->
 	              
 	              <!-- Torta de Traslados -->
-		        	<div class="col-md-4 col-sm-4 col-xs-12">
+		        	<div class="col-xs-4">
 	                	<div class="x_panelNew">
 	                  		<div class="x_titleNew">
-		                    	<h3>Traslados <small>Llamados</small></h3>
+		                    	<h3>Traslados <small>Derivaciones</small></h3>
 		                    	<div class="clearfix"></div>
 	                  		</div>
 	                  		<div class="x_contentNew">
@@ -100,7 +105,7 @@
 	              </div>
 	              <!-- / Torta de Traslados -->
 	              
-	           </div>
+	           </div><!-- row -->
 	           
 	           <div class="row">
 				  <!-- Torta de Antecedentes -->
@@ -121,7 +126,7 @@
 				<div class="col-md-6 col-sm-6 col-xs-12">
 				      	<div class="x_panelNew">
 				        	<div class="x_titleNew">
-					           	<h3>Motivos<small></small></h3>
+					           	<h3>Motivos <small>Consulta</small></h3>
 				           		<div class="clearfix"></div>
 			        		</div>
 			        		<div class="x_contentNew">

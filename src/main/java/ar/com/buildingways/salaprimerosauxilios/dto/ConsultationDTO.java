@@ -23,7 +23,7 @@ public class ConsultationDTO {
 	private String lastName;
 	private String age;
 	private String sex;
-	private String dni;
+	private Integer dni;
 	private String email;
 	private String address;
 	private String phone;
@@ -137,10 +137,10 @@ public class ConsultationDTO {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public String getDni() {
+	public Integer getDni() {
 		return dni;
 	}
-	public void setDni(String dni) {
+	public void setDni(Integer dni) {
 		this.dni = dni;
 	}
 	public String getEmail() {
