@@ -4,12 +4,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Inicio</title>
+    <title>Lista de Consultas</title>
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="static/css/app.css" rel="stylesheet">
     <link href="static/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
@@ -20,92 +21,134 @@
 		</div>
 		<div id="page-wrapper">
 		    <div class="container-fluid">
-		    	<div class="row">
-                    <div id="page-title" class="col-lg-12">
-                    	<div class="col-lg-4"> 
-	                    	<ol class="breadcrumb">
-	                            <li>
-	                                <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
-	                            </li>
-	                            <li class="active">
-	                                <i class="fa fa-stethoscope custom"></i> Consultas
-	                            </li>
-	                        </ol>
-	                    </div>
-	                    <div class="col-lg-4">
-	                        <h1 class="page-header">Consultas</h1>
-	                    </div>
-                    </div>
+		    	<div class="row col-lg-12 text-left">
+                	<ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>  <a href="<c:url value="/" />">Inicio</a>
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-stethoscope"></i> Consultas
+                        </li>
+                    </ol>
+	           	</div>
+                <div id="page-title" class="row col-lg-12 text-center" style="margin-top:-40px">
+                    <h1 class="page-header">Consultas</h1>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6" style="padding-top:25px;">
-                        <div class="form-group input-group">
-                        	<input type="text" id="userSearchText" class="form-control" placeholder="&#xF002;" style="font-family:Arial, FontAwesome">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                	<div class="col-lg-12">
-                    	<h2>Listado de consultas</h2>
-                    	<div class="table-responsive">
-                            <table id="usersTable" class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                    	<th>ID</th>
-                                    	<th>Fecha</th>
-		                        		<th style="width: 200px">Nombre Paciente</th>
-		                        		<th>DNI Paciente</th>
-		                        		<th style="width: 200px">Motivo</th>
-		                        		<th>Antecedente</th>
-		                        		<th>SAME</th>
-		                        		<th>Traslado</th>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<th width="100"></th>
-		                        		</sec:authorize>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<th width="100"></th>
-		                        		</sec:authorize>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${consultations}" var="consultation">
-		                    		<tr>
-		                    			<td>${consultation.id}</td>
-		                        		<td>${consultation.createdDate}</td>
-		                        		<td>${consultation.patient.firstName} ${consultation.patient.lastName}</td>
-		                        		<td>${consultation.patient.dni}</td>
-		                        		<td>${consultation.reason}</td>
-		                        		<td>${consultation.medicalHistory}</td>
-		                        		<td>${consultation.same}</td>
-		                        		<td>${consultation.patientTransport}</td>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<td><a href="<c:url value='/edit-consultation-${consultation.id}' />" class="btn btn-success">Editar</a></td>
-		                        		</sec:authorize>
-		                        		<sec:authorize access="hasRole('ADMIN')">
-		                            		<td><a href="<c:url value='/delete-consultation-${consultation.id}' />" class="btn btn-danger">Eliminar</a></td>
-		                        		</sec:authorize>
-		                    		</tr>
-		                			</c:forEach>
-                                </tbody>
-                            </table>
+					<div class="col col-xs-6">
+						<h3 id="page-subtitle">Listado de consultas</h3>
+					</div>
+					<div class="col col-xs-6 text-right"  style="height: 56px; padding-top: 12px;">
+				        <a href="<c:url value='/create-consultation' />" class="btn btn-primary text-right">Crear consulta</a>
+					</div>
+				</div>
+				<div class="row">	
+					<div class="col-md-12">
+						<div class="panel panel-default panel-table">
+						  	<div class="panel-heading">
+						  	</div>
+						  	<div class="panel-body">
+                            	<table id="consultationsTable" class="table table-striped table-bordered table-list">
+	                                <thead>
+	                                    <tr>
+	                                    	<th class="text-center" style="width:5%;font-size:90%">ID</th>
+	                                    	<th class="text-center" style="width:10%;font-size:90%">Fecha</th>
+			                        		<th class="text-center" style="width:15%;font-size:90%">Paciente</th>
+			                        		<th class="text-center" style="width:5%;font-size:90%">DNI</th>
+			                        		<th class="text-center" style="width:20%;font-size:90%">Motivo</th>
+			                        		<th class="text-center" style="width:10%;font-size:90%">Antecedente</th>
+			                        		<th class="text-center" style="width:5%;font-size:90%">
+			                        			<i class="fa fa-ambulance fa-2x" aria-hidden="true" title="SAME"></i>
+			                        		</th>
+			                        		<th class="text-center" style="width:5%;font-size:90%">
+			                        			<i title="Traslados" class="fa fa-hospital-o fa-2x" aria-hidden="true"></i>
+			                        		</th>
+			                        		<th class="text-center" style="width:15%;font-size:90%">Acciones</th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                    <c:forEach items="${consultations}" var="consultation">
+			                    		<tr>
+			                    			<td style="font-size:80%">${consultation.id}</td>
+			                        		<td style="font-size:80%">${consultation.createdDate}</td>
+			                        		<td style="font-size:80%">${consultation.patient.firstName} ${consultation.patient.lastName}</td>
+			                        		<td style="font-size:80%">${consultation.patient.dni}</td>
+			                        		<td style="font-size:80%">${consultation.reason}</td>
+			                        		<td style="font-size:80%">${consultation.medicalHistory}</td>
+			                        		<td class="text-center" style="font-size:80%">
+			                        			<c:choose>
+                           							<c:when test="${consultation.same}">
+                           								<i class="fa fa-check fa-2x" aria-hidden="true" title="Si"></i>
+                           							</c:when>
+                           							<c:otherwise>
+                           								<i class="fa fa-times fa-2x" aria-hidden="true" title="No"></i>
+                           							</c:otherwise>
+                           						</c:choose>
+                           					</td>
+			                        		<td class="text-center" style="font-size:80%">
+												<c:choose>
+                           							<c:when test="${consultation.patientTransport}">
+                           								<i class="fa fa-check fa-2x" aria-hidden="true" title="Si"></i>
+                           							</c:when>
+                           							<c:otherwise>
+                           								<i class="fa fa-times fa-2x" aria-hidden="true" title="No"></i>
+                           							</c:otherwise>
+                           						</c:choose>
+											</td>
+											<td align="center">
+											  <a class="btn btn-success custombutton" href="<c:url value='/info-consultation-${consultation.id}' />"><em class="fa fa-info"></em></a>
+											  <a class="btn btn-warning custombutton" href="<c:url value='/edit-consultation-${consultation.id}' />"><em class="fa fa-pencil"></em></a>
+											  <%-- <a class="btn btn-danger custombutton" onClick="deleteConsultationConfirm(${consultation.id});"><em class="fa fa-trash"></em></a> --%>
+											  <a class="btn btn-danger custombutton" href="<c:url value='/delete-consultation-${consultation.id}' />"><em class="fa fa-trash"></em></a>
+											</td>
+			                    		</tr>
+			                			</c:forEach>
+	                                </tbody>
+                            	</table>
+                            </div>
                         </div>
                    </div>
             	</div> <!-- row -->
-                <div class="row">
-                    <div class="col-lg-6">
-	            	<sec:authorize access="hasRole('ADMIN')">
-		                <a href="<c:url value='/create-consultation' />" class="btn btn-primary">Crear consulta nueva</a>
-			        </sec:authorize>
-			        </div>
-            	</div>
 		    </div> <!-- container-fluid -->
 		</div> <!-- page-wrapper -->
 	</div> <!-- wrapper  -->
 	<script src="static/js/jquery.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/bootstrap/js/jquery.dataTables_SP.js"></script>
+    <script src="static/bootstrap/js/dataTables.bootstrap.js"></script>
+    <!-- <script src="static/bootstrap/js/bootbox.min.js"></script> -->
+    <script>var myContextPath = "${pageContext.request.contextPath}"</script>
     <script src="static/js/app.js"></script>
-<!--     <script>var myContextPath = "${pageContext.request.contextPath}"</script>
-    <script>var userList = ${users}</script> -->
     <script src="static/js/usersFunctions.js"></script>
+    <script>
+    $('#consultationsTable').dataTable({
+    	"aoColumnDefs": [
+		                 { 'bSortable': false, 'aTargets': [ 3, 6, 7, 8 ] }
+		              ]
+    });
+    
+/*     function deleteConsultationConfirm(consultationID){
+    	bootbox.confirm({
+   	        title: "Eliminar consulta",
+	        message: "¿Está seguro que desea eliminar la consulta con ID "+consultationID+"?",
+	        buttons: {
+	            confirm: {
+	                label: 'Sí',
+	                className: 'btn-success'
+	            },
+	            cancel: {
+	                label: 'No',
+	                className: 'btn-danger'
+	            }
+	        },
+	        callback: function (result) {
+	        	$.getJSON(myContextPath+'/delete-consultation-'+consultationID, function (data) {
+	        		return myContextPath+'consultations/consultationFormSuccess';
+	    		});
+
+	        }
+    	});
+    }; */
+    </script>
 </body>
 </html>
