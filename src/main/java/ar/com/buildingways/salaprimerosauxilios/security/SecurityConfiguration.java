@@ -36,8 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        .antMatchers("/","/list-patients","/list-consultations","/info-patient-*","/edit-patient-*","/info-consultation-*","/edit-consultation-*").access("hasRole('USER') or hasRole('ADMIN')")
-        .antMatchers("/create-user/**","/delete-user-*","/info-user-*").access("hasRole('ADMIN')")
+        .antMatchers("/","/list-patients","/list-consultations","/info-user-*","/info-patient-*","/edit-patient-*","/info-consultation-*","/edit-consultation-*").access("hasRole('USER') or hasRole('ADMIN')")
+        .antMatchers("/create-user/**","/delete-user-*","/list-users","/edit-user-*").access("hasRole('ADMIN')")
         .and().formLogin().loginPage("/login").loginProcessingUrl("/login")
         .usernameParameter("username").passwordParameter("password")
         .and().rememberMe().rememberMeParameter("remember-me")

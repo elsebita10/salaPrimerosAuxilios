@@ -15,7 +15,10 @@
 <body>
     <div class="generic-container">
         <div class="authbar">
-            <span><strong>${loggedinuser}</strong>, no está autorizado a acceder a esta página.</span> <span class="floatRight"><a href="<c:url value="/logout" />">Cerrar sesión</a></span>
+            <span style="color:white;"><strong>${loggedinuser}</strong>, no está autorizado a acceder a esta página.</span> <span class="floatRight">
+            </br>
+            </br>
+            <a href="<c:url value="/logout" />">Cerrar sesión</a></span>
         </div>
     </div>
     <script src="static/js/jquery.js"></script>

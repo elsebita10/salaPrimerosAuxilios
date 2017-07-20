@@ -45,10 +45,10 @@
 		        <h2 class="col-lg-12 text-center"><i class="fa fa-fw fa-wheelchair custom"></i> Pacientes: <label id="sexCount"/></h2>
 		        <div class="row">
 			        <div class="col-lg-4 col-lg-offset-2 text-right">	
-			        	<h3><i class="fa fa-male custom"></i> Hombres: <label id="menCount"/></h3>
+			        	<h3><i class="fa fa-male custom" style="color:#81BEF7"></i> Hombres: <label id="menCount"/></h3>
 			        </div>
 			        <div class="col-lg-offset2 col-lg-4 text-left">
-			        	<h3><i class="fa fa-female custom"></i> Mujeres: <label id="womenCount"/></h3>
+			        	<h3><i class="fa fa-female custom" style="color:#F781D8"></i> Mujeres: <label id="womenCount"/></h3>
 			        </div>
 			    </div>
 		        <div class="row">

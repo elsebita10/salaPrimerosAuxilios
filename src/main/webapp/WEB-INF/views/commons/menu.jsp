@@ -14,28 +14,35 @@
 	            <li>
 	                <a href="<c:url value="/" />"><i class="fa fa-fw fa-home"></i> Inicio</a>
 	            </li>
-				<sec:authorize access="hasRole('ADMIN')">
-		            <li>
-		            	<a href="<c:url value='/list-users' />"><i class="fa fa-fw fa-users"></i> Usuarios</a>
-		            </li>
-				</sec:authorize>
-	            <li>
-	                <a href="<c:url value='/get-metrics' />"><i class="fa fa-fw fa-bar-chart-o"></i> M&eacute;tricas</a>
-	            </li>
 	            <li>
 	                <a href="<c:url value='/list-consultations' />"><i class="fa fa-fw fa-stethoscope custom"></i> Consultas</a>
 	            </li>
 	            <li>
 	                <a href="<c:url value='/list-patients' />"><i class="fa fa-fw fa-wheelchair custom"></i> Pacientes</a>
 	            </li>
+	            <sec:authorize access="hasRole('ADMIN')">
+		            <li>
+		            	<a href="<c:url value='/list-users' />"><i class="fa fa-fw fa-users"></i> Usuarios</a>
+		            </li>
+		            <li>
+	                	<a href="<c:url value='/get-metrics' />"><i class="fa fa-fw fa-bar-chart-o"></i> M&eacute;tricas</a>
+	            	</li>
+				</sec:authorize>
 	        </ul>
 	        <ul class="nav navbar-right top-nav">
 				<li class="dropdown">
 		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${loggedinuser} <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-		            	<li>
-		                	<a href="<c:url value='/edit-user-${loggedinuser}' />"><i class="fa fa-fw fa-user"></i> Perfil</a>
-		                </li>
+						<sec:authorize access="hasRole('ADMIN')">
+			            	<li>
+			                	<a href="<c:url value='/edit-user-${loggedinuser}' />"><i class="fa fa-fw fa-user"></i> Perfil</a>
+			                </li>
+		                </sec:authorize>
+		                <sec:authorize access="hasRole('USER')">
+			            	<li>
+			                	<a href="<c:url value='/info-user-${loggedinuser}' />"><i class="fa fa-fw fa-user"></i> Perfil</a>
+			                </li>
+		                </sec:authorize>
 		                <li>
 		                	<a href="<c:url value="/logout" />"><i class="fa fa-fw fa-power-off"></i> Cerrar sesi&oacute;n</a>
 		                </li>

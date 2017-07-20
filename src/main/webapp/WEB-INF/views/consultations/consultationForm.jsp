@@ -206,14 +206,14 @@
 										<form:option value="" label="Seleccione una opción"/>
 										<form:option value="Contención emocional" label="Contención emocional"/>
 										<form:option value="Cefalea, náuseas, mareos, vómitos" label="Cefalea, náuseas, mareos, vómitos"/>
-											<form:option value="HTA-DBT" label="HTA-DBT"/>
-											<form:option value="Ataque epiléptico" label="Ataque epiléptico"/>
-											<form:option value="Herida abierta, traumatismo" label="Herida abierta, traumatismo"/>
-											<form:option value="Dolor abdominal, lumbar" label="Dolor abdominal, lumbar"/>
-											<form:option value="Febrícula" label="Febrícula"/>
-											<form:option value="Hipoglucemia" label="Hipoglucemia"/>
-											<form:option value="Adormecimiento MS" label="Adormecimiento MS"/>
-											<form:option value="Otro" label="Otro"/>
+										<form:option value="HTA-DBT" label="HTA-DBT"/>
+										<form:option value="Ataque epiléptico" label="Ataque epiléptico"/>
+										<form:option value="Herida abierta, traumatismo" label="Herida abierta, traumatismo"/>
+										<form:option value="Dolor abdominal, lumbar" label="Dolor abdominal, lumbar"/>
+										<form:option value="Febrícula" label="Febrícula"/>
+										<form:option value="Hipoglucemia" label="Hipoglucemia"/>
+										<form:option value="Adormecimiento MS" label="Adormecimiento MS"/>
+										<form:option value="Otro" label="Otro"/>
 									</form:select>
 									<p class="help-block">Elija el motivo de la consulta</p>
 								</div>

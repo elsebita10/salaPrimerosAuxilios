@@ -106,7 +106,12 @@
 	            			<div class="row" style="padding-top:30px">
 		    					<div class="col-md-12">
 		                			<div class="form-actions text-center">
-	                        			<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Volver</a>
+		                				<sec:authorize access="hasRole('ADMIN')">
+	                        				<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Volver</a>
+		                				</sec:authorize>
+		                				<sec:authorize access="hasRole('USER')">
+	                        				<a href="<c:url value='/' />" class="btn btn-danger" style="width:85px;">Volver</a>
+		                				</sec:authorize>
 		                			</div>
 		            			</div>
 		            		</div>

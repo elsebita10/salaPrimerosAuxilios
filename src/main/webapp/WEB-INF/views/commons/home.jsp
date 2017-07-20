@@ -19,13 +19,16 @@
 		</div>
 		<div id="page-wrapper">
 			<div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header" align="center">
-                            Sala de Primeros Auxilios <i class="fa fa-bus"></i> 
-                            <small> Terminal de &Oacute;mnibus de la ciudad de La Plata</small>
-                        </h1>
-                    </div>
+                <div class="row col-lg-12">
+                    <h1 class="page-header" align="center">
+                        Sala de Primeros Auxilios
+                    </h1>
+                </div>
+                <div class="row col-lg-12" style="padding-top:120px;" align="center">
+                	<i class="fa fa-bus fa-5x"></i>
+                </div>
+                <div class="row col-lg-12" style="padding-top:200px;" align="center">
+                	<h2>Terminal de &Oacute;mnibus de la ciudad de La Plata</h2>
                 </div>
 			</div>
 		</div>

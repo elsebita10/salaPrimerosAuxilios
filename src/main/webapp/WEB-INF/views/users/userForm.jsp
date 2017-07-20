@@ -120,10 +120,10 @@
 	                    		<label class="col-md-6 control-label" for="userProfiles">Rol:</label>
 	                    			<div class="col-md-6">
  	                    				<sec:authorize access="hasRole('ADMIN')">
-	                        				<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" />
+	                        				<form:select path="userProfiles" items="${roles}" itemValue="id" itemLabel="type" class="form-control input-sm" />
 	                        			</sec:authorize>
 	                        			<sec:authorize access="hasRole('USER')">
-	                        				<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" disabled="true"/>
+	                        				<form:select path="userProfiles" items="${roles}" itemValue="id" itemLabel="type" class="form-control input-sm" disabled="true"/>
 	                        			</sec:authorize>
 	                        			<div class="has-error">
 	                            			<form:errors path="userProfiles" class="help-inline"/>
@@ -137,10 +137,22 @@
 		                			<div class="form-actions text-center">
 			                    		<c:choose>
 			                        		<c:when test="${edit}">
-			                        			<input type="submit" value="Actualizar" class="btn btn-success" style="width:85px;margin: 0px 60px 0px 0px"/><a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
+			                        			<input type="submit" value="Actualizar" class="btn btn-success" style="width:85px;margin: 0px 60px 0px 0px"/>
+			                        			<sec:authorize access="hasRole('ADMIN')">
+			                        				<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
+			                        			</sec:authorize>
+			                        			<sec:authorize access="hasRole('USER')">
+			                        				<a href="<c:url value='/' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
+			                        			</sec:authorize>
 			                        		</c:when>
 			                        		<c:otherwise>
-			                            		<input type="submit" value="Crear" class="btn btn-success" style="width:85px;margin: 0px 60px 0px 0px"/><a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
+			                            		<input type="submit" value="Crear" class="btn btn-success" style="width:85px;margin: 0px 60px 0px 0px"/>
+			                            		<sec:authorize access="hasRole('ADMIN')">
+			                        				<a href="<c:url value='/list-users' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
+			                        			</sec:authorize>
+			                        			<sec:authorize access="hasRole('USER')">
+			                        				<a onclickhref="<c:url value='/' />" class="btn btn-danger" style="width:85px;">Cancelar</a>
+			                        			</sec:authorize>
 			                        		</c:otherwise>
 			                    		</c:choose>
 		                			</div>
