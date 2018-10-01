@@ -1,6 +1,6 @@
 /* Populate USER_PROFILE Table */
-INSERT INTO USER_PROFILES(type) VALUES ('1','USER');  
-INSERT INTO USER_PROFILES(type) VALUES ('2','ADMIN');
+INSERT INTO USER_PROFILES(type) VALUES ('USER');  
+INSERT INTO USER_PROFILES(type) VALUES ('ADMIN');
   
 /* Populate one Admin User which will further create other users for the application using GUI */
 INSERT INTO USERS(username, password, address, email) VALUES ('sala1','abc123', '143 y 66','sala1@buildingways.com.ar');
